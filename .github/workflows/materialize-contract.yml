@@ -1,0 +1,53 @@
+name: Materialize final Codex contract
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/materialize-contract.yml
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reconstruct and verify final contract
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import base64
+          import gzip
+          import hashlib
+
+          payload = (
+              Path('tools/contract_payload.b64').read_text().strip()
+              + Path('tools/contract_payload_part2.b64').read_text().strip()
+          )
+          data = gzip.decompress(base64.b64decode(payload))
+          expected = '32100cab5cdf229b66fbe00a3bc72c302a7314a37a6f03944d9d438ed1729b41'
+          actual = hashlib.sha256(data).hexdigest()
+          if actual != expected:
+              raise SystemExit(f'contract sha256 mismatch: {actual} != {expected}')
+          Path('CODEX_IMPLEMENTATION_CONTRACT_FINAL.md').write_bytes(data)
+          print(f'contract verified: {actual}')
+          PY
+
+      - name: Remove bootstrap artifacts and commit canonical contract
+        shell: bash
+        run: |
+          rm -f tools/contract_payload.b64 tools/contract_payload_part2.b64
+          rm -f .github/workflows/materialize-contract.yml
+          rmdir tools 2>/dev/null || true
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Add final Codex implementation contract'
+          git push origin HEAD:main
