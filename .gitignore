@@ -1,0 +1,6 @@
+log.txt
+__pycache__/
+*.pyc
+evaluation/runtime/
+evaluation/ocr_cache/
+evaluation/ocr_cache.json
