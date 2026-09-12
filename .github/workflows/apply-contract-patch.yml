@@ -1,0 +1,34 @@
+name: Apply final contract patch
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/apply-contract-patch.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply patch
+        run: python tools/patch_contract.py
+      - name: Verify and commit
+        run: |
+          grep -F 'financial_events.direction is exactly within {debit, credit, non_cash}' CODEX_IMPLEMENTATION_CONTRACT_FINAL.md
+          grep -F 'Connector-ready ingestion boundary' CODEX_IMPLEMENTATION_CONTRACT_FINAL.md
+          grep -F 'direction=non_cash is a valid canonical direction' CODEX_IMPLEMENTATION_CONTRACT_FINAL.md
+          rm -f tools/patch_contract.py
+          rm -f tools/contract_payload_part1.b64 tools/contract_payload_part2.b64 tools/contract_payload_part3.b64
+          rm -f .github/workflows/patch-canonical-contract.yml .github/workflows/apply-contract-patch.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Fix non-cash handling and add connector-ready ingestion boundary'
+          git push origin HEAD:main
