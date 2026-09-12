@@ -45,21 +45,29 @@ if "direction=non_cash is a valid canonical direction" not in s:
 inv_anchor = "- no clamping of negative balances;\n"
 inv_add = "- non_cash investment valuations and unrealized values never modify ordinary cash balance;\n- available credit never enters ordinary available cash;\n"
 if "- non_cash investment valuations and unrealized values never modify ordinary cash balance;" not in s:
+    if inv_anchor not in s:
+        raise SystemExit("invariant insertion anchor missing")
     s = s.replace(inv_anchor, inv_anchor + inv_add, 1)
 
-test_anchor = "- test_inventory_deterministic.py;\n"
+test_anchor = "- test_inventory_deterministic.py.\n"
 test_add = "- test_non_cash_investment_excluded_from_cash_flow.py;\n- test_adapter_boundary_source_agnostic.py;\n"
 if "test_non_cash_investment_excluded_from_cash_flow.py" not in s:
+    if test_anchor not in s:
+        raise SystemExit("test insertion anchor missing")
     s = s.replace(test_anchor, test_anchor + test_add, 1)
 
 trace_anchor = "| Dataset assumptions | S2 inventory | inventory artifacts and assertions |\n"
 trace_add = "| Non-cash investment valuations | canonical direction/liquidity classification | non-cash cash-flow exclusion regression test |\n| Connector-ready ingestion boundary | source adapters -> canonical domain objects | adapter conformance and no-CSV-leakage tests |\n"
 if "| Connector-ready ingestion boundary |" not in s:
+    if trace_anchor not in s:
+        raise SystemExit("traceability insertion anchor missing")
     s = s.replace(trace_anchor, trace_anchor + trace_add, 1)
 
 ready_anchor = "- all dataset assumptions are S2 assertions, not undocumented constants;\n"
 ready_add = "- financial_events.direction permits only the observed/tested {debit, credit, non_cash} domain, with non_cash excluded from ordinary cash-flow simulation;\n- downstream decision logic consumes canonical financial objects through the source-agnostic adapter boundary and does not depend directly on CSV schemas;\n"
 if "financial_events.direction permits only the observed/tested {debit, credit, non_cash} domain" not in s:
+    if ready_anchor not in s:
+        raise SystemExit("readiness insertion anchor missing")
     s = s.replace(ready_anchor, ready_anchor + ready_add, 1)
 
 required = [
