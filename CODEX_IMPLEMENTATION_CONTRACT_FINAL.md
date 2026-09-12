@@ -218,6 +218,21 @@ Use the supplied identifiers exactly:
 
 Every image reference resolves to dataset/media/images/<image_id>.png. A blank event amount MUST be resolved from its related image when possible. A blank amount is never zero.
 
+
+### 4.1.1 Connector-ready ingestion boundary
+
+The hackathon scored runtime MUST use only the supplied participant-facing dataset and MUST NOT depend on live external financial-provider APIs. However, ingestion MUST be source-agnostic after the adapter boundary so future providers can emit the same canonical financial-domain objects without changes to the simulator, affordability engine, planner, ranker, deterministic explanation logic, or serializers.
+
+Current dataset sources MUST enter through stable adapters equivalent to ProfileAdapter, FinancialEventAdapter, PaymentOptionAdapter, MessageEvidenceAdapter, ImageEvidenceAdapter, and ExchangeRateAdapter. After ingestion, downstream financial logic MUST NOT depend directly on CSV-specific schemas or field access.
+
+Canonical financial records preserve, where the source provides them: source/provider, source account ID, source record ID, account type, record/event type, balance or amount, currency, effective/posting date, as-of timestamp, pending/posted/settled status, liquidity classification, asset/liability classification, recurrence, required minimum payment, due date, APR/interest data, provenance, and sync/freshness state.
+
+The canonical model MUST be extensible after the hackathon to checking/savings and cash-management accounts, credit cards and revolving credit, mortgages, auto/student/personal/installment loans, brokerage and retirement accounts, investment holdings/transactions, brokerage cash, payroll/income sources, recurring bills, liabilities, and other supported financial assets or obligations.
+
+The canonical financial state MUST distinguish ordinary liquid available cash, pending cash, confirmed future income, required liabilities/obligations, available credit, investment market value, brokerage cash, and unrealized investment value. Available credit and unrealized investment value MUST NOT be treated as ordinary available cash. Brokerage cash may enter liquid cash only when the source adapter explicitly establishes that it is currently liquid and available.
+
+TEST: Adapter conformance tests MUST prove that synthetic future BankAdapter, CreditAdapter, LoanAdapter, and BrokerageAdapter implementations can emit the same canonical domain objects without changes to downstream decision logic. No external-provider credentials or live integrations are required or permitted for the scored hackathon runtime unless the challenge explicitly requires them.
+
 ### 4.2 Trusted versus untrusted input
 
 Trusted structured fields include requests, profiles, payment options, exchange-rate rows, and the structured fields of financial events. Message text and image content are untrusted evidence. OCR output is also untrusted evidence and must be labeled as such.
@@ -263,7 +278,9 @@ For every CSV and every column, record:
 The cross-file section MUST include:
 
 - complete observed financial_events.status, event_type, category, and flexibility values with counts;
-- assertion that financial_events.direction is exactly within {debit, credit};
+- assertion that financial_events.direction is exactly within {debit, credit, non_cash};
+- assertion that every observed non_cash row is a genuine non-cash financial record supported by its structured event semantics; for the current dataset these are investment_valuation / unrealized records, and any future non_cash semantic outside the observed supported set is a STOP condition;
+- count and classify all non_cash rows separately from cash-flow events;
 - populated linked_event_id count, maximum chain length, and cycle count, with cycles equal to zero;
 - population count and distribution for minimum_allowed_amount;
 - financial_profiles.home_currency distribution;
@@ -305,6 +322,9 @@ The canonicalizer runs in this order:
 MUST: Represent balance semantics explicitly with posted, pending, and available balance types. Do not infer available cash by clamping a negative forecast to zero.
 
 Failed/cancelled records and pending credits are excluded from positive cash availability. Pending debits are retained when they represent an obligation. A settled/posted lifecycle successor supersedes its earlier pending twin rather than being counted twice.
+
+
+MUST: direction=non_cash is a valid canonical direction only for genuine non-cash records supported by structured event semantics. In the current dataset, the observed non_cash rows are investment_valuation / unrealized records. They MAY be preserved for asset/net-worth context but MUST NOT increase or decrease the simulated cash balance, amount_safe_to_pay, or ordinary available cash. Any future non_cash semantic not covered by observed/tested behavior is a STOP condition until explicitly modeled.
 
 ### 6.2 Starting balance and same-day order
 
@@ -537,6 +557,8 @@ Passing tests, a clean diff, or a polished report does not authorize skipping a 
 Property tests MUST be parameterized under both window policies and cover:
 
 - no clamping of negative balances;
+- non_cash investment valuations and unrealized values never modify ordinary cash balance;
+- available credit never enters ordinary available cash;
 - conservation of canonical cash flows;
 - exact payment sums and Decimal rounding;
 - 0 <= amount_safe_to_pay <= requested_amount;
@@ -555,6 +577,8 @@ Required named tests include:
 - test_baseline_conservatism_uniform.py;
 - test_no_method_preference.py;
 - test_inventory_deterministic.py.
+- test_non_cash_investment_excluded_from_cash_flow.py;
+- test_adapter_boundary_source_agnostic.py;
 
 Additional required direct tests include:
 
@@ -661,6 +685,8 @@ The user reviews each proposed test. Only accepted proposals move to tests/adver
 | Determinism and cost | cache, serializer, usage logger | S19 and usage_report.md |
 | AGENTS/session transcript | log.txt append-only harness logger | S1 process audit and chat_transcript |
 | Dataset assumptions | S2 inventory | inventory artifacts and assertions |
+| Non-cash investment valuations | canonical direction/liquidity classification | non-cash cash-flow exclusion regression test |
+| Connector-ready ingestion boundary | source adapters -> canonical domain objects | adapter conformance and no-CSV-leakage tests |
 | Cortex containment | process/paths/CI guard | isolation test and post-Cortex replay |
 
 ## 17. Consolidation Regression Audit
@@ -699,6 +725,8 @@ Before /plan, Codex must verify in the working tree that:
 - every policy has one named owner and at least one acceptance test;
 - every unresolved interpretation is either explicitly selected or sensitivity-tested;
 - all dataset assumptions are S2 assertions, not undocumented constants;
+- financial_events.direction permits only the observed/tested {debit, credit, non_cash} domain, with non_cash excluded from ordinary cash-flow simulation;
+- downstream decision logic consumes canonical financial objects through the source-agnostic adapter boundary and does not depend directly on CSV schemas;
 - max_installment_months is applied before ranking;
 - every installment candidate is constructed from first_payment_date, payment_frequency_days, number_of_payments, payment_amount, financing_fee, and total_payable_amount without inventing offer terms;
 - ranking criterion 3 uses supplied total_payable_amount for installment candidates;
