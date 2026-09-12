@@ -1,0 +1,124 @@
+name: Patch canonical contract
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/patch-canonical-contract.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Patch canonical implementation contract
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('CODEX_IMPLEMENTATION_CONTRACT_FINAL.md')
+          s = p.read_text(encoding='utf-8')
+
+          old = '- assertion that financial_events.direction is exactly within {debit, credit};'
+          new = '''- assertion that financial_events.direction is exactly within {debit, credit, non_cash};
+- assertion that every observed non_cash row is a genuine non-cash financial record supported by its structured event semantics; for the current dataset these are investment_valuation / unrealized records, and any future non_cash semantic outside the observed supported set is a STOP condition;
+- count and classify all non_cash rows separately from cash-flow events;'''
+          if old not in s:
+              raise SystemExit('Expected direction assertion not found')
+          s = s.replace(old, new, 1)
+
+          anchor = 'Every image reference resolves to dataset/media/images/<image_id>.png. A blank event amount MUST be resolved from its related image when possible. A blank amount is never zero.\n'
+          addition = '''
+
+### 4.1.1 Connector-ready ingestion boundary
+
+The hackathon scored runtime MUST use only the supplied participant-facing dataset and MUST NOT depend on live external financial-provider APIs. However, ingestion MUST be source-agnostic after the adapter boundary so that future providers can emit the same canonical financial-domain objects without changes to the simulator, affordability engine, planner, ranker, deterministic explanation logic, or serializers.
+
+Current dataset sources MUST enter through stable adapters equivalent to:
+
+- ProfileAdapter;
+- FinancialEventAdapter;
+- PaymentOptionAdapter;
+- MessageEvidenceAdapter;
+- ImageEvidenceAdapter;
+- ExchangeRateAdapter.
+
+After ingestion, downstream financial logic MUST NOT depend on CSV-specific field access. CSV-specific implementations belong in an adapter layer and emit canonical objects carrying, where the source provides them: source/provider, source account ID, source record ID, account type, record/event type, amount or balance, currency, effective/posting date, as-of timestamp, canonical status, liquidity classification, asset/liability classification, recurrence, required minimum payment, payment due date, APR/interest data, provenance, and sync/freshness state.
+
+The canonical model MUST be extensible after the hackathon to checking/savings and cash-management accounts, credit cards and revolving credit, mortgages, auto/student/personal/installment loans, brokerage and retirement accounts, investment holdings/transactions, brokerage cash, payroll/income sources, recurring bills, liabilities, and other supported financial assets or obligations.
+
+The canonical financial state MUST distinguish ordinary liquid available cash, pending cash, confirmed future income, required liabilities/obligations, available credit, investment market value, brokerage cash, and unrealized investment value. Available credit and unrealized investment value MUST NOT be treated as ordinary available cash. Brokerage cash may enter liquid cash only when the source adapter explicitly establishes that it is currently liquid and available.
+
+TEST: Adapter conformance tests MUST prove that synthetic future BankAdapter, CreditAdapter, LoanAdapter, and BrokerageAdapter implementations can emit the same canonical domain objects without changes to downstream decision logic. No external-provider credentials or live integrations are required or permitted for the scored hackathon runtime unless the challenge itself explicitly requires them.
+'''
+          if '### 4.1.1 Connector-ready ingestion boundary' not in s:
+              if anchor not in s:
+                  raise SystemExit('Expected connector insertion anchor not found')
+              s = s.replace(anchor, anchor + addition, 1)
+
+          status_anchor = 'Failed/cancelled records and pending credits are excluded from positive cash availability. Pending debits are retained when they represent an obligation. A settled/posted lifecycle successor supersedes its earlier pending twin rather than being counted twice.\n'
+          noncash_rule = '''
+
+MUST: direction=non_cash is a valid canonical direction only for genuine non-cash records supported by structured event semantics. In the current dataset, the observed non_cash rows are investment_valuation / unrealized records. They MAY be preserved for asset/net-worth context but MUST NOT increase or decrease the simulated cash balance, amount_safe_to_pay, or ordinary available cash. Any future non_cash semantic not covered by observed/tested behavior is a STOP condition until explicitly modeled.
+'''
+          if noncash_rule.strip() not in s:
+              if status_anchor not in s:
+                  raise SystemExit('Expected non-cash rule insertion anchor not found')
+              s = s.replace(status_anchor, status_anchor + noncash_rule, 1)
+
+          inv_anchor = '- no clamping of negative balances;\n'
+          inv_add = '- non_cash investment valuations and unrealized values never modify ordinary cash balance;\n- available credit never enters ordinary available cash;\n'
+          if inv_add.strip() not in s:
+              if inv_anchor not in s:
+                  raise SystemExit('Expected invariant insertion anchor not found')
+              s = s.replace(inv_anchor, inv_anchor + inv_add, 1)
+
+          test_anchor = '- test_inventory_deterministic.py;\n'
+          test_add = '- test_non_cash_investment_excluded_from_cash_flow.py;\n- test_adapter_boundary_source_agnostic.py;\n'
+          if 'test_non_cash_investment_excluded_from_cash_flow.py' not in s:
+              if test_anchor not in s:
+                  raise SystemExit('Expected test insertion anchor not found')
+              s = s.replace(test_anchor, test_anchor + test_add, 1)
+
+          trace_anchor = '| Dataset assumptions | S2 inventory | inventory artifacts and assertions |\n'
+          trace_add = '| Non-cash investment valuations | canonical direction/liquidity classification | non-cash cash-flow exclusion regression test |\n| Connector-ready ingestion boundary | source adapters -> canonical domain objects | adapter conformance and no-CSV-leakage tests |\n'
+          if '| Connector-ready ingestion boundary |' not in s:
+              if trace_anchor not in s:
+                  raise SystemExit('Expected traceability insertion anchor not found')
+              s = s.replace(trace_anchor, trace_anchor + trace_add, 1)
+
+          ready_anchor = '- all dataset assumptions are S2 assertions, not undocumented constants;\n'
+          ready_add = '- financial_events.direction permits only the observed/tested {debit, credit, non_cash} domain, with non_cash excluded from ordinary cash-flow simulation;\n- downstream decision logic consumes canonical financial objects through the source-agnostic adapter boundary and does not depend directly on CSV schemas;\n'
+          if 'financial_events.direction permits only the observed/tested {debit, credit, non_cash} domain' not in s:
+              if ready_anchor not in s:
+                  raise SystemExit('Expected readiness insertion anchor not found')
+              s = s.replace(ready_anchor, ready_anchor + ready_add, 1)
+
+          p.write_text(s, encoding='utf-8')
+          PY
+
+      - name: Verify patch
+        shell: bash
+        run: |
+          grep -F 'financial_events.direction is exactly within {debit, credit, non_cash}' CODEX_IMPLEMENTATION_CONTRACT_FINAL.md
+          grep -F 'Connector-ready ingestion boundary' CODEX_IMPLEMENTATION_CONTRACT_FINAL.md
+          grep -F 'direction=non_cash is a valid canonical direction' CODEX_IMPLEMENTATION_CONTRACT_FINAL.md
+          grep -F 'test_non_cash_investment_excluded_from_cash_flow.py' CODEX_IMPLEMENTATION_CONTRACT_FINAL.md
+          ! grep -F 'financial_events.direction is exactly within {debit, credit};' CODEX_IMPLEMENTATION_CONTRACT_FINAL.md
+
+      - name: Commit contract patch and remove bootstrap workflow
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          rm -f .github/workflows/patch-canonical-contract.yml
+          git add CODEX_IMPLEMENTATION_CONTRACT_FINAL.md .github/workflows/patch-canonical-contract.yml
+          git commit -m 'Fix non-cash direction and add connector-ready ingestion boundary'
+          git push origin HEAD:main
