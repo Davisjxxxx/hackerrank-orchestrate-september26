@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "Buy or Wait?",
+    "slug": "buy-or-wait",
+    "version": "0.2.1",
+    "orientation": "portrait",
+    "scheme": "buyorwait",
+    "ios": { "supportsTablet": true },
+    "android": { "adaptiveIcon": { "backgroundColor": "#0d1726" } },
+    "plugins": ["expo-camera", "expo-image-picker"]
+  }
+}
