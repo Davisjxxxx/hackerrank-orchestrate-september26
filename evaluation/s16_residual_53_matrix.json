@@ -1,0 +1,2430 @@
+{
+  "counts": {
+    "fields": 53,
+    "rows": 22
+  },
+  "rows": [
+    {
+      "actual_limiting_balance": "47637730.16",
+      "actual_limiting_date": "2025-08-13",
+      "actual_output": {
+        "affordability_status": "affordable_with_plan",
+        "amount_safe_to_pay": "18479330.16",
+        "decision_explanation": "Use 3 installments of IDR 15,952,906.67, starting 8 August 2025. This leaves at least IDR 29,158,400 available.",
+        "earliest_date_for_full_payment": "2025-09-15",
+        "payment_plan": "2025-08-08:15952906.67|2025-09-07:15952906.67|2025-10-07:15952906.67",
+        "recommended_payment_method": "installments",
+        "request_id": "request_02",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "2141849.94",
+          "category": "utilities",
+          "date": "2025-08-07",
+          "description": "Municipal utilities",
+          "direction": "debit",
+          "event_id": "event_138@2025-08-07",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_138"
+        },
+        {
+          "amount_home": "1132400",
+          "category": "insurance",
+          "date": "2025-08-08",
+          "description": "Household insurance",
+          "direction": "debit",
+          "event_id": "event_139@2025-08-08",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_139"
+        },
+        {
+          "amount_home": "3040000",
+          "category": "education",
+          "date": "2025-08-09",
+          "description": "Course tuition",
+          "direction": "debit",
+          "event_id": "event_140@2025-08-09",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_140"
+        },
+        {
+          "amount_home": "1641668.72",
+          "category": "healthcare",
+          "date": "2025-08-11",
+          "description": "Clinic payment",
+          "direction": "debit",
+          "event_id": "event_141@2025-08-11",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_141"
+        },
+        {
+          "amount_home": "1440242.94",
+          "category": "transport",
+          "date": "2025-08-12",
+          "description": "Ride-hailing trip",
+          "direction": "debit",
+          "event_id": "event_168@2025-08-12",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_168"
+        },
+        {
+          "amount_home": "1329347.44",
+          "category": "transport",
+          "date": "2025-08-12",
+          "description": "Commuter pass",
+          "direction": "debit",
+          "event_id": "event_174@2025-08-12",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_174"
+        },
+        {
+          "amount_home": "369550",
+          "category": "cloud_storage",
+          "date": "2025-08-13",
+          "description": "Shared storage plan",
+          "direction": "debit",
+          "event_id": "event_143@2025-08-13",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_143"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "amount_safe_to_pay": {
+          "actual": "18479330.16",
+          "expected": "17229139.2",
+          "family": "recurrence stream identity"
+        }
+      },
+      "expected_implied_limiting_balance": "46387539.2",
+      "expected_output": {
+        "affordability_status": "affordable_with_plan",
+        "amount_safe_to_pay": "17229139.2",
+        "decision_explanation": "Use 3 installments of IDR 15,952,906.67, starting 8 August 2025. This leaves at least IDR 29,158,400 available.",
+        "earliest_date_for_full_payment": "2025-09-15",
+        "payment_plan": "2025-08-08:15952906.67|2025-09-07:15952906.67|2025-10-07:15952906.67",
+        "recommended_payment_method": "installments",
+        "request_id": "request_02",
+        "spending_changes_needed": "none"
+      },
+      "first_behaviorally_incompatible_date": "2025-08-13",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_02",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "1250190.96",
+      "upstream_or_downstream": {
+        "amount_safe_to_pay": "upstream"
+      },
+      "user_id": "user_02"
+    },
+    {
+      "actual_limiting_balance": "3718771.39",
+      "actual_limiting_date": "2019-09-14",
+      "actual_output": {
+        "affordability_status": "affordable_later",
+        "amount_safe_to_pay": "1050071.39",
+        "decision_explanation": "Pay IDR 5,491,000 in full on 15 November 2019. Paying earlier would take the balance below the IDR 2,668,700 minimum.",
+        "earliest_date_for_full_payment": "2019-11-15",
+        "payment_plan": "2019-11-15:5491000",
+        "recommended_payment_method": "wait",
+        "request_id": "request_03",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "1140000",
+          "category": "rent",
+          "date": "2019-09-04",
+          "description": "Landlord standing order",
+          "direction": "debit",
+          "event_id": "event_212@2019-09-04",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_212"
+        },
+        {
+          "amount_home": "303042.45",
+          "category": "utilities",
+          "date": "2019-09-08",
+          "description": "Water and power payment",
+          "direction": "debit",
+          "event_id": "event_213@2019-09-08",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_213"
+        },
+        {
+          "amount_home": "234390.87",
+          "category": "groceries",
+          "date": "2019-09-08",
+          "description": "Bulk pantry shop",
+          "direction": "debit",
+          "event_id": "event_219@2019-09-08",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_219"
+        },
+        {
+          "amount_home": "117800",
+          "category": "streaming",
+          "date": "2019-09-11",
+          "description": "Video streaming plan",
+          "direction": "debit",
+          "event_id": "event_215@2019-09-11",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_215"
+        },
+        {
+          "amount_home": "20900",
+          "category": "cloud_storage",
+          "date": "2019-09-14",
+          "description": "Shared storage plan",
+          "direction": "debit",
+          "event_id": "event_214@2019-09-14",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_214"
+        },
+        {
+          "amount_home": "180395.29",
+          "category": "shopping",
+          "date": "2019-09-14",
+          "description": "Clothing and household items",
+          "direction": "debit",
+          "event_id": "event_216@2019-09-14",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_216"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "amount_safe_to_pay": {
+          "actual": "1050071.39",
+          "expected": "873000",
+          "family": "recurrence stream identity"
+        }
+      },
+      "expected_implied_limiting_balance": "3541700",
+      "expected_output": {
+        "affordability_status": "affordable_later",
+        "amount_safe_to_pay": "873000",
+        "decision_explanation": "Pay IDR 5,491,000 in full on 15 November 2019. Paying earlier would take the balance below the IDR 2,668,700 minimum.",
+        "earliest_date_for_full_payment": "2019-11-15",
+        "payment_plan": "2019-11-15:5491000",
+        "recommended_payment_method": "wait",
+        "request_id": "request_03",
+        "spending_changes_needed": "none"
+      },
+      "first_behaviorally_incompatible_date": "2019-09-14",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_03",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "177071.39",
+      "upstream_or_downstream": {
+        "amount_safe_to_pay": "upstream"
+      },
+      "user_id": "user_03"
+    },
+    {
+      "actual_limiting_balance": "42271378.17",
+      "actual_limiting_date": "2024-06-13",
+      "actual_output": {
+        "affordability_status": "affordable_later",
+        "amount_safe_to_pay": "11584778.17",
+        "decision_explanation": "Pay IDR 12,693,000 in full on 15 June 2024. Paying earlier would take the balance below the IDR 30,686,600 minimum.",
+        "earliest_date_for_full_payment": "2024-06-15",
+        "payment_plan": "2024-06-15:12693000",
+        "recommended_payment_method": "wait",
+        "request_id": "request_04",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "2033868.83",
+          "category": "utilities",
+          "date": "2024-06-05",
+          "description": "Municipal utilities",
+          "direction": "debit",
+          "event_id": "event_286@2024-06-05",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_286"
+        },
+        {
+          "amount_home": "1027900",
+          "category": "gym",
+          "date": "2024-06-09",
+          "description": "Gym membership",
+          "direction": "debit",
+          "event_id": "event_289@2024-06-09",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_289"
+        },
+        {
+          "amount_home": "1030376.9",
+          "category": "transport",
+          "date": "2024-06-09",
+          "description": "Ride-hailing trip",
+          "direction": "debit",
+          "event_id": "event_341@2024-06-09",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_341"
+        },
+        {
+          "amount_home": "332500",
+          "category": "music_subscription",
+          "date": "2024-06-10",
+          "description": "Music service subscription",
+          "direction": "debit",
+          "event_id": "event_287@2024-06-10",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_287"
+        },
+        {
+          "amount_home": "377150",
+          "category": "delivery_membership",
+          "date": "2024-06-12",
+          "description": "Food delivery membership",
+          "direction": "debit",
+          "event_id": "event_288@2024-06-12",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_288"
+        },
+        {
+          "amount_home": "1542620",
+          "category": "entertainment",
+          "date": "2024-06-13",
+          "description": "Local event tickets",
+          "direction": "debit",
+          "event_id": "event_290@2024-06-13",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_290"
+        },
+        {
+          "amount_home": "1886856.1",
+          "category": "dining",
+          "date": "2024-06-13",
+          "description": "Bakery and snacks",
+          "direction": "debit",
+          "event_id": "event_355@2024-06-13",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_355"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "amount_safe_to_pay": {
+          "actual": "11584778.17",
+          "expected": "8401800",
+          "family": "recurrence stream identity"
+        },
+        "decision_explanation": {
+          "actual": "Pay IDR 12,693,000 in full on 15 June 2024. Paying earlier would take the balance below the IDR 30,686,600 minimum.",
+          "expected": "Wait until 15 June 2024, then pay IDR 12,693,000 in full. Paying sooner would put the IDR 30,686,600 minimum at risk.",
+          "family": "serialization/explanation"
+        }
+      },
+      "expected_implied_limiting_balance": "39088400",
+      "expected_output": {
+        "affordability_status": "affordable_later",
+        "amount_safe_to_pay": "8401800",
+        "decision_explanation": "Wait until 15 June 2024, then pay IDR 12,693,000 in full. Paying sooner would put the IDR 30,686,600 minimum at risk.",
+        "earliest_date_for_full_payment": "2024-06-15",
+        "payment_plan": "2024-06-15:12693000",
+        "recommended_payment_method": "wait",
+        "request_id": "request_04",
+        "spending_changes_needed": "none"
+      },
+      "first_behaviorally_incompatible_date": "2024-06-13",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_04",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "3182978.17",
+      "upstream_or_downstream": {
+        "amount_safe_to_pay": "upstream",
+        "decision_explanation": "downstream"
+      },
+      "user_id": "user_04"
+    },
+    {
+      "actual_limiting_balance": "20106.21",
+      "actual_limiting_date": "2026-02-02",
+      "actual_output": {
+        "affordability_status": "not_affordable",
+        "amount_safe_to_pay": "7006.21",
+        "decision_explanation": "Do not proceed with the ZAR 15,488 request. Although ZAR 7,006.21 is available today, the full amount cannot be completed safely within 90 days.",
+        "earliest_date_for_full_payment": "",
+        "payment_plan": "none",
+        "recommended_payment_method": "not_recommended",
+        "request_id": "request_05",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "4972",
+          "category": "rent",
+          "date": "2026-01-02",
+          "description": "Apartment rent transfer",
+          "direction": "debit",
+          "event_id": "event_398@2026-01-02",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_398"
+        },
+        {
+          "amount_home": "750.89",
+          "category": "utilities",
+          "date": "2026-01-06",
+          "description": "Municipal utilities",
+          "direction": "debit",
+          "event_id": "event_392@2026-01-06",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_392"
+        },
+        {
+          "amount_home": "722.37",
+          "category": "healthcare",
+          "date": "2026-01-10",
+          "description": "Therapy appointment",
+          "direction": "debit",
+          "event_id": "event_394@2026-01-10",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_394"
+        },
+        {
+          "amount_home": "968",
+          "category": "debt_repayment",
+          "date": "2026-01-11",
+          "description": "Vehicle loan payment",
+          "direction": "debit",
+          "event_id": "event_393@2026-01-11",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_393"
+        },
+        {
+          "amount_home": "113.3",
+          "category": "cloud_storage",
+          "date": "2026-01-12",
+          "description": "Cloud storage plan",
+          "direction": "debit",
+          "event_id": "event_396@2026-01-12",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_396"
+        },
+        {
+          "amount_home": "422.67",
+          "category": "shopping",
+          "date": "2026-01-12",
+          "description": "Personal shopping",
+          "direction": "debit",
+          "event_id": "event_397@2026-01-12",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_397"
+        },
+        {
+          "amount_home": "840.4",
+          "category": "family_support",
+          "date": "2026-01-13",
+          "description": "Dependent care payment",
+          "direction": "debit",
+          "event_id": "event_395@2026-01-13",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_395"
+        },
+        {
+          "amount_home": "4972",
+          "category": "rent",
+          "date": "2026-02-02",
+          "description": "Apartment rent transfer",
+          "direction": "debit",
+          "event_id": "event_398@2026-02-02",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_398"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "amount_safe_to_pay": {
+          "actual": "7006.21",
+          "expected": "737",
+          "family": "recurrence stream identity"
+        },
+        "decision_explanation": {
+          "actual": "Do not proceed with the ZAR 15,488 request. Although ZAR 7,006.21 is available today, the full amount cannot be completed safely within 90 days.",
+          "expected": "Do not make this payment by 12 January 2026. None of the available options keeps the ZAR 13,100 minimum protected.",
+          "family": "serialization/explanation"
+        }
+      },
+      "expected_implied_limiting_balance": "13837",
+      "expected_output": {
+        "affordability_status": "not_affordable",
+        "amount_safe_to_pay": "737",
+        "decision_explanation": "Do not make this payment by 12 January 2026. None of the available options keeps the ZAR 13,100 minimum protected.",
+        "earliest_date_for_full_payment": "",
+        "payment_plan": "none",
+        "recommended_payment_method": "not_recommended",
+        "request_id": "request_05",
+        "spending_changes_needed": "none"
+      },
+      "first_behaviorally_incompatible_date": "2026-02-02",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_05",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "6269.21",
+      "upstream_or_downstream": {
+        "amount_safe_to_pay": "upstream",
+        "decision_explanation": "downstream"
+      },
+      "user_id": "user_05"
+    },
+    {
+      "actual_limiting_balance": "1430.32",
+      "actual_limiting_date": "2026-01-13",
+      "actual_output": {
+        "affordability_status": "affordable_now",
+        "amount_safe_to_pay": "620.4",
+        "decision_explanation": "Pay EUR 620.40 today. This leaves at least EUR 800 available over the next 90 days.",
+        "earliest_date_for_full_payment": "2026-01-03",
+        "payment_plan": "2026-01-03:620.40",
+        "recommended_payment_method": "full_payment",
+        "request_id": "request_06",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "254.1",
+          "category": "rent",
+          "date": "2026-01-03",
+          "description": "Monthly rent",
+          "direction": "debit",
+          "event_id": "event_472@2026-01-03",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_472"
+        },
+        {
+          "amount_home": "58.98",
+          "category": "utilities",
+          "date": "2026-01-07",
+          "description": "Water and power payment",
+          "direction": "debit",
+          "event_id": "event_473@2026-01-07",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_473"
+        },
+        {
+          "amount_home": "51.55",
+          "category": "groceries",
+          "date": "2026-01-07",
+          "description": "Fresh food shop",
+          "direction": "debit",
+          "event_id": "event_489@2026-01-07",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_489"
+        },
+        {
+          "amount_home": "26",
+          "category": "insurance",
+          "date": "2026-01-08",
+          "description": "Vehicle insurance premium",
+          "direction": "debit",
+          "event_id": "event_474@2026-01-08",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_474"
+        },
+        {
+          "amount_home": "19",
+          "category": "streaming",
+          "date": "2026-01-10",
+          "description": "Family streaming plan",
+          "direction": "debit",
+          "event_id": "event_476@2026-01-10",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_476"
+        },
+        {
+          "amount_home": "57.57",
+          "category": "dining",
+          "date": "2026-01-11",
+          "description": "Neighbourhood restaurant",
+          "direction": "debit",
+          "event_id": "event_552@2026-01-11",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_552"
+        },
+        {
+          "amount_home": "5",
+          "category": "cloud_storage",
+          "date": "2026-01-13",
+          "description": "Shared storage plan",
+          "direction": "debit",
+          "event_id": "event_475@2026-01-13",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_475"
+        },
+        {
+          "amount_home": "39.88",
+          "category": "shopping",
+          "date": "2026-01-13",
+          "description": "Household shopping",
+          "direction": "debit",
+          "event_id": "event_477@2026-01-13",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_477"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "affordability_status": {
+          "actual": "affordable_now",
+          "expected": "affordable_with_plan",
+          "family": "payment-plan eligibility"
+        },
+        "amount_safe_to_pay": {
+          "actual": "620.4",
+          "expected": "603.3",
+          "family": "recurrence stream identity"
+        },
+        "decision_explanation": {
+          "actual": "Pay EUR 620.40 today. This leaves at least EUR 800 available over the next 90 days.",
+          "expected": "Stop the family streaming plan, then pay EUR 620.40 today. This leaves at least EUR 800 available.",
+          "family": "serialization/explanation"
+        },
+        "earliest_date_for_full_payment": {
+          "actual": "2026-01-03",
+          "expected": "2026-01-15",
+          "family": "earliest-safe-date logic"
+        },
+        "spending_changes_needed": {
+          "actual": "none",
+          "expected": "stop:event_476",
+          "family": "spending-change eligibility"
+        }
+      },
+      "expected_implied_limiting_balance": "1403.3",
+      "expected_output": {
+        "affordability_status": "affordable_with_plan",
+        "amount_safe_to_pay": "603.3",
+        "decision_explanation": "Stop the family streaming plan, then pay EUR 620.40 today. This leaves at least EUR 800 available.",
+        "earliest_date_for_full_payment": "2026-01-15",
+        "payment_plan": "2026-01-03:620.40",
+        "recommended_payment_method": "full_payment",
+        "request_id": "request_06",
+        "spending_changes_needed": "stop:event_476"
+      },
+      "first_behaviorally_incompatible_date": "2026-01-13",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_06",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "17.1",
+      "upstream_or_downstream": {
+        "affordability_status": "downstream",
+        "amount_safe_to_pay": "upstream",
+        "decision_explanation": "downstream",
+        "earliest_date_for_full_payment": "downstream",
+        "spending_changes_needed": "downstream"
+      },
+      "user_id": "user_06"
+    },
+    {
+      "actual_limiting_balance": "191080.53",
+      "actual_limiting_date": "2024-09-20",
+      "actual_output": {
+        "affordability_status": "affordable_with_plan",
+        "amount_safe_to_pay": "98080.53",
+        "decision_explanation": "Use 3 installments of INR 68,432, starting 12 September 2024. This leaves at least INR 93,000 available.",
+        "earliest_date_for_full_payment": "2024-10-23",
+        "payment_plan": "2024-09-12:68432|2024-10-10:68432|2024-11-07:68432",
+        "recommended_payment_method": "installments",
+        "request_id": "request_07",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "7387.41",
+          "category": "utilities",
+          "date": "2024-09-08",
+          "description": "Electricity bill",
+          "direction": "debit",
+          "event_id": "event_580@2024-09-08",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_580"
+        },
+        {
+          "amount_home": "15650",
+          "category": "debt_repayment",
+          "date": "2024-09-13",
+          "description": "Personal loan payment",
+          "direction": "debit",
+          "event_id": "event_581@2024-09-13",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_581"
+        },
+        {
+          "amount_home": "1005",
+          "category": "music_subscription",
+          "date": "2024-09-13",
+          "description": "Music subscription",
+          "direction": "debit",
+          "event_id": "event_582@2024-09-13",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_582"
+        },
+        {
+          "amount_home": "3822.62",
+          "category": "transport",
+          "date": "2024-09-20",
+          "description": "Rail pass",
+          "direction": "debit",
+          "event_id": "event_604@2024-09-20",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_604"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "amount_safe_to_pay": {
+          "actual": "98080.53",
+          "expected": "87170.56",
+          "family": "recurrence stream identity"
+        }
+      },
+      "expected_implied_limiting_balance": "180170.56",
+      "expected_output": {
+        "affordability_status": "affordable_with_plan",
+        "amount_safe_to_pay": "87170.56",
+        "decision_explanation": "Use 3 installments of INR 68,432, starting 12 September 2024. This leaves at least INR 93,000 available.",
+        "earliest_date_for_full_payment": "2024-10-23",
+        "payment_plan": "2024-09-12:68432|2024-10-10:68432|2024-11-07:68432",
+        "recommended_payment_method": "installments",
+        "request_id": "request_07",
+        "spending_changes_needed": "none"
+      },
+      "first_behaviorally_incompatible_date": "2024-09-20",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_07",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "10909.97",
+      "upstream_or_downstream": {
+        "amount_safe_to_pay": "upstream"
+      },
+      "user_id": "user_07"
+    },
+    {
+      "actual_limiting_balance": "1183.59",
+      "actual_limiting_date": "2025-02-12",
+      "actual_output": {
+        "affordability_status": "affordable_later",
+        "amount_safe_to_pay": "383.59",
+        "decision_explanation": "Pay EUR 996.60 in full on 15 April 2025. Paying earlier would take the balance below the EUR 800 minimum.",
+        "earliest_date_for_full_payment": "2025-04-15",
+        "payment_plan": "2025-04-15:996.60",
+        "recommended_payment_method": "wait",
+        "request_id": "request_08",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "89",
+          "category": "education",
+          "date": "2025-02-07",
+          "description": "School fee payment",
+          "direction": "debit",
+          "event_id": "event_646@2025-02-07",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_646"
+        },
+        {
+          "amount_home": "177",
+          "category": "debt_repayment",
+          "date": "2025-02-10",
+          "description": "Personal loan payment",
+          "direction": "debit",
+          "event_id": "event_647@2025-02-10",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_647"
+        },
+        {
+          "amount_home": "14",
+          "category": "music_subscription",
+          "date": "2025-02-10",
+          "description": "Music subscription",
+          "direction": "debit",
+          "event_id": "event_648@2025-02-10",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_648"
+        },
+        {
+          "amount_home": "48.98",
+          "category": "dining",
+          "date": "2025-02-10",
+          "description": "Neighbourhood restaurant",
+          "direction": "debit",
+          "event_id": "event_708@2025-02-10",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_708"
+        },
+        {
+          "amount_home": "24",
+          "category": "delivery_membership",
+          "date": "2025-02-12",
+          "description": "Grocery delivery membership",
+          "direction": "debit",
+          "event_id": "event_649@2025-02-12",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_649"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "amount_safe_to_pay": {
+          "actual": "383.59",
+          "expected": "284.57",
+          "family": "recurrence stream identity"
+        }
+      },
+      "expected_implied_limiting_balance": "1084.57",
+      "expected_output": {
+        "affordability_status": "affordable_later",
+        "amount_safe_to_pay": "284.57",
+        "decision_explanation": "Pay EUR 996.60 in full on 15 April 2025. Paying earlier would take the balance below the EUR 800 minimum.",
+        "earliest_date_for_full_payment": "2025-04-15",
+        "payment_plan": "2025-04-15:996.60",
+        "recommended_payment_method": "wait",
+        "request_id": "request_08",
+        "spending_changes_needed": "none"
+      },
+      "first_behaviorally_incompatible_date": "2025-02-12",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_08",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "99.02",
+      "upstream_or_downstream": {
+        "amount_safe_to_pay": "upstream"
+      },
+      "user_id": "user_08"
+    },
+    {
+      "actual_limiting_balance": "2051.84",
+      "actual_limiting_date": "2026-07-19",
+      "actual_output": {
+        "affordability_status": "affordable_now",
+        "amount_safe_to_pay": "166.61",
+        "decision_explanation": "Pay EUR 166.61 today. This leaves at least EUR 600 available over the next 90 days.",
+        "earliest_date_for_full_payment": "2026-07-04",
+        "payment_plan": "2026-07-04:166.61",
+        "recommended_payment_method": "full_payment",
+        "request_id": "request_09",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "71.04",
+          "category": "utilities",
+          "date": "2026-07-06",
+          "description": "Water and power payment",
+          "direction": "debit",
+          "event_id": "event_748@2026-07-06",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_748"
+        },
+        {
+          "amount_home": "20",
+          "category": "streaming",
+          "date": "2026-07-09",
+          "description": "Video streaming plan",
+          "direction": "debit",
+          "event_id": "event_750@2026-07-09",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_750"
+        },
+        {
+          "amount_home": "5",
+          "category": "cloud_storage",
+          "date": "2026-07-12",
+          "description": "Cloud storage plan",
+          "direction": "debit",
+          "event_id": "event_749@2026-07-12",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_749"
+        },
+        {
+          "amount_home": "28.32",
+          "category": "shopping",
+          "date": "2026-07-12",
+          "description": "Household shopping",
+          "direction": "debit",
+          "event_id": "event_751@2026-07-12",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_751"
+        },
+        {
+          "amount_home": "54.9",
+          "category": "groceries",
+          "date": "2026-07-19",
+          "description": "Local market purchase",
+          "direction": "debit",
+          "event_id": "event_760@2026-07-19",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_760"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "decision_explanation": {
+          "actual": "Pay EUR 166.61 today. This leaves at least EUR 600 available over the next 90 days.",
+          "expected": "Pay EUR 166.61 today. This keeps the EUR 600 minimum available over the next 90 days.",
+          "family": "serialization/explanation"
+        }
+      },
+      "expected_implied_limiting_balance": "766.61",
+      "expected_output": {
+        "affordability_status": "affordable_now",
+        "amount_safe_to_pay": "166.61",
+        "decision_explanation": "Pay EUR 166.61 today. This keeps the EUR 600 minimum available over the next 90 days.",
+        "earliest_date_for_full_payment": "2026-07-04",
+        "payment_plan": "2026-07-04:166.61",
+        "recommended_payment_method": "full_payment",
+        "request_id": "request_09",
+        "spending_changes_needed": "none"
+      },
+      "first_behaviorally_incompatible_date": "2026-07-19",
+      "primary_family": "serialization/explanation",
+      "request_id": "request_09",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "0.00",
+      "upstream_or_downstream": {
+        "decision_explanation": "downstream"
+      },
+      "user_id": "user_09"
+    },
+    {
+      "actual_limiting_balance": "725801.48",
+      "actual_limiting_date": "2024-12-07",
+      "actual_output": {
+        "affordability_status": "not_affordable",
+        "amount_safe_to_pay": "266700",
+        "decision_explanation": "Do not proceed with the INR 266,700 request. Although INR 266,700 is available today, the full amount cannot be completed safely within 90 days.",
+        "earliest_date_for_full_payment": "2024-12-06",
+        "payment_plan": "none",
+        "recommended_payment_method": "not_recommended",
+        "request_id": "request_10",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "6582.39",
+          "category": "transport",
+          "date": "2024-12-06",
+          "description": "Local taxi",
+          "direction": "debit",
+          "event_id": "event_883@2024-12-06",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_883"
+        },
+        {
+          "amount_home": "17771.13",
+          "category": "utilities",
+          "date": "2024-12-07",
+          "description": "Electricity and water bill",
+          "direction": "debit",
+          "event_id": "event_834@2024-12-07",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_834"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "amount_safe_to_pay": {
+          "actual": "266700",
+          "expected": "12700",
+          "family": "recurrence stream identity"
+        },
+        "decision_explanation": {
+          "actual": "Do not proceed with the INR 266,700 request. Although INR 266,700 is available today, the full amount cannot be completed safely within 90 days.",
+          "expected": "Do not make this payment by 10 February 2025. None of the available options keeps the INR 225,400 minimum protected.",
+          "family": "serialization/explanation"
+        },
+        "earliest_date_for_full_payment": {
+          "actual": "2024-12-06",
+          "expected": "",
+          "family": "earliest-safe-date logic"
+        }
+      },
+      "expected_implied_limiting_balance": "238100",
+      "expected_output": {
+        "affordability_status": "not_affordable",
+        "amount_safe_to_pay": "12700",
+        "decision_explanation": "Do not make this payment by 10 February 2025. None of the available options keeps the INR 225,400 minimum protected.",
+        "earliest_date_for_full_payment": "",
+        "payment_plan": "none",
+        "recommended_payment_method": "not_recommended",
+        "request_id": "request_10",
+        "spending_changes_needed": "none"
+      },
+      "first_behaviorally_incompatible_date": "2024-12-07",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_10",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "254000",
+      "upstream_or_downstream": {
+        "amount_safe_to_pay": "upstream",
+        "decision_explanation": "downstream",
+        "earliest_date_for_full_payment": "downstream"
+      },
+      "user_id": "user_10"
+    },
+    {
+      "actual_limiting_balance": "48809337.19",
+      "actual_limiting_date": "2025-05-14",
+      "actual_output": {
+        "affordability_status": "affordable_now",
+        "amount_safe_to_pay": "13110000",
+        "decision_explanation": "Pay IDR 13,110,000 today. This leaves at least IDR 34,140,600 available over the next 90 days.",
+        "earliest_date_for_full_payment": "2025-05-03",
+        "payment_plan": "2025-05-03:13110000",
+        "recommended_payment_method": "full_payment",
+        "request_id": "request_11",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "2954500",
+          "category": "housing",
+          "date": "2025-05-05",
+          "description": "Home association fee",
+          "direction": "debit",
+          "event_id": "event_943@2025-05-05",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_943"
+        },
+        {
+          "amount_home": "1212904.33",
+          "category": "transport",
+          "date": "2025-05-05",
+          "description": "Metro and bus fares",
+          "direction": "debit",
+          "event_id": "event_972@2025-05-05",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_972"
+        },
+        {
+          "amount_home": "2796165.18",
+          "category": "utilities",
+          "date": "2025-05-08",
+          "description": "Municipal utilities",
+          "direction": "debit",
+          "event_id": "event_944@2025-05-08",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_944"
+        },
+        {
+          "amount_home": "1881000",
+          "category": "insurance",
+          "date": "2025-05-09",
+          "description": "Vehicle insurance premium",
+          "direction": "debit",
+          "event_id": "event_945@2025-05-09",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_945"
+        },
+        {
+          "amount_home": "2544100",
+          "category": "education",
+          "date": "2025-05-10",
+          "description": "Child education fee",
+          "direction": "debit",
+          "event_id": "event_946@2025-05-10",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_946"
+        },
+        {
+          "amount_home": "3165638.3",
+          "category": "healthcare",
+          "date": "2025-05-12",
+          "description": "Regular medicine purchase",
+          "direction": "debit",
+          "event_id": "event_947@2025-05-12",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_947"
+        },
+        {
+          "amount_home": "168150",
+          "category": "cloud_storage",
+          "date": "2025-05-14",
+          "description": "Cloud storage plan",
+          "direction": "debit",
+          "event_id": "event_949@2025-05-14",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_949"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "affordability_status": {
+          "actual": "affordable_now",
+          "expected": "affordable_with_plan",
+          "family": "payment-plan eligibility"
+        },
+        "amount_safe_to_pay": {
+          "actual": "13110000",
+          "expected": "12510645",
+          "family": "recurrence stream identity"
+        },
+        "decision_explanation": {
+          "actual": "Pay IDR 13,110,000 today. This leaves at least IDR 34,140,600 available over the next 90 days.",
+          "expected": "Reduce the weekend food delivery to IDR 665,950, then pay IDR 13,110,000 today. This leaves at least IDR 34,140,600 available.",
+          "family": "serialization/explanation"
+        },
+        "earliest_date_for_full_payment": {
+          "actual": "2025-05-03",
+          "expected": "2025-07-15",
+          "family": "earliest-safe-date logic"
+        },
+        "spending_changes_needed": {
+          "actual": "none",
+          "expected": "reduce_to:event_989:665950",
+          "family": "spending-change eligibility"
+        }
+      },
+      "expected_implied_limiting_balance": "46651245",
+      "expected_output": {
+        "affordability_status": "affordable_with_plan",
+        "amount_safe_to_pay": "12510645",
+        "decision_explanation": "Reduce the weekend food delivery to IDR 665,950, then pay IDR 13,110,000 today. This leaves at least IDR 34,140,600 available.",
+        "earliest_date_for_full_payment": "2025-07-15",
+        "payment_plan": "2025-05-03:13110000",
+        "recommended_payment_method": "full_payment",
+        "request_id": "request_11",
+        "spending_changes_needed": "reduce_to:event_989:665950"
+      },
+      "first_behaviorally_incompatible_date": "2025-05-14",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_11",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "599355",
+      "upstream_or_downstream": {
+        "affordability_status": "downstream",
+        "amount_safe_to_pay": "upstream",
+        "decision_explanation": "downstream",
+        "earliest_date_for_full_payment": "downstream",
+        "spending_changes_needed": "downstream"
+      },
+      "user_id": "user_11"
+    },
+    {
+      "actual_limiting_balance": "2538.37",
+      "actual_limiting_date": "2024-03-14",
+      "actual_output": {
+        "affordability_status": "affordable_now",
+        "amount_safe_to_pay": "941.6",
+        "decision_explanation": "Pay EUR 941.60 today. This leaves at least EUR 1,300 available over the next 90 days.",
+        "earliest_date_for_full_payment": "2024-03-07",
+        "payment_plan": "2024-03-07:941.60",
+        "recommended_payment_method": "full_payment",
+        "request_id": "request_13",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "61",
+          "category": "gym",
+          "date": "2024-03-10",
+          "description": "Community fitness plan",
+          "direction": "debit",
+          "event_id": "event_1092@2024-03-10",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1092"
+        },
+        {
+          "amount_home": "29",
+          "category": "music_subscription",
+          "date": "2024-03-11",
+          "description": "Music subscription",
+          "direction": "debit",
+          "event_id": "event_1090@2024-03-11",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1090"
+        },
+        {
+          "amount_home": "102.25",
+          "category": "groceries",
+          "date": "2024-03-12",
+          "description": "Local market purchase",
+          "direction": "debit",
+          "event_id": "event_1114@2024-03-12",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1114"
+        },
+        {
+          "amount_home": "21",
+          "category": "delivery_membership",
+          "date": "2024-03-13",
+          "description": "Delivery service plan",
+          "direction": "debit",
+          "event_id": "event_1091@2024-03-13",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1091"
+        },
+        {
+          "amount_home": "37.9",
+          "category": "entertainment",
+          "date": "2024-03-14",
+          "description": "Local event tickets",
+          "direction": "debit",
+          "event_id": "event_1093@2024-03-14",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1093"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "affordability_status": {
+          "actual": "affordable_now",
+          "expected": "affordable_later",
+          "family": "payment-plan eligibility"
+        },
+        "amount_safe_to_pay": {
+          "actual": "941.6",
+          "expected": "433.4",
+          "family": "recurrence stream identity"
+        },
+        "decision_explanation": {
+          "actual": "Pay EUR 941.60 today. This leaves at least EUR 1,300 available over the next 90 days.",
+          "expected": "Pay EUR 941.60 in full on 15 May 2024. Paying earlier would take the balance below the EUR 1,300 minimum.",
+          "family": "serialization/explanation"
+        },
+        "earliest_date_for_full_payment": {
+          "actual": "2024-03-07",
+          "expected": "2024-05-15",
+          "family": "earliest-safe-date logic"
+        },
+        "payment_plan": {
+          "actual": "2024-03-07:941.60",
+          "expected": "2024-05-15:941.60",
+          "family": "payment-plan eligibility"
+        },
+        "recommended_payment_method": {
+          "actual": "full_payment",
+          "expected": "wait",
+          "family": "payment-plan eligibility"
+        }
+      },
+      "expected_implied_limiting_balance": "1733.4",
+      "expected_output": {
+        "affordability_status": "affordable_later",
+        "amount_safe_to_pay": "433.4",
+        "decision_explanation": "Pay EUR 941.60 in full on 15 May 2024. Paying earlier would take the balance below the EUR 1,300 minimum.",
+        "earliest_date_for_full_payment": "2024-05-15",
+        "payment_plan": "2024-05-15:941.60",
+        "recommended_payment_method": "wait",
+        "request_id": "request_13",
+        "spending_changes_needed": "none"
+      },
+      "first_behaviorally_incompatible_date": "2024-03-14",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_13",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "508.2",
+      "upstream_or_downstream": {
+        "affordability_status": "downstream",
+        "amount_safe_to_pay": "upstream",
+        "decision_explanation": "downstream",
+        "earliest_date_for_full_payment": "downstream",
+        "payment_plan": "downstream",
+        "recommended_payment_method": "downstream"
+      },
+      "user_id": "user_13"
+    },
+    {
+      "actual_limiting_balance": "2813.64",
+      "actual_limiting_date": "2025-08-14",
+      "actual_output": {
+        "affordability_status": "not_affordable",
+        "amount_safe_to_pay": "613.64",
+        "decision_explanation": "Do not proceed with the EUR 5,414.20 request. Although EUR 613.64 is available today, the full amount cannot be completed safely within 90 days.",
+        "earliest_date_for_full_payment": "",
+        "payment_plan": "none",
+        "recommended_payment_method": "not_recommended",
+        "request_id": "request_14",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "153.69",
+          "category": "utilities",
+          "date": "2025-08-07",
+          "description": "Energy provider bill",
+          "direction": "debit",
+          "event_id": "event_1194@2025-08-07",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1194"
+        },
+        {
+          "amount_home": "138.85",
+          "category": "groceries",
+          "date": "2025-08-10",
+          "description": "Weekly produce market",
+          "direction": "debit",
+          "event_id": "event_1225@2025-08-10",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1225"
+        },
+        {
+          "amount_home": "95.17",
+          "category": "healthcare",
+          "date": "2025-08-11",
+          "description": "Family healthcare expense",
+          "direction": "debit",
+          "event_id": "event_1196@2025-08-11",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1196"
+        },
+        {
+          "amount_home": "350",
+          "category": "debt_repayment",
+          "date": "2025-08-12",
+          "description": "Credit card repayment",
+          "direction": "debit",
+          "event_id": "event_1195@2025-08-12",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1195"
+        },
+        {
+          "amount_home": "14",
+          "category": "cloud_storage",
+          "date": "2025-08-13",
+          "description": "Cloud storage plan",
+          "direction": "debit",
+          "event_id": "event_1198@2025-08-13",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1198"
+        },
+        {
+          "amount_home": "140.39",
+          "category": "shopping",
+          "date": "2025-08-13",
+          "description": "Online retail purchases",
+          "direction": "debit",
+          "event_id": "event_1199@2025-08-13",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1199"
+        },
+        {
+          "amount_home": "226",
+          "category": "family_support",
+          "date": "2025-08-14",
+          "description": "Family support payment",
+          "direction": "debit",
+          "event_id": "event_1197@2025-08-14",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1197"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "amount_safe_to_pay": {
+          "actual": "613.64",
+          "expected": "597.74",
+          "family": "recurrence stream identity"
+        },
+        "decision_explanation": {
+          "actual": "Do not proceed with the EUR 5,414.20 request. Although EUR 613.64 is available today, the full amount cannot be completed safely within 90 days.",
+          "expected": "Do not proceed with the EUR 5,414.20 request. Although EUR 597.74 is available today, the full amount cannot be completed safely within 90 days.",
+          "family": "serialization/explanation"
+        }
+      },
+      "expected_implied_limiting_balance": "2797.74",
+      "expected_output": {
+        "affordability_status": "not_affordable",
+        "amount_safe_to_pay": "597.74",
+        "decision_explanation": "Do not proceed with the EUR 5,414.20 request. Although EUR 597.74 is available today, the full amount cannot be completed safely within 90 days.",
+        "earliest_date_for_full_payment": "",
+        "payment_plan": "none",
+        "recommended_payment_method": "not_recommended",
+        "request_id": "request_14",
+        "spending_changes_needed": "none"
+      },
+      "first_behaviorally_incompatible_date": "2025-08-14",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_14",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "15.90",
+      "upstream_or_downstream": {
+        "amount_safe_to_pay": "upstream",
+        "decision_explanation": "downstream"
+      },
+      "user_id": "user_14"
+    },
+    {
+      "actual_limiting_balance": "1425.66",
+      "actual_limiting_date": "2026-01-13",
+      "actual_output": {
+        "affordability_status": "not_affordable",
+        "amount_safe_to_pay": "225.66",
+        "decision_explanation": "Do not proceed with the EUR 3,685 request. Although EUR 225.66 is available today, the full amount cannot be completed safely within 90 days.",
+        "earliest_date_for_full_payment": "",
+        "payment_plan": "none",
+        "recommended_payment_method": "not_recommended",
+        "request_id": "request_15",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "90.39",
+          "category": "utilities",
+          "date": "2026-01-08",
+          "description": "Energy provider bill",
+          "direction": "debit",
+          "event_id": "event_1267@2026-01-08",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1267"
+        },
+        {
+          "amount_home": "159",
+          "category": "education",
+          "date": "2026-01-10",
+          "description": "School fee payment",
+          "direction": "debit",
+          "event_id": "event_1268@2026-01-10",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1268"
+        },
+        {
+          "amount_home": "84",
+          "category": "debt_repayment",
+          "date": "2026-01-13",
+          "description": "Credit card repayment",
+          "direction": "debit",
+          "event_id": "event_1269@2026-01-13",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1269"
+        },
+        {
+          "amount_home": "11",
+          "category": "music_subscription",
+          "date": "2026-01-13",
+          "description": "Music subscription",
+          "direction": "debit",
+          "event_id": "event_1270@2026-01-13",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1270"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "amount_safe_to_pay": {
+          "actual": "225.66",
+          "expected": "83.05",
+          "family": "recurrence stream identity"
+        },
+        "decision_explanation": {
+          "actual": "Do not proceed with the EUR 3,685 request. Although EUR 225.66 is available today, the full amount cannot be completed safely within 90 days.",
+          "expected": "Do not make this payment by 1 February 2026. None of the available options keeps the EUR 1,200 minimum protected.",
+          "family": "serialization/explanation"
+        }
+      },
+      "expected_implied_limiting_balance": "1283.05",
+      "expected_output": {
+        "affordability_status": "not_affordable",
+        "amount_safe_to_pay": "83.05",
+        "decision_explanation": "Do not make this payment by 1 February 2026. None of the available options keeps the EUR 1,200 minimum protected.",
+        "earliest_date_for_full_payment": "",
+        "payment_plan": "none",
+        "recommended_payment_method": "not_recommended",
+        "request_id": "request_15",
+        "spending_changes_needed": "none"
+      },
+      "first_behaviorally_incompatible_date": "2026-01-13",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_15",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "142.61",
+      "upstream_or_downstream": {
+        "amount_safe_to_pay": "upstream",
+        "decision_explanation": "downstream"
+      },
+      "user_id": "user_15"
+    },
+    {
+      "actual_limiting_balance": "414425.96",
+      "actual_limiting_date": "2026-03-13",
+      "actual_output": {
+        "affordability_status": "affordable_with_plan",
+        "amount_safe_to_pay": "248325.96",
+        "decision_explanation": "Use 3 installments of INR 95,194.67, starting 1 March 2026. This leaves at least INR 166,100 available.",
+        "earliest_date_for_full_payment": "2026-03-15",
+        "payment_plan": "2026-03-01:95194.67|2026-03-31:95194.67|2026-04-30:95194.67",
+        "recommended_payment_method": "installments",
+        "request_id": "request_17",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "49600",
+          "category": "rent",
+          "date": "2026-03-02",
+          "description": "Apartment rent transfer",
+          "direction": "debit",
+          "event_id": "event_1472@2026-03-02",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1472"
+        },
+        {
+          "amount_home": "10246.53",
+          "category": "utilities",
+          "date": "2026-03-06",
+          "description": "Municipal utilities",
+          "direction": "debit",
+          "event_id": "event_1473@2026-03-06",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1473"
+        },
+        {
+          "amount_home": "13660",
+          "category": "education",
+          "date": "2026-03-08",
+          "description": "Course tuition",
+          "direction": "debit",
+          "event_id": "event_1474@2026-03-08",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1474"
+        },
+        {
+          "amount_home": "5650.43",
+          "category": "transport",
+          "date": "2026-03-09",
+          "description": "Metro and bus fares",
+          "direction": "debit",
+          "event_id": "event_1526@2026-03-09",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1526"
+        },
+        {
+          "amount_home": "30200",
+          "category": "debt_repayment",
+          "date": "2026-03-11",
+          "description": "Credit card repayment",
+          "direction": "debit",
+          "event_id": "event_1475@2026-03-11",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1475"
+        },
+        {
+          "amount_home": "2055",
+          "category": "music_subscription",
+          "date": "2026-03-11",
+          "description": "Music subscription",
+          "direction": "debit",
+          "event_id": "event_1476@2026-03-11",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1476"
+        },
+        {
+          "amount_home": "11433.33",
+          "category": "groceries",
+          "date": "2026-03-11",
+          "description": "Local market purchase",
+          "direction": "debit",
+          "event_id": "event_1499@2026-03-11",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1499"
+        },
+        {
+          "amount_home": "1675",
+          "category": "delivery_membership",
+          "date": "2026-03-13",
+          "description": "Food delivery membership",
+          "direction": "debit",
+          "event_id": "event_1477@2026-03-13",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1477"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "amount_safe_to_pay": {
+          "actual": "248325.96",
+          "expected": "243849.58",
+          "family": "recurrence stream identity"
+        }
+      },
+      "expected_implied_limiting_balance": "409949.58",
+      "expected_output": {
+        "affordability_status": "affordable_with_plan",
+        "amount_safe_to_pay": "243849.58",
+        "decision_explanation": "Use 3 installments of INR 95,194.67, starting 1 March 2026. This leaves at least INR 166,100 available.",
+        "earliest_date_for_full_payment": "2026-03-15",
+        "payment_plan": "2026-03-01:95194.67|2026-03-31:95194.67|2026-04-30:95194.67",
+        "recommended_payment_method": "installments",
+        "request_id": "request_17",
+        "spending_changes_needed": "none"
+      },
+      "first_behaviorally_incompatible_date": "2026-03-13",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_17",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "4476.38",
+      "upstream_or_downstream": {
+        "amount_safe_to_pay": "upstream"
+      },
+      "user_id": "user_17"
+    },
+    {
+      "actual_limiting_balance": "2062.19",
+      "actual_limiting_date": "2026-07-11",
+      "actual_output": {
+        "affordability_status": "affordable_later",
+        "amount_safe_to_pay": "662.19",
+        "decision_explanation": "Pay EUR 3,246.10 in full on 15 August 2026. Paying earlier would take the balance below the EUR 1,400 minimum.",
+        "earliest_date_for_full_payment": "2026-08-15",
+        "payment_plan": "2026-08-15:3246.10",
+        "recommended_payment_method": "wait",
+        "request_id": "request_18",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "125.4",
+          "category": "utilities",
+          "date": "2026-07-07",
+          "description": "Energy provider bill",
+          "direction": "debit",
+          "event_id": "event_1573@2026-07-07",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1573"
+        },
+        {
+          "amount_home": "68",
+          "category": "insurance",
+          "date": "2026-07-08",
+          "description": "Household insurance",
+          "direction": "debit",
+          "event_id": "event_1574@2026-07-08",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1574"
+        },
+        {
+          "amount_home": "68",
+          "category": "streaming",
+          "date": "2026-07-10",
+          "description": "Family streaming plan",
+          "direction": "debit",
+          "event_id": "event_1576@2026-07-10",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1576"
+        },
+        {
+          "amount_home": "162.41",
+          "category": "healthcare",
+          "date": "2026-07-11",
+          "description": "Clinic payment",
+          "direction": "debit",
+          "event_id": "event_1575@2026-07-11",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1575"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "amount_safe_to_pay": {
+          "actual": "662.19",
+          "expected": "462",
+          "family": "recurrence stream identity"
+        },
+        "decision_explanation": {
+          "actual": "Pay EUR 3,246.10 in full on 15 August 2026. Paying earlier would take the balance below the EUR 1,400 minimum.",
+          "expected": "Pay EUR 3,246.10 in full on 15 September 2026. Paying earlier would take the balance below the EUR 1,400 minimum.",
+          "family": "serialization/explanation"
+        },
+        "earliest_date_for_full_payment": {
+          "actual": "2026-08-15",
+          "expected": "2026-09-15",
+          "family": "earliest-safe-date logic"
+        },
+        "payment_plan": {
+          "actual": "2026-08-15:3246.10",
+          "expected": "2026-09-15:3246.10",
+          "family": "payment-plan eligibility"
+        }
+      },
+      "expected_implied_limiting_balance": "1862",
+      "expected_output": {
+        "affordability_status": "affordable_later",
+        "amount_safe_to_pay": "462",
+        "decision_explanation": "Pay EUR 3,246.10 in full on 15 September 2026. Paying earlier would take the balance below the EUR 1,400 minimum.",
+        "earliest_date_for_full_payment": "2026-09-15",
+        "payment_plan": "2026-09-15:3246.10",
+        "recommended_payment_method": "wait",
+        "request_id": "request_18",
+        "spending_changes_needed": "none"
+      },
+      "first_behaviorally_incompatible_date": "2026-07-11",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_18",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "200.19",
+      "upstream_or_downstream": {
+        "amount_safe_to_pay": "upstream",
+        "decision_explanation": "downstream",
+        "earliest_date_for_full_payment": "downstream",
+        "payment_plan": "downstream"
+      },
+      "user_id": "user_18"
+    },
+    {
+      "actual_limiting_balance": "130355.87",
+      "actual_limiting_date": "2024-09-14",
+      "actual_output": {
+        "affordability_status": "affordable_with_plan",
+        "amount_safe_to_pay": "37555.87",
+        "decision_explanation": "Pay INR 37,555.87 today and the remaining INR 2,104.13 on 15 September 2024. This completes the full request and keeps the INR 92,800 minimum protected.",
+        "earliest_date_for_full_payment": "2024-09-15",
+        "payment_plan": "2024-09-04:37555.87|2024-09-15:2104.13",
+        "recommended_payment_method": "partial_payment",
+        "request_id": "request_19",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "36100",
+          "category": "rent",
+          "date": "2024-09-04",
+          "description": "Residential rent payment",
+          "direction": "debit",
+          "event_id": "event_1655@2024-09-04",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1655"
+        },
+        {
+          "amount_home": "6129.19",
+          "category": "utilities",
+          "date": "2024-09-08",
+          "description": "Municipal utilities",
+          "direction": "debit",
+          "event_id": "event_1656@2024-09-08",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1656"
+        },
+        {
+          "amount_home": "8645.36",
+          "category": "healthcare",
+          "date": "2024-09-12",
+          "description": "Clinic payment",
+          "direction": "debit",
+          "event_id": "event_1658@2024-09-12",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1658"
+        },
+        {
+          "amount_home": "11850",
+          "category": "debt_repayment",
+          "date": "2024-09-13",
+          "description": "Loan repayment",
+          "direction": "debit",
+          "event_id": "event_1657@2024-09-13",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1657"
+        },
+        {
+          "amount_home": "395",
+          "category": "cloud_storage",
+          "date": "2024-09-14",
+          "description": "Online backup subscription",
+          "direction": "debit",
+          "event_id": "event_1660@2024-09-14",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1660"
+        },
+        {
+          "amount_home": "6069.58",
+          "category": "shopping",
+          "date": "2024-09-14",
+          "description": "Clothing and household items",
+          "direction": "debit",
+          "event_id": "event_1661@2024-09-14",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1661"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "amount_safe_to_pay": {
+          "actual": "37555.87",
+          "expected": "28820",
+          "family": "recurrence stream identity"
+        },
+        "decision_explanation": {
+          "actual": "Pay INR 37,555.87 today and the remaining INR 2,104.13 on 15 September 2024. This completes the full request and keeps the INR 92,800 minimum protected.",
+          "expected": "Pay INR 28,820 today and the remaining INR 10,840 on 15 September 2024. This completes the full request and keeps the INR 92,800 minimum protected.",
+          "family": "serialization/explanation"
+        },
+        "payment_plan": {
+          "actual": "2024-09-04:37555.87|2024-09-15:2104.13",
+          "expected": "2024-09-04:28820|2024-09-15:10840",
+          "family": "payment-plan eligibility"
+        }
+      },
+      "expected_implied_limiting_balance": "121620",
+      "expected_output": {
+        "affordability_status": "affordable_with_plan",
+        "amount_safe_to_pay": "28820",
+        "decision_explanation": "Pay INR 28,820 today and the remaining INR 10,840 on 15 September 2024. This completes the full request and keeps the INR 92,800 minimum protected.",
+        "earliest_date_for_full_payment": "2024-09-15",
+        "payment_plan": "2024-09-04:28820|2024-09-15:10840",
+        "recommended_payment_method": "partial_payment",
+        "request_id": "request_19",
+        "spending_changes_needed": "none"
+      },
+      "first_behaviorally_incompatible_date": "2024-09-14",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_19",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "8735.87",
+      "upstream_or_downstream": {
+        "amount_safe_to_pay": "upstream",
+        "decision_explanation": "downstream",
+        "payment_plan": "downstream"
+      },
+      "user_id": "user_19"
+    },
+    {
+      "actual_limiting_balance": "79441.75",
+      "actual_limiting_date": "2026-02-13",
+      "actual_output": {
+        "affordability_status": "not_affordable",
+        "amount_safe_to_pay": "14941.75",
+        "decision_explanation": "Do not proceed with the INR 303,700 request. Although INR 14,941.75 is available today, the full amount cannot be completed safely within 90 days.",
+        "earliest_date_for_full_payment": "",
+        "payment_plan": "none",
+        "recommended_payment_method": "not_recommended",
+        "request_id": "request_20",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "8740",
+          "category": "education",
+          "date": "2026-02-07",
+          "description": "School fee payment",
+          "direction": "debit",
+          "event_id": "event_1737@2026-02-07",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1737"
+        },
+        {
+          "amount_home": "6654.33",
+          "category": "healthcare",
+          "date": "2026-02-09",
+          "description": "Family healthcare expense",
+          "direction": "debit",
+          "event_id": "event_1738@2026-02-09",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1738"
+        },
+        {
+          "amount_home": "365",
+          "category": "cloud_storage",
+          "date": "2026-02-11",
+          "description": "Shared storage plan",
+          "direction": "debit",
+          "event_id": "event_1740@2026-02-11",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1740"
+        },
+        {
+          "amount_home": "2115.92",
+          "category": "entertainment",
+          "date": "2026-02-13",
+          "description": "Cinema and events",
+          "direction": "debit",
+          "event_id": "event_1739@2026-02-13",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1739"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "amount_safe_to_pay": {
+          "actual": "14941.75",
+          "expected": "5400",
+          "family": "recurrence stream identity"
+        },
+        "decision_explanation": {
+          "actual": "Do not proceed with the INR 303,700 request. Although INR 14,941.75 is available today, the full amount cannot be completed safely within 90 days.",
+          "expected": "Do not make this payment by 22 February 2026. None of the available options keeps the INR 64,500 minimum protected.",
+          "family": "serialization/explanation"
+        }
+      },
+      "expected_implied_limiting_balance": "69900",
+      "expected_output": {
+        "affordability_status": "not_affordable",
+        "amount_safe_to_pay": "5400",
+        "decision_explanation": "Do not make this payment by 22 February 2026. None of the available options keeps the INR 64,500 minimum protected.",
+        "earliest_date_for_full_payment": "",
+        "payment_plan": "none",
+        "recommended_payment_method": "not_recommended",
+        "request_id": "request_20",
+        "spending_changes_needed": "none"
+      },
+      "first_behaviorally_incompatible_date": "2026-02-13",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_20",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "9541.75",
+      "upstream_or_downstream": {
+        "amount_safe_to_pay": "upstream",
+        "decision_explanation": "downstream"
+      },
+      "user_id": "user_20"
+    },
+    {
+      "actual_limiting_balance": "3445.70",
+      "actual_limiting_date": "2026-04-12",
+      "actual_output": {
+        "affordability_status": "affordable_now",
+        "amount_safe_to_pay": "1574.4",
+        "decision_explanation": "Pay USD 1,574.40 today. This leaves at least USD 1,800 available over the next 90 days.",
+        "earliest_date_for_full_payment": "2026-04-03",
+        "payment_plan": "2026-04-03:1574.40",
+        "recommended_payment_method": "full_payment",
+        "request_id": "request_21",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "124.08",
+          "category": "utilities",
+          "date": "2026-04-06",
+          "description": "Municipal utilities",
+          "direction": "debit",
+          "event_id": "event_1814@2026-04-06",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1814"
+        },
+        {
+          "amount_home": "104.19",
+          "category": "groceries",
+          "date": "2026-04-06",
+          "description": "Weekly produce market",
+          "direction": "debit",
+          "event_id": "event_1831@2026-04-06",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1831"
+        },
+        {
+          "amount_home": "47",
+          "category": "streaming",
+          "date": "2026-04-09",
+          "description": "Streaming subscription",
+          "direction": "debit",
+          "event_id": "event_1816@2026-04-09",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1816"
+        },
+        {
+          "amount_home": "11",
+          "category": "cloud_storage",
+          "date": "2026-04-12",
+          "description": "Online backup subscription",
+          "direction": "debit",
+          "event_id": "event_1815@2026-04-12",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1815"
+        },
+        {
+          "amount_home": "126.38",
+          "category": "shopping",
+          "date": "2026-04-12",
+          "description": "Monthly shopping spend",
+          "direction": "debit",
+          "event_id": "event_1817@2026-04-12",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1817"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "affordability_status": {
+          "actual": "affordable_now",
+          "expected": "affordable_with_plan",
+          "family": "payment-plan eligibility"
+        },
+        "amount_safe_to_pay": {
+          "actual": "1574.4",
+          "expected": "1543.35",
+          "family": "recurrence stream identity"
+        },
+        "decision_explanation": {
+          "actual": "Pay USD 1,574.40 today. This leaves at least USD 1,800 available over the next 90 days.",
+          "expected": "Stop the online backup subscription and reduce the streaming subscription to USD 23.50, then pay USD 1,574.40 today. This leaves at least USD 1,800 available.",
+          "family": "serialization/explanation"
+        },
+        "earliest_date_for_full_payment": {
+          "actual": "2026-04-03",
+          "expected": "2026-04-15",
+          "family": "earliest-safe-date logic"
+        },
+        "spending_changes_needed": {
+          "actual": "none",
+          "expected": "stop:event_1815|reduce_to:event_1816:23.50",
+          "family": "spending-change eligibility"
+        }
+      },
+      "expected_implied_limiting_balance": "3343.35",
+      "expected_output": {
+        "affordability_status": "affordable_with_plan",
+        "amount_safe_to_pay": "1543.35",
+        "decision_explanation": "Stop the online backup subscription and reduce the streaming subscription to USD 23.50, then pay USD 1,574.40 today. This leaves at least USD 1,800 available.",
+        "earliest_date_for_full_payment": "2026-04-15",
+        "payment_plan": "2026-04-03:1574.40",
+        "recommended_payment_method": "full_payment",
+        "request_id": "request_21",
+        "spending_changes_needed": "stop:event_1815|reduce_to:event_1816:23.50"
+      },
+      "first_behaviorally_incompatible_date": "2026-04-12",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_21",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "31.05",
+      "upstream_or_downstream": {
+        "affordability_status": "downstream",
+        "amount_safe_to_pay": "upstream",
+        "decision_explanation": "downstream",
+        "earliest_date_for_full_payment": "downstream",
+        "spending_changes_needed": "downstream"
+      },
+      "user_id": "user_21"
+    },
+    {
+      "actual_limiting_balance": "1014.86",
+      "actual_limiting_date": "2024-12-14",
+      "actual_output": {
+        "affordability_status": "affordable_with_plan",
+        "amount_safe_to_pay": "514.86",
+        "decision_explanation": "Use 3 installments of EUR 253.59, starting 8 December 2024. This leaves at least EUR 500 available.",
+        "earliest_date_for_full_payment": "2024-12-15",
+        "payment_plan": "2024-12-08:253.59|2025-01-05:253.59|2025-02-02:253.59",
+        "recommended_payment_method": "installments",
+        "request_id": "request_22",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "15.08",
+          "category": "transport",
+          "date": "2024-12-05",
+          "description": "Ride-hailing trip",
+          "direction": "debit",
+          "event_id": "event_1943@2024-12-05",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1943"
+        },
+        {
+          "amount_home": "31.52",
+          "category": "utilities",
+          "date": "2024-12-07",
+          "description": "Electricity and water bill",
+          "direction": "debit",
+          "event_id": "event_1889@2024-12-07",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1889"
+        },
+        {
+          "amount_home": "17",
+          "category": "gym",
+          "date": "2024-12-11",
+          "description": "Gym membership",
+          "direction": "debit",
+          "event_id": "event_1892@2024-12-11",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1892"
+        },
+        {
+          "amount_home": "6",
+          "category": "music_subscription",
+          "date": "2024-12-12",
+          "description": "Music service subscription",
+          "direction": "debit",
+          "event_id": "event_1890@2024-12-12",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1890"
+        },
+        {
+          "amount_home": "5",
+          "category": "delivery_membership",
+          "date": "2024-12-14",
+          "description": "Food delivery membership",
+          "direction": "debit",
+          "event_id": "event_1891@2024-12-14",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1891"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "amount_safe_to_pay": {
+          "actual": "514.86",
+          "expected": "475.46",
+          "family": "recurrence stream identity"
+        },
+        "earliest_date_for_full_payment": {
+          "actual": "2024-12-15",
+          "expected": "2025-01-15",
+          "family": "earliest-safe-date logic"
+        }
+      },
+      "expected_implied_limiting_balance": "975.46",
+      "expected_output": {
+        "affordability_status": "affordable_with_plan",
+        "amount_safe_to_pay": "475.46",
+        "decision_explanation": "Use 3 installments of EUR 253.59, starting 8 December 2024. This leaves at least EUR 500 available.",
+        "earliest_date_for_full_payment": "2025-01-15",
+        "payment_plan": "2024-12-08:253.59|2025-01-05:253.59|2025-02-02:253.59",
+        "recommended_payment_method": "installments",
+        "request_id": "request_22",
+        "spending_changes_needed": "none"
+      },
+      "first_behaviorally_incompatible_date": "2024-12-14",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_22",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "39.40",
+      "upstream_or_downstream": {
+        "amount_safe_to_pay": "upstream",
+        "earliest_date_for_full_payment": "downstream"
+      },
+      "user_id": "user_22"
+    },
+    {
+      "actual_limiting_balance": "36303.91",
+      "actual_limiting_date": "2025-05-14",
+      "actual_output": {
+        "affordability_status": "affordable_later",
+        "amount_safe_to_pay": "9303.91",
+        "decision_explanation": "Pay ZAR 38,016 in full on 15 July 2025. Paying earlier would take the balance below the ZAR 27,000 minimum.",
+        "earliest_date_for_full_payment": "2025-07-15",
+        "payment_plan": "2025-07-15:38016",
+        "recommended_payment_method": "wait",
+        "request_id": "request_23",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "2915.67",
+          "category": "utilities",
+          "date": "2025-05-08",
+          "description": "Electricity bill",
+          "direction": "debit",
+          "event_id": "event_1996@2025-05-08",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1996"
+        },
+        {
+          "amount_home": "1439.91",
+          "category": "healthcare",
+          "date": "2025-05-12",
+          "description": "Clinic payment",
+          "direction": "debit",
+          "event_id": "event_1998@2025-05-12",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1998"
+        },
+        {
+          "amount_home": "5852",
+          "category": "debt_repayment",
+          "date": "2025-05-13",
+          "description": "Education loan instalment",
+          "direction": "debit",
+          "event_id": "event_1997@2025-05-13",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_1997"
+        },
+        {
+          "amount_home": "295.9",
+          "category": "cloud_storage",
+          "date": "2025-05-14",
+          "description": "Cloud storage plan",
+          "direction": "debit",
+          "event_id": "event_2000@2025-05-14",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_2000"
+        },
+        {
+          "amount_home": "1389.39",
+          "category": "shopping",
+          "date": "2025-05-14",
+          "description": "Personal shopping",
+          "direction": "debit",
+          "event_id": "event_2001@2025-05-14",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_2001"
+        },
+        {
+          "amount_home": "2207.92",
+          "category": "groceries",
+          "date": "2025-05-14",
+          "description": "Supermarket basket",
+          "direction": "debit",
+          "event_id": "event_2021@2025-05-14",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_2021"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "amount_safe_to_pay": {
+          "actual": "9303.91",
+          "expected": "9152",
+          "family": "recurrence stream identity"
+        }
+      },
+      "expected_implied_limiting_balance": "36152",
+      "expected_output": {
+        "affordability_status": "affordable_later",
+        "amount_safe_to_pay": "9152",
+        "decision_explanation": "Pay ZAR 38,016 in full on 15 July 2025. Paying earlier would take the balance below the ZAR 27,000 minimum.",
+        "earliest_date_for_full_payment": "2025-07-15",
+        "payment_plan": "2025-07-15:38016",
+        "recommended_payment_method": "wait",
+        "request_id": "request_23",
+        "spending_changes_needed": "none"
+      },
+      "first_behaviorally_incompatible_date": "2025-05-14",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_23",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "151.91",
+      "upstream_or_downstream": {
+        "amount_safe_to_pay": "upstream"
+      },
+      "user_id": "user_23"
+    },
+    {
+      "actual_limiting_balance": "63557.36",
+      "actual_limiting_date": "2026-01-13",
+      "actual_output": {
+        "affordability_status": "not_affordable",
+        "amount_safe_to_pay": "12557.36",
+        "decision_explanation": "Do not proceed with the INR 109,600 request. Although INR 12,557.36 is available today, the full amount cannot be completed safely within 90 days.",
+        "earliest_date_for_full_payment": "",
+        "payment_plan": "none",
+        "recommended_payment_method": "not_recommended",
+        "request_id": "request_24",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "2260.73",
+          "category": "groceries",
+          "date": "2026-01-06",
+          "description": "Household groceries",
+          "direction": "debit",
+          "event_id": "event_2100@2026-01-06",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_2100"
+        },
+        {
+          "amount_home": "1200",
+          "category": "streaming",
+          "date": "2026-01-08",
+          "description": "Family streaming plan",
+          "direction": "debit",
+          "event_id": "event_2080@2026-01-08",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_2080"
+        },
+        {
+          "amount_home": "1600.18",
+          "category": "transport",
+          "date": "2026-01-09",
+          "description": "Metro and bus fares",
+          "direction": "debit",
+          "event_id": "event_2133@2026-01-09",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_2133"
+        },
+        {
+          "amount_home": "1893.38",
+          "category": "dining",
+          "date": "2026-01-10",
+          "description": "Coffee shop",
+          "direction": "debit",
+          "event_id": "event_2155@2026-01-10",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_2155"
+        },
+        {
+          "amount_home": "355",
+          "category": "cloud_storage",
+          "date": "2026-01-11",
+          "description": "Online backup subscription",
+          "direction": "debit",
+          "event_id": "event_2079@2026-01-11",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_2079"
+        },
+        {
+          "amount_home": "2680.78",
+          "category": "shopping",
+          "date": "2026-01-11",
+          "description": "Monthly shopping spend",
+          "direction": "debit",
+          "event_id": "event_2081@2026-01-11",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_2081"
+        },
+        {
+          "amount_home": "1750.91",
+          "category": "transport",
+          "date": "2026-01-12",
+          "description": "Ride-hailing trip",
+          "direction": "debit",
+          "event_id": "event_2121@2026-01-12",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_2121"
+        },
+        {
+          "amount_home": "1916.16",
+          "category": "entertainment",
+          "date": "2026-01-13",
+          "description": "Local event tickets",
+          "direction": "debit",
+          "event_id": "event_2082@2026-01-13",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_2082"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "amount_safe_to_pay": {
+          "actual": "12557.36",
+          "expected": "13420",
+          "family": "recurrence stream identity"
+        },
+        "decision_explanation": {
+          "actual": "Do not proceed with the INR 109,600 request. Although INR 12,557.36 is available today, the full amount cannot be completed safely within 90 days.",
+          "expected": "Do not proceed with the INR 109,600 request. Although INR 13,420 is available today, the full amount cannot be completed safely within 90 days.",
+          "family": "serialization/explanation"
+        }
+      },
+      "expected_implied_limiting_balance": "64420",
+      "expected_output": {
+        "affordability_status": "not_affordable",
+        "amount_safe_to_pay": "13420",
+        "decision_explanation": "Do not proceed with the INR 109,600 request. Although INR 13,420 is available today, the full amount cannot be completed safely within 90 days.",
+        "earliest_date_for_full_payment": "",
+        "payment_plan": "none",
+        "recommended_payment_method": "not_recommended",
+        "request_id": "request_24",
+        "spending_changes_needed": "none"
+      },
+      "first_behaviorally_incompatible_date": "2026-01-13",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_24",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "-862.64",
+      "upstream_or_downstream": {
+        "amount_safe_to_pay": "upstream",
+        "decision_explanation": "downstream"
+      },
+      "user_id": "user_24"
+    },
+    {
+      "actual_limiting_balance": "22772958.09",
+      "actual_limiting_date": "2024-03-14",
+      "actual_output": {
+        "affordability_status": "not_affordable",
+        "amount_safe_to_pay": "0",
+        "decision_explanation": "Do not make this payment by 17 April 2024. None of the available options keeps the IDR 23,379,100 minimum protected.",
+        "earliest_date_for_full_payment": "",
+        "payment_plan": "none",
+        "recommended_payment_method": "not_recommended",
+        "request_id": "request_25",
+        "spending_changes_needed": "none"
+      },
+      "candidate_source_events": [
+        {
+          "amount_home": "904400",
+          "category": "insurance",
+          "date": "2024-03-07",
+          "description": "Insurance policy payment",
+          "direction": "debit",
+          "event_id": "event_2202@2024-03-07",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_2202"
+        },
+        {
+          "amount_home": "1369082.68",
+          "category": "groceries",
+          "date": "2024-03-08",
+          "description": "Household groceries",
+          "direction": "debit",
+          "event_id": "event_2223@2024-03-08",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_2223"
+        },
+        {
+          "amount_home": "1249486.33",
+          "category": "dining",
+          "date": "2024-03-08",
+          "description": "Weekend food delivery",
+          "direction": "debit",
+          "event_id": "event_2270@2024-03-08",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_2270"
+        },
+        {
+          "amount_home": "573800",
+          "category": "streaming",
+          "date": "2024-03-09",
+          "description": "Video streaming plan",
+          "direction": "debit",
+          "event_id": "event_2204@2024-03-09",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_2204"
+        },
+        {
+          "amount_home": "1101344.82",
+          "category": "groceries",
+          "date": "2024-03-09",
+          "description": "Neighbourhood grocer",
+          "direction": "debit",
+          "event_id": "event_2218@2024-03-09",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_2218"
+        },
+        {
+          "amount_home": "126350",
+          "category": "cloud_storage",
+          "date": "2024-03-12",
+          "description": "Cloud storage plan",
+          "direction": "debit",
+          "event_id": "event_2203@2024-03-12",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_2203"
+        },
+        {
+          "amount_home": "1170271.29",
+          "category": "shopping",
+          "date": "2024-03-12",
+          "description": "Monthly shopping spend",
+          "direction": "debit",
+          "event_id": "event_2205@2024-03-12",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_2205"
+        },
+        {
+          "amount_home": "504697.37",
+          "category": "entertainment",
+          "date": "2024-03-14",
+          "description": "Games and recreation",
+          "direction": "debit",
+          "event_id": "event_2206@2024-03-14",
+          "provenance": "recurrence:max_last_3",
+          "source_event_id": "event_2206"
+        }
+      ],
+      "candidate_source_note": "Candidate events are the current projected flows through the binding date; they identify causal leverage, not a solved-event lookup.",
+      "differences": {
+        "amount_safe_to_pay": {
+          "actual": "0",
+          "expected": "1425000",
+          "family": "recurrence stream identity"
+        }
+      },
+      "expected_implied_limiting_balance": "24804100",
+      "expected_output": {
+        "affordability_status": "not_affordable",
+        "amount_safe_to_pay": "1425000",
+        "decision_explanation": "Do not make this payment by 17 April 2024. None of the available options keeps the IDR 23,379,100 minimum protected.",
+        "earliest_date_for_full_payment": "",
+        "payment_plan": "none",
+        "recommended_payment_method": "not_recommended",
+        "request_id": "request_25",
+        "spending_changes_needed": "none"
+      },
+      "first_behaviorally_incompatible_date": "2024-03-14",
+      "primary_family": "recurrence stream identity",
+      "request_id": "request_25",
+      "unexplained_net_cash_flow_delta_actual_minus_expected": "-1425000",
+      "upstream_or_downstream": {
+        "amount_safe_to_pay": "upstream"
+      },
+      "user_id": "user_25"
+    }
+  ]
+}
