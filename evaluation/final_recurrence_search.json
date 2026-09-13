@@ -1,0 +1,363 @@
+{
+  "R0": {
+    "absolute_safe_error": "6930596.72",
+    "earliest_exact": 18,
+    "exact_rows": 3,
+    "exact_safe_amounts": 4,
+    "method_exact": 24,
+    "numeric_mismatches": 21,
+    "optimistic": 19,
+    "pessimistic": 2,
+    "plan_exact": 22,
+    "status_exact": 21
+  },
+  "best_bases": [
+    {
+      "label": "chronology=A0;debit_amount=median;credit_amount=median;consistent_intervals=2;fixed_tolerance=4;monthly_range=(27, 32);shortfall=False;periods=2;period_estimator=latest;phase=latest",
+      "metrics": {
+        "absolute_safe_error": "5203249.78",
+        "earliest_exact": 18,
+        "exact_rows": 3,
+        "exact_safe_amounts": 4,
+        "method_exact": 24,
+        "numeric_mismatches": 21,
+        "optimistic": 19,
+        "pessimistic": 2,
+        "plan_exact": 22,
+        "status_exact": 21
+      }
+    },
+    {
+      "label": "chronology=A0;debit_amount=max;credit_amount=median;consistent_intervals=2;fixed_tolerance=3;monthly_range=(27, 32);shortfall=False;periods=2;period_estimator=latest;phase=latest",
+      "metrics": {
+        "absolute_safe_error": "6930596.72",
+        "earliest_exact": 18,
+        "exact_rows": 3,
+        "exact_safe_amounts": 4,
+        "method_exact": 24,
+        "numeric_mismatches": 21,
+        "optimistic": 19,
+        "pessimistic": 2,
+        "plan_exact": 22,
+        "status_exact": 21
+      }
+    },
+    {
+      "label": "chronology=A0;debit_amount=max;credit_amount=median;consistent_intervals=2;fixed_tolerance=3;monthly_range=(26, 33);shortfall=False;periods=2;period_estimator=latest;phase=latest",
+      "metrics": {
+        "absolute_safe_error": "6930596.72",
+        "earliest_exact": 18,
+        "exact_rows": 3,
+        "exact_safe_amounts": 4,
+        "method_exact": 24,
+        "numeric_mismatches": 21,
+        "optimistic": 19,
+        "pessimistic": 2,
+        "plan_exact": 22,
+        "status_exact": 21
+      }
+    },
+    {
+      "label": "chronology=A0;debit_amount=median;credit_amount=median;consistent_intervals=2;fixed_tolerance=3;monthly_range=(27, 32);shortfall=False;periods=2;period_estimator=latest;phase=latest",
+      "metrics": {
+        "absolute_safe_error": "8068470.20",
+        "earliest_exact": 18,
+        "exact_rows": 3,
+        "exact_safe_amounts": 4,
+        "method_exact": 24,
+        "numeric_mismatches": 21,
+        "optimistic": 20,
+        "pessimistic": 1,
+        "plan_exact": 22,
+        "status_exact": 21
+      }
+    }
+  ],
+  "count": 282,
+  "top10": [
+    {
+      "absolute_safe_error": "5203249.78",
+      "earliest_exact": 18,
+      "exact_rows": 3,
+      "exact_safe_amounts": 4,
+      "label": "chronology=A0;debit_amount=median;credit_amount=median;consistent_intervals=2;fixed_tolerance=4;monthly_range=(27, 32);shortfall=False;periods=2;period_estimator=latest;phase=latest",
+      "method_exact": 24,
+      "numeric_mismatches": 21,
+      "optimistic": 19,
+      "pessimistic": 2,
+      "plan_exact": 22,
+      "rank": 1,
+      "status_exact": 21
+    },
+    {
+      "absolute_safe_error": "6930596.72",
+      "earliest_exact": 18,
+      "exact_rows": 3,
+      "exact_safe_amounts": 4,
+      "label": "chronology=A0;debit_amount=max;credit_amount=median;consistent_intervals=2;fixed_tolerance=3;monthly_range=(27, 32);shortfall=False;periods=2;period_estimator=latest;phase=latest",
+      "method_exact": 24,
+      "numeric_mismatches": 21,
+      "optimistic": 19,
+      "pessimistic": 2,
+      "plan_exact": 22,
+      "rank": 2,
+      "status_exact": 21
+    },
+    {
+      "absolute_safe_error": "6930596.72",
+      "earliest_exact": 18,
+      "exact_rows": 3,
+      "exact_safe_amounts": 4,
+      "label": "chronology=A0;debit_amount=max;credit_amount=median;consistent_intervals=2;fixed_tolerance=3;monthly_range=(26, 33);shortfall=False;periods=2;period_estimator=latest;phase=latest",
+      "method_exact": 24,
+      "numeric_mismatches": 21,
+      "optimistic": 19,
+      "pessimistic": 2,
+      "plan_exact": 22,
+      "rank": 3,
+      "status_exact": 21
+    },
+    {
+      "absolute_safe_error": "8068470.20",
+      "earliest_exact": 18,
+      "exact_rows": 3,
+      "exact_safe_amounts": 4,
+      "label": "chronology=A0;debit_amount=median;credit_amount=median;consistent_intervals=2;fixed_tolerance=3;monthly_range=(27, 32);shortfall=False;periods=2;period_estimator=latest;phase=latest",
+      "method_exact": 24,
+      "numeric_mismatches": 21,
+      "optimistic": 20,
+      "pessimistic": 1,
+      "plan_exact": 22,
+      "rank": 4,
+      "status_exact": 21
+    },
+    {
+      "absolute_safe_error": "8068470.20",
+      "earliest_exact": 18,
+      "exact_rows": 3,
+      "exact_safe_amounts": 4,
+      "label": "chronology=A0;debit_amount=median;credit_amount=median;consistent_intervals=2;fixed_tolerance=3;monthly_range=(26, 33);shortfall=False;periods=2;period_estimator=latest;phase=latest",
+      "method_exact": 24,
+      "numeric_mismatches": 21,
+      "optimistic": 20,
+      "pessimistic": 1,
+      "plan_exact": 22,
+      "rank": 5,
+      "status_exact": 21
+    },
+    {
+      "absolute_safe_error": "5203249.78",
+      "earliest_exact": 17,
+      "exact_rows": 3,
+      "exact_safe_amounts": 4,
+      "label": "chronology=A1;debit_amount=median;credit_amount=median;consistent_intervals=2;fixed_tolerance=4;monthly_range=(27, 32);shortfall=False;periods=2;period_estimator=latest;phase=latest",
+      "method_exact": 24,
+      "numeric_mismatches": 21,
+      "optimistic": 19,
+      "pessimistic": 2,
+      "plan_exact": 22,
+      "rank": 6,
+      "status_exact": 21
+    },
+    {
+      "absolute_safe_error": "5203249.78",
+      "earliest_exact": 17,
+      "exact_rows": 3,
+      "exact_safe_amounts": 4,
+      "label": "chronology=A2;debit_amount=median;credit_amount=median;consistent_intervals=2;fixed_tolerance=4;monthly_range=(27, 32);shortfall=False;periods=2;period_estimator=latest;phase=latest",
+      "method_exact": 24,
+      "numeric_mismatches": 21,
+      "optimistic": 19,
+      "pessimistic": 2,
+      "plan_exact": 22,
+      "rank": 7,
+      "status_exact": 21
+    },
+    {
+      "absolute_safe_error": "6930596.72",
+      "earliest_exact": 17,
+      "exact_rows": 3,
+      "exact_safe_amounts": 4,
+      "label": "chronology=A1;debit_amount=max;credit_amount=median;consistent_intervals=2;fixed_tolerance=3;monthly_range=(27, 32);shortfall=False;periods=2;period_estimator=latest;phase=latest",
+      "method_exact": 24,
+      "numeric_mismatches": 21,
+      "optimistic": 19,
+      "pessimistic": 2,
+      "plan_exact": 22,
+      "rank": 8,
+      "status_exact": 21
+    },
+    {
+      "absolute_safe_error": "6930596.72",
+      "earliest_exact": 17,
+      "exact_rows": 3,
+      "exact_safe_amounts": 4,
+      "label": "chronology=A1;debit_amount=max;credit_amount=median;consistent_intervals=2;fixed_tolerance=3;monthly_range=(26, 33);shortfall=False;periods=2;period_estimator=latest;phase=latest",
+      "method_exact": 24,
+      "numeric_mismatches": 21,
+      "optimistic": 19,
+      "pessimistic": 2,
+      "plan_exact": 22,
+      "rank": 9,
+      "status_exact": 21
+    },
+    {
+      "absolute_safe_error": "6930596.72",
+      "earliest_exact": 17,
+      "exact_rows": 3,
+      "exact_safe_amounts": 4,
+      "label": "chronology=A2;debit_amount=max;credit_amount=median;consistent_intervals=2;fixed_tolerance=3;monthly_range=(27, 32);shortfall=False;periods=2;period_estimator=latest;phase=latest",
+      "method_exact": 24,
+      "numeric_mismatches": 21,
+      "optimistic": 19,
+      "pessimistic": 2,
+      "plan_exact": 22,
+      "rank": 10,
+      "status_exact": 21
+    }
+  ],
+  "winner": {
+    "changed": [
+      {
+        "candidate_safe": "18890252.09",
+        "diagnostics": [],
+        "expected_safe": "17229139.2",
+        "r0_safe": "18479330.16",
+        "request_id": "request_02"
+      },
+      {
+        "candidate_safe": "1093118.58",
+        "diagnostics": [],
+        "expected_safe": "873000",
+        "r0_safe": "1050071.39",
+        "request_id": "request_03"
+      },
+      {
+        "candidate_safe": "9444508.72",
+        "diagnostics": [],
+        "expected_safe": "8401800",
+        "r0_safe": "11584778.17",
+        "request_id": "request_04"
+      },
+      {
+        "candidate_safe": "7127.62",
+        "diagnostics": [],
+        "expected_safe": "737",
+        "r0_safe": "7006.21",
+        "request_id": "request_05"
+      },
+      {
+        "candidate_safe": "99307.07",
+        "diagnostics": [],
+        "expected_safe": "87170.56",
+        "r0_safe": "98080.53",
+        "request_id": "request_07"
+      },
+      {
+        "candidate_safe": "330.99",
+        "diagnostics": [],
+        "expected_safe": "284.57",
+        "r0_safe": "383.59",
+        "request_id": "request_08"
+      },
+      {
+        "candidate_safe": "565.92",
+        "diagnostics": [],
+        "expected_safe": "597.74",
+        "r0_safe": "613.64",
+        "request_id": "request_14"
+      },
+      {
+        "candidate_safe": "228.91",
+        "diagnostics": [],
+        "expected_safe": "83.05",
+        "r0_safe": "225.66",
+        "request_id": "request_15"
+      },
+      {
+        "candidate_safe": "246396.8",
+        "diagnostics": [],
+        "expected_safe": "243849.58",
+        "r0_safe": "248325.96",
+        "request_id": "request_17"
+      },
+      {
+        "candidate_safe": "675.92",
+        "diagnostics": [],
+        "expected_safe": "462",
+        "r0_safe": "662.19",
+        "request_id": "request_18"
+      },
+      {
+        "candidate_safe": "34044.27",
+        "diagnostics": [],
+        "expected_safe": "28820",
+        "r0_safe": "37555.87",
+        "request_id": "request_19"
+      },
+      {
+        "candidate_safe": "15109.36",
+        "diagnostics": [],
+        "expected_safe": "5400",
+        "r0_safe": "14941.75",
+        "request_id": "request_20"
+      },
+      {
+        "candidate_safe": "496.79",
+        "diagnostics": [],
+        "expected_safe": "475.46",
+        "r0_safe": "514.86",
+        "request_id": "request_22"
+      },
+      {
+        "candidate_safe": "10065.77",
+        "diagnostics": [],
+        "expected_safe": "9152",
+        "r0_safe": "9303.91",
+        "request_id": "request_23"
+      },
+      {
+        "candidate_safe": "13607.92",
+        "diagnostics": [],
+        "expected_safe": "13420",
+        "r0_safe": "12557.36",
+        "request_id": "request_24"
+      },
+      {
+        "candidate_safe": "37170.78",
+        "diagnostics": [],
+        "expected_safe": "1425000",
+        "r0_safe": "0",
+        "request_id": "request_25"
+      }
+    ],
+    "label": "chronology=A0;debit_amount=median;credit_amount=median;consistent_intervals=2;fixed_tolerance=4;monthly_range=(27, 32);shortfall=False;periods=2;period_estimator=latest;phase=latest",
+    "metrics": {
+      "absolute_safe_error": "5203249.78",
+      "earliest_exact": 18,
+      "exact_rows": 3,
+      "exact_safe_amounts": 4,
+      "method_exact": 24,
+      "numeric_mismatches": 21,
+      "optimistic": 19,
+      "pessimistic": 2,
+      "plan_exact": 22,
+      "status_exact": 21
+    },
+    "params": {
+      "chronology": "A0",
+      "consistent_intervals": 2,
+      "credit_amount": "median",
+      "debit_amount": "median",
+      "fixed_tolerance": 4,
+      "monthly_range": [
+        27,
+        32
+      ],
+      "period_estimator": "latest",
+      "periods": 2,
+      "phase": "latest",
+      "shortfall": false
+    }
+  }
+}

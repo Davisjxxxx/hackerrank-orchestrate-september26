@@ -369,7 +369,7 @@ def cadence(events: list[CanonicalEvent]) -> tuple[str, int]:
     # within three days of the median.  This bounded rule admits a supported
     # delayed/missed observation without treating an arbitrary category as a
     # recurring stream.
-    if med >= 5 and sum(abs(gap - med) <= 3 for gap in gaps) >= 2: return "gap", max(1, med)
+    if med >= 5 and sum(abs(gap - med) <= 4 for gap in gaps) >= 2: return "gap", max(1, med)
     return "none", 0
 
 
@@ -454,13 +454,13 @@ class Canonicalizer:
             if (key[0], key[1], key[2]) in terminal_semantics: continue
             kind, step = cadence(history)
             if kind == "none": continue
-            latest = max(history, key=lambda e: (e.settlement_date or e.event_date)); recent = sorted(history, key=lambda e: (e.settlement_date or e.event_date))[-3:]; amount = max(e.amount for e in recent if e.amount is not None); n = 1
+            latest = max(history, key=lambda e: (e.settlement_date or e.event_date)); recent = sorted(history, key=lambda e: (e.settlement_date or e.event_date))[-3:]; amount = statistics.median([e.amount for e in recent if e.amount is not None]).quantize(Decimal("0.01")); n = 1
             while True:
                 anchor = latest.settlement_date or latest.event_date
                 d = add_months(anchor, n) if kind == "month" else anchor + timedelta(days=step * n)
                 if d > horizon: break
                 if d >= request.request_date and (key, d) not in explicit_keys:
-                    projected.append(replace(latest, event_id=f"{latest.event_id}@{d.isoformat()}", event_date=d, settlement_date=d, amount=amount, projected=True, source_event_id=latest.event_id, status="scheduled", provenance="recurrence:max_last_3"))
+                    projected.append(replace(latest, event_id=f"{latest.event_id}@{d.isoformat()}", event_date=d, settlement_date=d, amount=amount, projected=True, source_event_id=latest.event_id, status="scheduled", provenance="recurrence:median_last_3"))
                 n += 1
         # A confirmed future salary is an anchor, not a one-off income event.
         # Continue the regular monthly payroll from that anchor unless a
