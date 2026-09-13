@@ -1,0 +1,25 @@
+{
+  "expo": {
+    "name": "Buy or Wait?",
+    "slug": "buy-or-wait",
+    "version": "0.2.1",
+    "orientation": "portrait",
+    "scheme": "buyorwait",
+    "icon": "./assets/icon.png",
+    "ios": {
+      "supportsTablet": true,
+      "icon": "./assets/icon.png"
+    },
+    "android": {
+      "icon": "./assets/icon.png",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0d1726"
+      }
+    },
+    "web": {
+      "favicon": "./assets/icon.png"
+    },
+    "plugins": ["expo-camera", "expo-image-picker"]
+  }
+}

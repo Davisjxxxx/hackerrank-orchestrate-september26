@@ -1,0 +1,25 @@
+{
+  "fixture_name": "shopsavvy-sanitized-product-and-offer-response",
+  "source": "ShopSavvy public documentation response shape; sanitized example",
+  "product": {
+    "name": "Example OLED TV 55-inch",
+    "brand": "Example",
+    "model": "OLED55-X1",
+    "identifiers": {"upc": "036000291452", "asin": "B0CHX3TW6K"}
+  },
+  "offers": [
+    {
+      "retailer": "Example Store",
+      "condition": "new",
+      "availability": "in_stock",
+      "price": "899.00",
+      "shipping": "0.00",
+      "currency": "USD",
+      "url": "https://fixture.invalid/example-oled-tv",
+      "history": [
+        {"price": "799.00", "shipping": "0.00", "availability": "in_stock", "currency": "USD", "timestamp": "2026-08-01T12:00:00Z"},
+        {"price": "899.00", "shipping": "0.00", "availability": "in_stock", "currency": "USD", "timestamp": "2026-09-12T12:00:00Z"}
+      ]
+    }
+  ]
+}
