@@ -43,6 +43,11 @@ python3 code/main.py
 
 After running your solution, confirm that `output.csv` exists in the repository root and contains the required columns and one row for every request.
 
+For a reference-only solved-sample check, run `python3 code/main.py --samples` to
+generate 25 predictions without changing `output.csv`, or
+`python3 code/main.py --score-samples` to write the diagnostic policy reports.
+The normal `python3 code/main.py` target run does not read solved sample outputs.
+
 ## Important File Locations
 
 ```text

@@ -34,12 +34,17 @@ def test_observed_domains_and_inventory_are_clean():
     assert cross["linkage"]["images_to_missing_events"] == []
 
 
+def test_profile_priorities_are_loaded_and_protect_change_selection():
+    profiles = main.ProfileAdapter().load()
+    assert profiles["user_01"].priorities == frozenset({"education", "debt_repayment"})
+
+
 def test_decimal_fx_and_month_end_clamp():
     assert main.dec("1,234.50") == Decimal("1234.50")
     assert main.add_months(date(2024, 1, 31), 1) == date(2024, 2, 29)
     assert main.add_months(date(2023, 1, 31), 1) == date(2023, 2, 28)
     fx = main.ExchangeRateAdapter()
-    assert fx.convert(Decimal("10"), "USD", "EUR", date(2024, 1, 1)) > 0
+    assert fx.convert(Decimal("10"), "USD", "EUR", date(2024, 1, 15)) > 0
 
 
 def test_non_cash_does_not_enter_flows_and_pending_credit_does_not_increase_cash():
@@ -64,9 +69,29 @@ def test_terminal_payroll_does_not_project_prior_salary_stream():
 
 def test_unresolved_amounts_are_not_serialized_as_zero():
     events = main.FinancialEventAdapter(main.ImageEvidenceAdapter()).canonical_rows()
-    unresolved = [event for event in events if event.provenance.endswith(":unresolved")]
-    assert unresolved
-    assert all(event.amount is None for event in unresolved)
+    image_events = [event for event in events if event.provenance.startswith("ocr:")]
+    assert image_events
+    assert all(event.amount is not None for event in image_events)
+    by_id = {event.event_id: event.amount for event in image_events}
+    assert by_id["event_3051"] == Decimal("1995.00")
+    assert by_id["event_3231"] == Decimal("8528")
+    assert by_id["event_6033"] == Decimal("79679.26")
+    assert main.dec_or_none("") is None
+
+
+def test_unresolved_future_debit_blocks_safe_plans_without_becoming_zero():
+    profiles, requests, canonical = _fixture()
+    request = next(x for x in requests if x.request_id == "request_01")
+    profile = profiles[request.user_id]
+    unknown = main.CanonicalEvent(
+        "unknown-future-debit", request.user_id, "expense", "unresolved bill", "rent", "debit",
+        None, profile.home_currency, request.request_date + main.timedelta(days=3),
+        request.request_date + main.timedelta(days=3), "scheduled", "fixed", None,
+    )
+    events = canonical.for_request(request, profile, main.WindowPolicy.DAYS_0_THROUGH_89) + [unknown]
+    planner = main.Planner(canonical, main.PaymentOptionAdapter().load(), main.WindowPolicy.DAYS_0_THROUGH_89)
+    assert planner.safe_amount(request, profile, events) == Decimal(0)
+    assert planner.oracle.run(request, profile, events, [(request.request_date, request.requested_amount)])[0] is False
 
 
 def test_oracle_and_production_differential_on_all_solved_requests():

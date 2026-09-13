@@ -1,6 +1,6 @@
 # Usage report
 
-Final scored run: local deterministic core, no interpretation-model calls.
+Final scored run: `python3 code/main.py` on 2026-09-12, local deterministic core, no interpretation-model calls. The resulting root `output.csv` SHA256 is `f64e315b418730a95b8c635ede86fbab3ac726550ef490a9e61b6e9587cd453f`.
 
 | Provider | Model | Calls | Input tokens | Output tokens | Cached tokens | Estimated cost |
 |---|---|---:|---:|---:|---:|---:|

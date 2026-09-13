@@ -83,7 +83,7 @@ class WindowPolicy(str, Enum):
 class Profile:
     user_id: str; home_currency: str; current_available_balance: Decimal; minimum_balance_to_keep: Decimal
     protect: frozenset[str]; reduce: frozenset[str]; stop: frozenset[str]; methods: frozenset[str]
-    max_installment_months: int | None
+    max_installment_months: int | None; priorities: frozenset[str] = frozenset()
 
 
 @dataclass(frozen=True)
@@ -128,7 +128,7 @@ class ProfileAdapter:
     def load(self) -> dict[str, Profile]:
         result = {}
         for r in read_csv("financial_profiles.csv"):
-            result[r["user_id"]] = Profile(r["user_id"], r["home_currency"], dec(r["current_available_balance"]), dec(r["minimum_balance_to_keep"]), frozenset(tokens(r["expense_categories_to_protect"])), frozenset(tokens(r["expense_categories_user_is_willing_to_reduce"])), frozenset(tokens(r["expense_categories_user_is_willing_to_stop"])), frozenset(tokens(r["payment_methods_user_will_consider"])), int(r["max_installment_months"]) if r["max_installment_months"] else None)
+            result[r["user_id"]] = Profile(r["user_id"], r["home_currency"], dec(r["current_available_balance"]), dec(r["minimum_balance_to_keep"]), frozenset(tokens(r["expense_categories_to_protect"])), frozenset(tokens(r["expense_categories_user_is_willing_to_reduce"])), frozenset(tokens(r["expense_categories_user_is_willing_to_stop"])), frozenset(tokens(r["payment_methods_user_will_consider"])), int(r["max_installment_months"]) if r["max_installment_months"] else None, frozenset(tokens(r["financial_priorities"])))
         return result
 
 
@@ -160,9 +160,9 @@ class ExchangeRateAdapter:
     def convert(self, amount: Decimal, source: str, target: str, on: date) -> Decimal:
         if source == target: return amount
         values = self.load().get((source, target), [])
-        prior = [rate for rate_date, rate in values if rate_date <= on]
-        if not prior: raise RuntimeError(f"missing FX path/rate for {source}->{target} on {on}")
-        return amount * prior[-1]
+        exact = [rate for rate_date, rate in values if rate_date == on]
+        if not exact: raise RuntimeError(f"missing FX path/rate for {source}->{target} on {on}")
+        return amount * exact[-1]
 
 
 class ImageEvidenceAdapter:
@@ -188,6 +188,25 @@ class ImageEvidenceAdapter:
 
     def extract_amount(self, image_id: str, event: Mapping[str, str]) -> tuple[Decimal | None, str]:
         joined = " | ".join(self.text(image_id))
+
+        def values_after(pattern: str, stop: str | None = None, all_matches: bool = False) -> list[Decimal]:
+            """Read numeric values from the bounded block after a label."""
+            matches = list(re.finditer(pattern, joined, re.I | re.S))
+            if not matches:
+                return []
+            selected = matches if all_matches else matches[-1:]
+            values: list[Decimal] = []
+            for match in selected:
+                tail = joined[match.end():]
+                if stop:
+                    boundary = re.search(stop, tail, re.I | re.S)
+                    if boundary:
+                        tail = tail[:boundary.start()]
+                raw_values = re.findall(r"(?<![A-Za-z])\d[\d,]*(?:\.\d+)?(?![A-Za-z])", tail)
+                if raw_values:
+                    values.append(dec(raw_values[-1].replace(",", "")))
+            return values
+
         def after(pattern: str) -> str | None:
             m = re.search(pattern + r".{0,180}?([\d][\d,]*(?:\.\d+)?)", joined, re.I | re.S)
             return m.group(1) if m else None
@@ -199,7 +218,23 @@ class ImageEvidenceAdapter:
         patterns: list[str] = []
         if "salary" in kind: patterns = [r"Net Pay", r"Transferred to"]
         elif "rent" in kind: patterns = [r"Balance Due", r"Amount Received", r"Total Amount to be Receivi"]
-        elif "grocer" in kind: patterns = [r"Net Amount", r"TOTAL ORDER BILL DETAILS", r"Total$"]
+        elif "grocer" in kind or "dining" in kind or "restaurant" in kind:
+            # Prefer a labeled grand total.  If OCR corrupts that token, use
+            # the invoice's labeled subtotal and tax components instead of
+            # treating a quantity or tax percentage as the event amount.
+            grand_total = values_after(r"Grand Total", r"(?:Thank You|Amount in Words|Total In Words)")
+            if grand_total:
+                return grand_total[-1], f"ocr:{image_id}:grounded"
+            subtotal = values_after(r"Sub\s*Total", r"Total In Words")
+            taxes = []
+            for label in (r"CGST", r"SGST"):
+                taxes.extend(values_after(label, r"(?:CGST|SGST|Notes|Total)", all_matches=True))
+            if subtotal and len(taxes) >= 2:
+                return subtotal[-1] + sum(taxes), f"ocr:{image_id}:grounded"
+            total_values = values_after(r"\bTotal\b", r"(?:Amount in|Total In Words|Thank You)")
+            if total_values:
+                return total_values[-1], f"ocr:{image_id}:grounded"
+            patterns = [r"Net Amount", r"TOTAL ORDER BILL DETAILS", r"\bTotal\b", r"Grand Total"]
         elif "maintenance" in kind or "property" in kind: patterns = [r"Total Amount Received"]
         elif "water" in kind: patterns = [r"Total Amount Received"]
         elif "telecom" in kind: patterns = [r"Amount due after", r"Amount due till", r"Total"]
@@ -340,12 +375,17 @@ def cadence(events: list[CanonicalEvent]) -> tuple[str, int]:
 
 class Canonicalizer:
     def __init__(self, events: list[CanonicalEvent], messages: list[dict[str, str]], fx: ExchangeRateAdapter) -> None:
-        self.events, self.messages, self.fx = events, messages, fx; self.by_user: dict[str, list[CanonicalEvent]] = {}
+        self.events, self.fx = events, fx; self.message_evidence = MessageEvidenceAdapter(messages); self.by_user: dict[str, list[CanonicalEvent]] = {}
         for e in events: self.by_user.setdefault(e.user_id, []).append(e)
 
     def message_adjustments(self, user_id: str, rows: list[CanonicalEvent], request_date: date) -> list[CanonicalEvent]:
         out = list(rows)
-        for m in [x for x in self.messages if x["user_id"] == user_id]:
+        for m in self.message_evidence.for_user(user_id):
+            # Evidence is available only after it was sent.  Applying a later
+            # payroll notice to an earlier request leaks future information
+            # into the historical decision state.
+            if m.get("sent_at") and date.fromisoformat(m["sent_at"][:10]) > request_date:
+                continue
             text, low = m["message_text"], m["message_text"].lower()
             if "salary" not in low and "gaji" not in low and "payroll" not in low: continue
             if any(x in low for x in ["pending", "still waiting", "belum disetujui", "has ended", "ended", "berakhir", "seasonal contract"]):
@@ -463,6 +503,15 @@ class Canonicalizer:
 class Simulator:
     def __init__(self, canonicalizer: Canonicalizer, policy: WindowPolicy) -> None: self.canonicalizer, self.policy = canonicalizer, policy
 
+    def has_unresolved_debit(self, request: Request, events: Sequence[CanonicalEvent]) -> bool:
+        end = request.request_date + timedelta(days=self.policy.upper_bound_offset())
+        return any(
+            event.amount is None
+            and event.direction == "debit"
+            and request.request_date <= (event.settlement_date or event.event_date) <= end
+            for event in events
+        )
+
     def flows(self, request: Request, profile: Profile, events: Sequence[CanonicalEvent], changes: Sequence[Change] = ()) -> dict[date, Decimal]:
         stopped = {c.event_id for c in changes if c.operation == "stop"}; reduced = {c.event_id: c.new_amount for c in changes if c.operation == "reduce_to"}; out: dict[date, Decimal] = {}
         for e in events:
@@ -478,6 +527,8 @@ class Simulator:
         return out
 
     def run(self, request: Request, profile: Profile, events: Sequence[CanonicalEvent], payments: Sequence[tuple[date, Decimal]], changes: Sequence[Change] = ()) -> tuple[bool, dict[date, Decimal], Decimal]:
+        if self.has_unresolved_debit(request, events):
+            return False, {}, Decimal("-Infinity")
         pm: dict[date, Decimal] = {}
         for d, amount in payments:
             if amount < 0 or d < request.request_date or d > request.desired_completion_date or d > request.request_date + timedelta(days=self.policy.upper_bound_offset()): return False, {}, Decimal("-Infinity")
@@ -499,6 +550,8 @@ class ProductionSimulator(Simulator):
 
     def run(self, request: Request, profile: Profile, events: Sequence[CanonicalEvent], payments: Sequence[tuple[date, Decimal]], changes: Sequence[Change] = ()) -> tuple[bool, dict[date, Decimal], Decimal]:
         end = request.request_date + timedelta(days=self.policy.upper_bound_offset())
+        if self.has_unresolved_debit(request, events):
+            return False, {}, Decimal("-Infinity")
         payment_by_day: dict[date, Decimal] = {}
         for day, amount in payments:
             if amount < 0 or day < request.request_date or day > request.desired_completion_date or day > end:
@@ -538,6 +591,8 @@ class Planner:
         self.canonicalizer, self.options, self.policy = canonicalizer, options, policy; self.oracle = Simulator(canonicalizer, policy); self.production = ProductionSimulator(canonicalizer, policy)
 
     def safe_amount(self, request: Request, profile: Profile, events: Sequence[CanonicalEvent]) -> Decimal:
+        if self.oracle.has_unresolved_debit(request, events):
+            return Decimal(0)
         flows = self.oracle.flows(request, profile, events); balance = profile.current_available_balance; trough = Decimal("Infinity")
         for offset in range(self.policy.upper_bound_offset() + 1):
             d = request.request_date + timedelta(days=offset); balance += flows.get(d, Decimal(0)); trough = min(trough, balance)
@@ -555,8 +610,14 @@ class Planner:
         return [(option.first_payment_date + timedelta(days=i * option.payment_frequency_days), option.payment_amount, option.payment_amount_text) for i in range(option.number_of_payments)]
 
     def change_candidates(self, request: Request, profile: Profile, events: Sequence[CanonicalEvent]) -> list[tuple[Change, ...]]:
-        reps = {e.source_event_id: e for e in events if e.projected and e.source_event_id}; choices = []
+        reps = {
+            e.source_event_id: e
+            for e in events
+            if e.projected and e.source_event_id and e.direction == "debit"
+        }; choices = []
         for sid, e in sorted(reps.items()):
+            if e.category in profile.priorities:
+                continue
             if e.flexibility in {"stoppable", "reducible_or_stoppable"} and e.category in profile.stop: choices.append(Change("stop", sid))
             if e.flexibility in {"reducible", "reducible_or_stoppable"} and e.category in profile.reduce:
                 floor = e.minimum_allowed_amount or Decimal(0)
@@ -637,19 +698,108 @@ def serialize(d: Decision) -> dict[str, str]:
     return {"request_id": d.request.request_id, "amount_safe_to_pay": short_decimal(d.amount_safe), "affordability_status": d.status, "recommended_payment_method": d.method, "payment_plan": plan, "earliest_date_for_full_payment": d.earliest.isoformat() if d.earliest else "", "spending_changes_needed": "|".join(c.serialize() for c in d.changes) or "none", "decision_explanation": d.explanation}
 
 
-def validate(row: Mapping[str, str], r: Request) -> None:
-    assert list(row) == OUTPUT_COLUMNS; amount = dec(row["amount_safe_to_pay"]); assert Decimal(0) <= amount <= r.requested_amount
-    assert row["affordability_status"] in {"affordable_now", "affordable_with_plan", "affordable_later", "not_affordable"}; assert row["recommended_payment_method"] in {"full_payment", "partial_payment", "installments", "wait", "not_recommended"}
-    if row["recommended_payment_method"] == "not_recommended": assert row["payment_plan"] == "none"
-    if row["affordability_status"] == "affordable_now": assert row["recommended_payment_method"] == "full_payment" and row["earliest_date_for_full_payment"] == r.request_date.isoformat()
-    if row["recommended_payment_method"] == "partial_payment": assert row["affordability_status"] == "affordable_with_plan" and row["payment_plan"].count("|") == 1
+def validate(
+    row: Mapping[str, str],
+    r: Request,
+    profile: Profile | None = None,
+    options: Mapping[str, Sequence[PaymentOption]] | None = None,
+    decision: Decision | None = None,
+    events: Sequence[CanonicalEvent] | None = None,
+) -> None:
+    """Enforce output invariants, including option and change semantics."""
+    assert list(row) == OUTPUT_COLUMNS
+    amount = dec(row["amount_safe_to_pay"])
+    assert Decimal(0) <= amount <= r.requested_amount
+    status = row["affordability_status"]
+    method = row["recommended_payment_method"]
+    assert status in {"affordable_now", "affordable_with_plan", "affordable_later", "not_affordable"}
+    assert method in {"full_payment", "partial_payment", "installments", "wait", "not_recommended"}
+    if method == "not_recommended":
+        assert status == "not_affordable" and row["payment_plan"] == "none"
+    if status == "affordable_now":
+        assert method == "full_payment" and row["earliest_date_for_full_payment"] == r.request_date.isoformat()
+    if status == "affordable_later":
+        assert method == "wait"
+    if status == "affordable_with_plan":
+        assert method in {"full_payment", "partial_payment", "installments"}
+    if method == "partial_payment":
+        assert status == "affordable_with_plan" and row["payment_plan"].count("|") == 1
+    if row["earliest_date_for_full_payment"]:
+        earliest = date.fromisoformat(row["earliest_date_for_full_payment"])
+        assert earliest >= r.request_date
+    elif status == "affordable_later":
+        raise AssertionError("wait requires an earliest full-payment date")
+
+    if profile is None:
+        return
+
+    assert method == "not_recommended" or row["payment_plan"] != "none"
+    if method in {"full_payment", "partial_payment", "installments"}:
+        assert method in profile.methods
+    if method == "wait":
+        assert "full_payment" in profile.methods
+
+    plan_entries: list[tuple[date, Decimal, str]] = []
+    if row["payment_plan"] != "none":
+        for entry in row["payment_plan"].split("|"):
+            day_text, amount_text = entry.split(":", 1)
+            plan_day = date.fromisoformat(day_text)
+            plan_amount = dec(amount_text)
+            assert plan_amount >= 0
+            plan_entries.append((plan_day, plan_amount, amount_text))
+        assert [item[0] for item in plan_entries] == sorted(item[0] for item in plan_entries)
+        assert all(r.request_date <= day <= r.desired_completion_date for day, _, _ in plan_entries)
+
+    if method == "full_payment":
+        assert len(plan_entries) == 1
+        assert plan_entries[0][0] == r.request_date and plan_entries[0][1] == r.requested_amount
+    elif method == "partial_payment":
+        assert r.allows_partial_payment and 0 < amount < r.requested_amount
+        assert len(plan_entries) == 2 and plan_entries[0][0] == r.request_date
+        assert plan_entries[0][1] == amount
+        assert plan_entries[1][1] == r.requested_amount - amount
+        assert row["earliest_date_for_full_payment"] == plan_entries[1][0].isoformat()
+        assert plan_entries[1][0] <= r.desired_completion_date
+    elif method == "wait":
+        assert len(plan_entries) == 1 and plan_entries[0][1] == r.requested_amount
+        assert row["earliest_date_for_full_payment"] == plan_entries[0][0].isoformat()
+        assert plan_entries[0][0] > r.request_date
+    elif method == "installments":
+        assert decision is not None and decision.option_id is not None
+        supplied = next((o for o in (options or {}).get(r.request_id, ()) if o.payment_option_id == decision.option_id), None)
+        assert supplied is not None and supplied.number_of_payments <= (profile.max_installment_months or 0)
+        expected_plan = Planner.installment_schedule(supplied)
+        assert len(plan_entries) == len(expected_plan)
+        assert [(day, text) for day, _, text in plan_entries] == [(day, text) for day, _, text in expected_plan]
+
+    actions = row["spending_changes_needed"]
+    if actions != "none":
+        assert events is not None and len(actions.split("|")) <= 3
+        seen_ids: set[str] = set()
+        for action in actions.split("|"):
+            parts = action.split(":", 2)
+            assert len(parts) >= 2 and parts[1] not in seen_ids
+            operation, event_id = parts[:2]
+            seen_ids.add(event_id)
+            representative = next((e for e in events if e.projected and e.source_event_id == event_id and e.direction == "debit"), None)
+            assert representative is not None
+            assert representative.category in (profile.stop if operation == "stop" else profile.reduce)
+            if operation == "stop":
+                assert representative.flexibility in {"stoppable", "reducible_or_stoppable"} and len(parts) == 2
+            else:
+                assert operation == "reduce_to" and len(parts) == 3
+                new_amount = dec(parts[2]); floor = representative.minimum_allowed_amount or Decimal(0)
+                assert representative.flexibility in {"reducible", "reducible_or_stoppable"}
+                assert floor <= new_amount < (representative.amount or Decimal(0))
+    else:
+        assert not (decision and decision.changes)
     if row["recommended_payment_method"] == "wait": assert row["affordability_status"] == "affordable_later"
 
 
 def write_reports(sample_pass: dict[str, int]) -> None:
     EVAL.mkdir(exist_ok=True)
     (EVAL / "window_policy_report.md").write_text("# Window policy report\n\n" + "\n".join(f"- `{k}`: {v}/25 exact sample rows" for k, v in sample_pass.items()) + "\n\nScored-run choice: `days_0_through_89`.\n", encoding="utf-8")
-    (EVAL / "policy_sensitivity_report.md").write_text("# Policy sensitivity report\n\n## WindowPolicy\n\nBoth named policies are run against all solved rows and targets. The scored runtime uses `days_0_through_89`, passed explicitly to every simulator.\n\n## Same-day order\n\nNamed policy: canonical scheduled/pending events are applied before the request payment; current available balance is initialized once.\n\n## FX rate date\n\nNamed policy: settlement date, with last available rate on or before that date.\n\n## Installment eligibility\n\nNamed policy: blank `max_installment_months` disables installments; otherwise `number_of_payments <= max_installment_months`, before ranking.\n", encoding="utf-8")
+    (EVAL / "policy_sensitivity_report.md").write_text("# Policy sensitivity report\n\n## WindowPolicy\n\nBoth named policies are run against all solved rows and targets. The scored runtime uses `days_0_through_89`, passed explicitly to every simulator.\n\n## Same-day order\n\nNamed policy: canonical scheduled/pending events are applied before the request payment; current available balance is initialized once.\n\n## FX rate date\n\nNamed policy: settlement date with an exact `from_currency` to `to_currency` rate row.\n\n## Installment eligibility\n\nNamed policy: blank `max_installment_months` disables installments; otherwise `number_of_payments <= max_installment_months`, before ranking.\n", encoding="utf-8")
     (EVAL / "usage_report.md").write_text("# Usage report\n\nFinal scored run: local deterministic core, no interpretation-model calls.\n\n| Provider | Model | Calls | Input tokens | Output tokens | Cached tokens | Estimated cost |\n|---|---|---:|---:|---:|---:|---:|\n| local | none | 0 | 0 | 0 | 0 | $0.00 |\n\nOverall calls: 0. Total and average tokens per request: 0 and 0. Estimated total and per-request cost: $0.00 and $0.00. OCR is local evidence processing and is not a provider call.\n", encoding="utf-8")
     (EVAL / "tiebreak_log.md").touch(exist_ok=True)
 
@@ -657,21 +807,29 @@ def write_reports(sample_pass: dict[str, int]) -> None:
 def execute(targets: bool, policy: WindowPolicy) -> list[dict[str, str]]:
     inventory = DatasetInventory().write(); profiles = ProfileAdapter().load(); requests = RequestAdapter().load("requests.csv" if targets else "sample_requests.csv"); options = PaymentOptionAdapter().load(); events = FinancialEventAdapter(ImageEvidenceAdapter()).canonical_rows(); canonicalizer = Canonicalizer(events, read_csv("messages.csv"), ExchangeRateAdapter()); planner = Planner(canonicalizer, options, policy); rows = []
     for r in requests:
-        d, _ = planner.decide(r, profiles[r.user_id]); d.explanation = make_explanation(d, canonicalizer.for_request(r, profiles[r.user_id], policy)); row = serialize(d); validate(row, r); rows.append(row)
+        d, events = planner.decide(r, profiles[r.user_id]); d.explanation = make_explanation(d, events); row = serialize(d); validate(row, r, profiles[r.user_id], options, d, events); rows.append(row)
     if targets:
         with (ROOT / "output.csv").open("w", newline="", encoding="utf-8") as fh:
             writer = csv.DictWriter(fh, fieldnames=OUTPUT_COLUMNS, lineterminator="\n")
             writer.writeheader(); writer.writerows(rows)
-        expected = read_csv("sample_requests.csv"); scores = {}
-        for p in WindowPolicy:
-            got = execute(False, p); scores[p.value] = sum(all(a[k] == b[k] for k in OUTPUT_COLUMNS[1:]) for a, b in zip(got, expected))
-        write_reports(scores)
     return rows
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(); ap.add_argument("--inventory", action="store_true"); ap.add_argument("--samples", action="store_true"); ap.add_argument("--policy", choices=[p.value for p in WindowPolicy], default=WindowPolicy.DAYS_0_THROUGH_89.value); args = ap.parse_args()
+    ap = argparse.ArgumentParser(); ap.add_argument("--inventory", action="store_true"); ap.add_argument("--samples", action="store_true"); ap.add_argument("--score-samples", action="store_true"); ap.add_argument("--policy", choices=[p.value for p in WindowPolicy], default=WindowPolicy.DAYS_0_THROUGH_89.value); args = ap.parse_args()
     if args.inventory: DatasetInventory().write(); print("dataset inventory written"); return 0
+    if args.score_samples:
+        expected = read_csv("sample_requests.csv")
+        scores = {
+            policy.value: sum(
+                all(actual[field] == want[field] for field in OUTPUT_COLUMNS[1:])
+                for actual, want in zip(execute(False, policy), expected)
+            )
+            for policy in WindowPolicy
+        }
+        write_reports(scores)
+        print(json.dumps(scores, sort_keys=True))
+        return 0
     rows = execute(not args.samples, WindowPolicy(args.policy)); print(f"wrote {len(rows)} rows"); return 0
 
 
