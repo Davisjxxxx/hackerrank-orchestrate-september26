@@ -48,7 +48,13 @@ class BuyOrWaitService:
         store.append(product_id, product, observations, ingested_at=now, user_id="composition")
         record = service.evaluate(product_id, product, PurchaseIntent(product=product, urgency=Urgency.FLEXIBLE, max_wait_days=90), now=now, user_id="composition")
         signal = record.price_signal
-        verdict = "attractive" if signal in {"STRONG_BUY", "BUY"} else ("high" if signal in {"WAIT", "STRONG_WAIT"} else ("neutral" if signal == "NEUTRAL" else "unknown"))
+        # Sparse history is uncertainty, not evidence that the current price
+        # is high. Only an adequate covered history can produce a directional
+        # price verdict.
+        if record.price_history_status != "SUFFICIENT":
+            verdict = "unknown"
+        else:
+            verdict = "attractive" if signal in {"STRONG_BUY", "BUY"} else ("high" if signal in {"WAIT", "STRONG_WAIT"} else ("neutral" if signal == "NEUTRAL" else "unknown"))
         reference = str(record.historical_average) if record.historical_average is not None else None
         savings = str(max(Decimal("0"), Decimal(reference) - purchase.amount)) if reference else None
         confidence = "high" if record.confidence >= Decimal("0.75") else ("medium" if record.confidence >= Decimal("0.45") else "low")

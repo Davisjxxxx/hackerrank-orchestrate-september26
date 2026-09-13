@@ -119,6 +119,7 @@ def test_composed_buy_or_wait_api_is_user_scoped_and_structured():
     assert response.status_code == 200
     body = response.json()
     assert {"decision", "price_verdict", "affordability_verdict", "safe_to_pay_now", "financial_state_as_of", "financial_freshness"} <= body.keys()
+    assert body["price_verdict"] == "unknown" and body["overall_confidence"] == "low"
     assert client.get("/v1/state", headers={"Authorization": "Bearer user:other-user"}).status_code == 404
 
 
