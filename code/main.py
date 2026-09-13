@@ -329,7 +329,12 @@ def cadence(events: list[CanonicalEvent]) -> tuple[str, int]:
     if not gaps: return "none", 0
     med = int(statistics.median(gaps))
     if all(27 <= x <= 32 for x in gaps): return "month", 1
-    if max(gaps) - min(gaps) <= 2 and med >= 5: return "gap", max(1, med)
+    # Recurrence evidence is noisy in the supplied history.  A fixed-gap
+    # stream remains eligible only when at least two observed intervals agree
+    # within three days of the median.  This bounded rule admits a supported
+    # delayed/missed observation without treating an arbitrary category as a
+    # recurring stream.
+    if med >= 5 and sum(abs(gap - med) <= 3 for gap in gaps) >= 2: return "gap", max(1, med)
     return "none", 0
 
 
@@ -348,17 +353,43 @@ class Canonicalizer:
                     out = [e for e in out if not (e.event_type == "income" and e.category == "salary" and (e.settlement_date or e.event_date) > request_date)]
                 continue
             money = re.findall(r"\b(INR|IDR|USD|EUR|ZAR)\s*([\d,.]+)", text, re.I)
-            if not money: continue
-            cur, raw = money[-1]; amount = dec(raw.rstrip(".")); dates = re.findall(r"\b20\d{2}-\d{2}-\d{2}\b", text); effective = date.fromisoformat(dates[0]) if dates else request_date
-            new, changed = [], False
-            for e in out:
-                if e.event_type == "income" and e.category == "salary" and (e.settlement_date or e.event_date) >= effective:
-                    new.append(replace(e, amount=amount, currency=cur, provenance=e.provenance + "+message")); changed = True
-                else: new.append(e)
-            out = new
-            if not changed and "first salary" in low:
-                out.append(CanonicalEvent(f"message:{m['message_id']}", user_id, "income", "confirmed first salary", "salary", "credit", amount, cur, effective, effective, "scheduled", "fixed", None, provenance="message:confirmed"))
+            dates = re.findall(r"\b20\d{2}-\d{2}-\d{2}\b", text)
+            # The first stated salary is the recurring/base amount.  A later
+            # amount in the same message can be an arrears or commission
+            # adjustment and must not become recurring income.
+            salary_money = money[0] if money else None
+            salary_rows = [e for e in out if e.event_type == "income" and e.category == "salary" and e.amount is not None]
+            if salary_money:
+                cur, raw = salary_money; amount = dec(raw.rstrip("."))
+                effective = date.fromisoformat(dates[0]) if dates else self._next_salary_date(salary_rows, request_date)
+                new, changed = [], False
+                for e in out:
+                    if e.event_type == "income" and e.category == "salary" and (e.settlement_date or e.event_date) >= effective:
+                        new.append(replace(e, amount=amount, currency=cur, provenance=e.provenance + "+message")); changed = True
+                    else: new.append(e)
+                out = new
+                # A message is itself a confirmed future record when the
+                # structured feed has not supplied that occurrence yet.
+                if not any(e.event_type == "income" and e.category == "salary" and (e.settlement_date or e.event_date) == effective for e in out):
+                    out.append(CanonicalEvent(f"message:{m['message_id']}", user_id, "income", "confirmed salary", "salary", "credit", amount, cur, effective, effective, "scheduled", "fixed", None, provenance="message:confirmed"))
+            elif dates and any(marker in low for marker in ("salary", "gaji", "payroll")):
+                # A date-only amendment still carries trusted timing and can
+                # relocate the next confirmed salary using the latest known
+                # regular amount.
+                effective = date.fromisoformat(dates[0])
+                if salary_rows:
+                    amount_event = max(salary_rows, key=lambda e: e.event_date)
+                    if not any(e.event_type == "income" and e.category == "salary" and (e.settlement_date or e.event_date) == effective for e in out):
+                        out.append(replace(amount_event, event_id=f"message:{m['message_id']}", description="confirmed salary", event_date=effective, settlement_date=effective, status="scheduled", projected=False, source_event_id=None, provenance=amount_event.provenance + "+message"))
         return out
+
+    @staticmethod
+    def _next_salary_date(rows: Sequence[CanonicalEvent], request_date: date) -> date:
+        dated = sorted((e.settlement_date or e.event_date for e in rows if (e.settlement_date or e.event_date) < request_date))
+        if dated:
+            latest = dated[-1]
+            return add_months(latest, 1)
+        return date(request_date.year, request_date.month, 15) if request_date.day < 15 else add_months(date(request_date.year, request_date.month, 15), 1)
 
     def for_request(self, request: Request, profile: Profile, policy: WindowPolicy) -> list[CanonicalEvent]:
         horizon = request.request_date + timedelta(days=policy.upper_bound_offset())
@@ -368,13 +399,11 @@ class Canonicalizer:
         for e in valid:
             if e.amount is not None and e.event_date <= request.request_date: groups.setdefault((e.event_type, e.category, e.flexibility, e.description), []).append(e)
         explicit, explicit_keys = [], set()
-        future_semantics: set[tuple[str, str, str]] = set()
         for e in valid:
             d = e.settlement_date or e.event_date
             if d < request.request_date or d > horizon: continue
             if e.status == "settled" and d == request.request_date: continue
             explicit.append(e); explicit_keys.add(((e.event_type, e.category, e.flexibility, e.description), d))
-            future_semantics.add((e.event_type, e.category, e.flexibility))
         terminal_semantics = {
             (e.event_type, e.category, e.flexibility)
             for e in valid
@@ -382,21 +411,49 @@ class Canonicalizer:
         }
         projected = []
         for key, history in sorted(groups.items()):
-            # A two-row stream is admissible only when the observed amount is
-            # stable; two differently sized one-off purchases are not enough
-            # evidence to manufacture a recurring obligation.
-            if len(history) == 2 and history[0].amount != history[1].amount: continue
-            if (key[0], key[1], key[2]) in future_semantics: continue
             if (key[0], key[1], key[2]) in terminal_semantics: continue
             kind, step = cadence(history)
             if kind == "none": continue
-            latest = max(history, key=lambda e: e.event_date); recent = sorted(history, key=lambda e: e.event_date)[-3:]; amount = max(e.amount for e in recent if e.amount is not None); n = 1
+            latest = max(history, key=lambda e: (e.settlement_date or e.event_date)); recent = sorted(history, key=lambda e: (e.settlement_date or e.event_date))[-3:]; amount = max(e.amount for e in recent if e.amount is not None); n = 1
             while True:
-                d = add_months(latest.event_date, n) if kind == "month" else latest.event_date + timedelta(days=step * n)
+                anchor = latest.settlement_date or latest.event_date
+                d = add_months(anchor, n) if kind == "month" else anchor + timedelta(days=step * n)
                 if d > horizon: break
                 if d >= request.request_date and (key, d) not in explicit_keys:
                     projected.append(replace(latest, event_id=f"{latest.event_id}@{d.isoformat()}", event_date=d, settlement_date=d, amount=amount, projected=True, source_event_id=latest.event_id, status="scheduled", provenance="recurrence:max_last_3"))
                 n += 1
+        # A confirmed future salary is an anchor, not a one-off income event.
+        # Continue the regular monthly payroll from that anchor unless a
+        # terminal-payroll marker removed the stream above.
+        if not any(e[0] == "income" and e[1] == "salary" and e[2] == "fixed" for e in terminal_semantics):
+            future_salary = [e for e in explicit if e.event_type == "income" and e.category == "salary" and e.amount is not None]
+            if future_salary:
+                anchor_event = max(future_salary, key=lambda e: (e.settlement_date or e.event_date))
+                d = anchor_event.settlement_date or anchor_event.event_date
+                n = 1
+                while True:
+                    future_day = add_months(d, n)
+                    if future_day > horizon: break
+                    if future_day >= request.request_date and not any(e.event_type == "income" and e.category == "salary" and (e.settlement_date or e.event_date) == future_day for e in explicit + projected):
+                        projected.append(replace(anchor_event, event_id=f"{anchor_event.event_id}@{future_day.isoformat()}", event_date=future_day, settlement_date=future_day, projected=True, source_event_id=anchor_event.event_id, status="scheduled", provenance="recurrence:confirmed_salary"))
+                    n += 1
+        # An explicit confirmed salary occurrence is authoritative for that
+        # same economic date.  Suppress only the projected salary row with the
+        # same direction/type/category/currency/flexibility key; independent
+        # salary dates remain separate and description text is not identity.
+        explicit_salary_keys = {
+            (e.user_id, e.event_type, e.category, e.direction, e.currency, e.flexibility, e.settlement_date or e.event_date)
+            for e in explicit
+            if e.category == "salary" and not e.projected
+        }
+        projected = [
+            e for e in projected
+            if not (
+                e.category == "salary"
+                and e.projected
+                and (e.user_id, e.event_type, e.category, e.direction, e.currency, e.flexibility, e.settlement_date or e.event_date) in explicit_salary_keys
+            )
+        ]
         return sorted(explicit + projected, key=lambda e: ((e.settlement_date or e.event_date), e.event_id))
 
     def converted(self, event: CanonicalEvent, profile: Profile) -> Decimal | None:

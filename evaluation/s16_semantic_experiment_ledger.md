@@ -78,3 +78,12 @@ The remaining numeric differences are not explained by confirmed-salary collisio
 | Variable-category stable-suffix stream | 3/25 | 80–83 | 21 | 7–13 | No improvement across suffix lengths 3–8 and gap tolerances 0–3 | Yes | No |
 
 These were residual-family tests only. They preserved the required maximum-of-last-three amount estimator and did not use request IDs, user IDs, event IDs, exact solved amounts, or expected-output lookup in candidate construction.
+
+## S16 cash-flow inversion pass
+
+| Candidate | S16 exact | Differing fields | Numeric mismatches | Cross-validation | Promoted |
+|---|---:|---:|---:|---|---|
+| Bounded occurrence/stream/observed-amount flow edits, evaluation-only | 3/25 baseline | 53 baseline | 21 baseline | 22/22 residual requests had no exact explanation within the bounded evidence-supported search | No |
+| Chronology-assigned latent streams with affirmative concurrency only, evaluation-only | 3/25 baseline family | 53 baseline family | 21 baseline family | Dataset-wide assignment produced 2,721 economic groups; no contract-compliant candidate output improvement over P11 | No |
+
+The inversion used the exact signed correction `expected_safe - actual_safe` as the required path correction. Candidate edits were limited to removal of current projected occurrences or inferred streams and replacement by amounts observed in the same production stream. The nearest candidates frequently left residuals ranging from cents to millions, demonstrating that the remaining errors are not one uniform max-last-3 adjustment. Solved rows remain diagnostic constraints only.
