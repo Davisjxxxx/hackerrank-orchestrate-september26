@@ -23,20 +23,26 @@ class AffordabilityService:
         safe_now = max(Decimal("0"), min(amount, base_trough - reserve))
         safe_now = safe_now.quantize(Decimal("0.01"))
         if safe_now >= amount:
-            return self._output(amount, safe_now, "affordable_now", "full_payment", request.request_date or state.as_of, base_trough, ["current available cash", f"reserve {reserve}"])
+            return self._finalize(self._output(amount, safe_now, "affordable_now", "full_payment", request.request_date or state.as_of, base_trough, ["current available cash", f"reserve {reserve}"]), state)
         earliest = self._earliest(events, state, request, horizon, reserve)
         methods = set(self._profile_methods(state))
         if earliest and "full_payment" in methods and earliest <= (request.desired_completion_date or horizon):
-            return self._output(amount, safe_now, "affordable_later", "wait", earliest, base_trough, [f"safe full payment date {earliest}", "pending credits excluded"])
+            return self._finalize(self._output(amount, safe_now, "affordable_later", "wait", earliest, base_trough, [f"safe full payment date {earliest}", "pending credits excluded"]), state)
         if request.allows_partial_payment and "partial_payment" in methods and safe_now > 0 and safe_now < amount and earliest and earliest <= (request.desired_completion_date or horizon):
             plan = [{"date": request.request_date or state.as_of, "amount": safe_now}, {"date": earliest, "amount": amount - safe_now}]
-            return self._output(amount, safe_now, "affordable_with_plan", "partial_payment", earliest, base_trough, ["two-payment plan", "pending debits reserved"], plan=plan)
+            return self._finalize(self._output(amount, safe_now, "affordable_with_plan", "partial_payment", earliest, base_trough, ["two-payment plan", "pending debits reserved"], plan=plan), state)
         for option in request.payment_options:
             if option.get("type") == "installments" and "installments" in methods and self._option_safe(events, state, request, option, horizon, reserve):
-                return self._output(amount, safe_now, "affordable_with_plan", "installments", earliest, base_trough, ["supplied payment option passed deterministic forecast"], plan=option.get("payments", []))
+                return self._finalize(self._output(amount, safe_now, "affordable_with_plan", "installments", earliest, base_trough, ["supplied payment option passed deterministic forecast"], plan=option.get("payments", [])), state)
         if "full_payment" in methods:
-            return self._output(amount, safe_now, "not_affordable", "wait", None, base_trough, ["no safe full payment within forecast"])
-        return self._output(amount, safe_now, "not_affordable", "not_recommended", None, base_trough, ["no eligible safe method"])
+            return self._finalize(self._output(amount, safe_now, "not_affordable", "wait", None, base_trough, ["no safe full payment within forecast"]), state)
+        return self._finalize(self._output(amount, safe_now, "not_affordable", "not_recommended", None, base_trough, ["no eligible safe method"]), state)
+
+    @staticmethod
+    def _finalize(result: DecisionOutput, state: CanonicalState) -> DecisionOutput:
+        if state.freshness == "current": return result
+        warning = "Financial data is incomplete; connect an account or complete a sync before relying on this recommendation." if state.freshness == "incomplete" else "Financial data is stale; refresh before relying on this recommendation."
+        return result.model_copy(update={"confidence": "low" if state.freshness == "incomplete" else "medium", "warnings": [warning], "evidence_summary": [*result.evidence_summary, f"financial data as of {state.financial_data_as_of.isoformat() if state.financial_data_as_of else 'unknown'}"]})
 
     def _simulate(self, state: CanonicalState, events: list[Any], start: date, horizon: date, purchase: Decimal) -> tuple[Decimal, list[tuple[date, Decimal, str]]]:
         balance = Decimal(str(state.available_cash)) - purchase

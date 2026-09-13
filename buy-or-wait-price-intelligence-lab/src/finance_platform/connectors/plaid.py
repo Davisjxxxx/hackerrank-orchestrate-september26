@@ -27,9 +27,9 @@ class PlaidConnector:
         if not self.client_id or not self.secret:
             raise RuntimeError("Plaid is not configured; set PLAID_CLIENT_ID and PLAID_SECRET")
 
-    async def connect(self, *, products: list[str] | None = None, country_codes: list[str] | None = None, language: str = "en", **_: Any) -> dict[str, Any]:
+    async def connect(self, *, client_user_id: str = "server-user", products: list[str] | None = None, country_codes: list[str] | None = None, language: str = "en", **_: Any) -> dict[str, Any]:
         self._require_config()
-        payload = {"client_id": self.client_id, "secret": self.secret, "user": {"client_user_id": "server-user"}, "client_name": "Buy or Wait", "products": products or ["transactions"], "country_codes": country_codes or ["US"], "language": language}
+        payload = {"client_id": self.client_id, "secret": self.secret, "user": {"client_user_id": client_user_id}, "client_name": "Buy or Wait", "products": products or ["transactions"], "country_codes": country_codes or ["US"], "language": language}
         async with httpx.AsyncClient(timeout=15) as client:
             response = await client.post(f"{self.base_url}/link/token/create", json=payload)
             response.raise_for_status()
@@ -52,7 +52,18 @@ class PlaidConnector:
             data = response.json()
         added = tuple(data.get("added", ()))
         modified = tuple(data.get("modified", ()))
-        return ConnectorSyncResult(provider=self.provider, fetched=len(added) + len(modified), updated=len(modified), cursor=data.get("next_cursor"), records=added + modified)
+        removed = tuple({"transaction_id": row.get("transaction_id"), "_removed": True} for row in data.get("removed", ()) if isinstance(row, dict))
+        return ConnectorSyncResult(provider=self.provider, fetched=len(added) + len(modified) + len(removed), updated=len(modified), cursor=data.get("next_cursor"), records=added + modified + removed)
+
+    async def accounts(self, *, access_token: str) -> tuple[dict[str, Any], ...]:
+        """Return account balances as provider-neutral input to persistence."""
+        self._require_config()
+        payload = {"client_id": self.client_id, "secret": self.secret, "access_token": access_token}
+        async with httpx.AsyncClient(timeout=20) as client:
+            response = await client.post(f"{self.base_url}/accounts/balance/get", json=payload)
+            response.raise_for_status()
+            data = response.json()
+        return tuple(data.get("accounts", ()))
 
     async def refresh(self, **kwargs: Any) -> ConnectorSyncResult:
         return await self.sync(**kwargs)

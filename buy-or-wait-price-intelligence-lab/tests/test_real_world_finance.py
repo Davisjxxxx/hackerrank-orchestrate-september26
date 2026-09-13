@@ -7,8 +7,8 @@ from fastapi.testclient import TestClient
 
 from finance_platform.api import create_app
 from finance_platform.canonical import CanonicalStateService
-from finance_platform.db import Base, EvidenceMessage, FinancialEvent, FinancialProfile, User
-from finance_platform.ingestion import TransactionImportService
+from finance_platform.db import Base, EvidenceMessage, FinancialEvent, FinancialProfile, SourceAccount, SourceConnection, ConnectorCursor, RawIngestionRecord, User
+from finance_platform.ingestion import TransactionImportService, reconcile_plaid_sync
 from finance_platform.recurrence import RecurringStreamDetector
 from finance_platform.schemas import EventInput
 
@@ -85,3 +85,50 @@ def test_user_correction_marks_transfer_without_cross_user_access():
     # API-level isolation is checked using a separate app only for a missing-user read.
     client = TestClient(create_app())
     assert client.get("/v1/state", headers={"Authorization": "Bearer user:not-created"}).status_code == 404
+
+
+def test_plaid_duplicate_pending_to_posted_and_removed_are_idempotent():
+    engine = db()
+    with Session(engine) as session:
+        seed(session)
+        connection = SourceConnection(user_id="u1", provider="plaid", status="connected")
+        session.add(connection); session.commit()
+        pending = {"transaction_id": "pending-1", "account_id": "acct-1", "amount": 40, "date": "2026-09-10", "pending": True, "name": "Transfer", "iso_currency_code": "USD"}
+        first = reconcile_plaid_sync(session, user_id="u1", connection=connection, records=[pending], next_cursor="c1")
+        duplicate = reconcile_plaid_sync(session, user_id="u1", connection=connection, records=[pending], next_cursor="c1")
+        assert first["inserted"] == 1 and duplicate["duplicates"] == 1
+        posted = {"transaction_id": "posted-1", "pending_transaction_id": "pending-1", "account_id": "acct-1", "amount": 40, "date": "2026-09-10", "pending": False, "name": "Transfer", "iso_currency_code": "USD"}
+        updated = reconcile_plaid_sync(session, user_id="u1", connection=connection, records=[posted], next_cursor="c2")
+        assert updated["updated"] == 1 and session.query(FinancialEvent).count() == 1
+        event = session.query(FinancialEvent).one()
+        assert event.status == "settled" and event.external_id == "posted-1"
+        removed = reconcile_plaid_sync(session, user_id="u1", connection=connection, records=[{"transaction_id": "posted-1", "_removed": True}], next_cursor="c3")
+        assert removed["removed"] == 1 and session.query(FinancialEvent).one().status == "cancelled"
+        assert session.query(RawIngestionRecord).count() == 3
+        assert session.get(ConnectorCursor, connection.id).cursor == "c3"
+
+
+def test_composed_buy_or_wait_api_is_user_scoped_and_structured():
+    client = TestClient(create_app())
+    user_id = "composition-test-user"
+    created = client.post(f"/v1/users?user_id={user_id}")
+    assert created.status_code in {200, 409}
+    headers = {"Authorization": f"Bearer user:{user_id}"}
+    assert client.put("/v1/profile", headers=headers, json={"home_currency": "USD", "current_available_cash": "3000", "minimum_balance_to_keep": "1000", "payment_methods": ["full_payment", "wait"]}).status_code == 200
+    response = client.post("/v1/buy-or-wait", headers=headers, json={"product_name": "Test laptop", "merchant": "Test shop", "price": "899.99", "currency": "USD", "category": "electronics", "price_context": {"historical_prices": ["1099", "999", "949"]}})
+    assert response.status_code == 200
+    body = response.json()
+    assert {"decision", "price_verdict", "affordability_verdict", "safe_to_pay_now", "financial_state_as_of", "financial_freshness"} <= body.keys()
+    assert client.get("/v1/state", headers={"Authorization": "Bearer user:other-user"}).status_code == 404
+
+
+def test_canonical_state_prefers_synced_same_currency_account_balance():
+    engine = db()
+    with Session(engine) as session:
+        seed(session)
+        connection = SourceConnection(user_id="u1", provider="plaid", status="connected", last_successful_sync=datetime.now(timezone.utc))
+        session.add(connection); session.flush()
+        session.add(SourceAccount(connection_id=connection.id, user_id="u1", external_id="acct", name="Checking", currency="USD", available_balance=Decimal("4250"), current_balance=Decimal("4300")))
+        session.commit()
+        state = CanonicalStateService().state(session, "u1", as_of=date.today())
+        assert state.available_cash == Decimal("4250") and state.freshness == "current"

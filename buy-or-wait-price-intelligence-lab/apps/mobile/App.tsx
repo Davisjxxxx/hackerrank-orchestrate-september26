@@ -1,5 +1,6 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { ActivityIndicator, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, View, useWindowDimensions } from "react-native";
+import * as DocumentPicker from "expo-document-picker";
 
 import {
   confirmableCandidate,
@@ -18,6 +19,21 @@ const DEFAULT_AS_OF = "2026-09-12T12:00:00+00:00";
 
 type Screen = { kind: "home" } | { kind: "intake"; response: IntakeResponse } | { kind: "governed"; response: GovernedResponse; productTitle: string };
 type Busy = null | "intake" | "confirm" | "governed";
+type BetaDecision = {
+  decision: string;
+  recommended_action: string;
+  price_verdict: string;
+  affordability_verdict: string;
+  safe_to_pay_now: string;
+  earliest_financially_safe_date: string | null;
+  minimum_projected_balance: string;
+  price_confidence: string;
+  financial_confidence: string;
+  overall_confidence: string;
+  financial_freshness: string;
+  explanation: string;
+  warnings: string[];
+};
 
 export default function App() {
   const { width } = useWindowDimensions();
@@ -27,14 +43,19 @@ export default function App() {
   const [busy, setBusy] = useState<Busy>(null);
   const [error, setError] = useState<string | null>(null);
   const [finance, setFinance] = useState<FinanceFixture>("safe");
+  const [financeStatus, setFinanceStatus] = useState<"disconnected" | "current" | "stale" | "incomplete">("disconnected");
+  const [financeState, setFinanceState] = useState<Record<string, unknown> | null>(null);
+  const [betaProduct, setBetaProduct] = useState("55-inch OLED TV");
+  const [betaPrice, setBetaPrice] = useState("899.99");
+  const [betaResult, setBetaResult] = useState<BetaDecision | null>(null);
 
-  const request = useCallback(async (path: string, body: Record<string, unknown>): Promise<Record<string, unknown>> => {
+  const request = useCallback(async (path: string, body: Record<string, unknown> = {}, method = "POST", authUser?: string): Promise<Record<string, unknown>> => {
     let response: Response;
     try {
       response = await fetch(`${API_BASE}${path}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
+        method,
+        headers: { "Content-Type": "application/json", ...(authUser ? { Authorization: `Bearer user:${authUser}` } : {}) },
+        ...(method === "GET" ? {} : { body: JSON.stringify(body) }),
       });
     } catch (networkError) {
       throw new Error(networkError instanceof Error ? `Network error: ${networkError.message}` : "Network error");
@@ -51,6 +72,52 @@ export default function App() {
     }
     return (data ?? {}) as Record<string, unknown>;
   }, []);
+
+  const refreshFinance = useCallback(async (userId = "mobile-demo") => {
+    const state = await request("/v1/state", {}, "GET", userId);
+    setFinanceState(state);
+    const freshness = String(state.freshness ?? "incomplete");
+    setFinanceStatus(freshness === "current" || freshness === "stale" ? freshness : "incomplete");
+  }, [request]);
+
+  const connectFinances = useCallback(async () => {
+    setError(null);
+    try {
+      try { await request("/v1/users?user_id=mobile-demo"); } catch (failure) {
+        if (!(failure instanceof Error) || !failure.message.includes("409")) throw failure;
+      }
+      await request("/v1/profile", { home_currency: "USD", current_available_cash: "0", minimum_balance_to_keep: "0", payment_methods: ["full_payment", "wait", "partial_payment"] }, "PUT", "mobile-demo");
+      await refreshFinance();
+    } catch (failure) {
+      setError(failure instanceof Error ? failure.message : "Could not connect financial state.");
+    }
+  }, [refreshFinance, request]);
+
+  const runBetaDecision = useCallback(async () => {
+    setError(null); setBetaResult(null); setBusy("governed");
+    try {
+      const raw = await request("/v1/buy-or-wait", { product_name: betaProduct.trim(), price: betaPrice.trim(), currency: "USD", category: "electronics", allows_partial_payment: true, price_context: {} }, "POST", "mobile-demo");
+      setBetaResult(raw as unknown as BetaDecision);
+      await refreshFinance();
+    } catch (failure) {
+      setError(failure instanceof Error ? failure.message : "Buy-or-wait evaluation failed.");
+    } finally { setBusy(null); }
+  }, [betaPrice, betaProduct, refreshFinance, request]);
+
+  const importStatement = useCallback(async () => {
+    setError(null);
+    try {
+      await connectFinances();
+      const picked = await DocumentPicker.getDocumentAsync({ type: ["text/csv", "application/vnd.ms-ofx", "application/x-ofx", "application/qfx", "text/plain"], copyToCacheDirectory: true });
+      if (picked.canceled || !picked.assets?.[0]) return;
+      const asset = picked.assets[0];
+      const form = new FormData();
+      form.append("file", { uri: asset.uri, name: asset.name, type: asset.mimeType ?? "text/csv" } as unknown as Blob);
+      const response = await fetch(`${API_BASE}/v1/imports/transactions`, { method: "POST", headers: { Authorization: "Bearer user:mobile-demo" }, body: form });
+      if (!response.ok) throw new Error(`Statement import failed with status ${response.status}`);
+      await refreshFinance();
+    } catch (failure) { setError(failure instanceof Error ? failure.message : "Statement import failed."); }
+  }, [connectFinances, refreshFinance]);
 
   const startIntake = useCallback(async (mode: IntakeMode) => {
     setError(null);
@@ -134,6 +201,8 @@ export default function App() {
 
           <FinancePicker value={finance} onChange={setFinance} disabled={busy !== null} />
 
+          <BetaFinancePanel status={financeStatus} state={financeState} product={betaProduct} price={betaPrice} result={betaResult} busy={busy !== null} onConnect={connectFinances} onImport={importStatement} onRefresh={() => refreshFinance()} onProduct={setBetaProduct} onPrice={setBetaPrice} onEvaluate={runBetaDecision} />
+
           <TextInput
             value={query}
             onChangeText={setQuery}
@@ -193,10 +262,27 @@ function Action({ label, hint, icon, onPress, disabled }: { label: string; hint:
 function FixtureBanner() {
   return (
     <View style={styles.fixtureBanner} accessibilityLabel="Fixture demo mode">
-      <Text style={styles.fixtureLabel}>FIXTURE / DEMO MODE</Text>
-      <Text style={styles.fixtureBody}>Prices and financial state come from recorded fixtures. No live retailer feed or connected financial account is used.</Text>
+      <Text style={styles.fixtureLabel}>LEGACY DEMO LANE</Text>
+      <Text style={styles.fixtureBody}>The original governed fixture journey remains for regression. Use the beta panel below for the real finance API and your authenticated financial state.</Text>
     </View>
   );
+}
+
+function BetaFinancePanel({ status, state, product, price, result, busy, onConnect, onImport, onRefresh, onProduct, onPrice, onEvaluate }: { status: string; state: Record<string, unknown> | null; product: string; price: string; result: BetaDecision | null; busy: boolean; onConnect: () => void; onImport: () => void; onRefresh: () => void; onProduct: (value: string) => void; onPrice: (value: string) => void; onEvaluate: () => void }) {
+  const connected = status !== "disconnected";
+  return <View style={styles.betaPanel} accessibilityLabel="Real finance beta loop">
+    <Text style={styles.financePickerLabel}>REAL FINANCE BETA</Text>
+    <Text style={styles.betaBody}>Connect or import your financial state, then evaluate a purchase with separate price and affordability reasoning.</Text>
+    <View style={styles.betaStatusRow}>
+      <Text style={styles.betaStatus}>Finance: {status}</Text>
+      <View style={styles.betaActions}><Pressable onPress={connected ? onRefresh : onConnect} disabled={busy} style={styles.secondaryButton}><Text style={styles.secondaryButtonText}>{connected ? "Refresh state" : "Connect finances"}</Text></Pressable><Pressable onPress={onImport} disabled={busy} style={styles.secondaryButton}><Text style={styles.secondaryButtonText}>Import statement</Text></Pressable></View>
+    </View>
+    {state && <Text style={styles.actionHint}>Available cash {String(state.available_cash ?? "—")} · reserve {String(state.minimum_balance ?? "—")} · as of {String(state.financial_data_as_of ?? "not synced")}</Text>}
+    <TextInput value={product} onChangeText={onProduct} placeholder="What are you considering?" placeholderTextColor="#7f91a8" style={styles.betaInput} />
+    <TextInput value={price} onChangeText={onPrice} keyboardType="decimal-pad" placeholder="Price in USD" placeholderTextColor="#7f91a8" style={styles.betaInput} />
+    <Pressable onPress={onEvaluate} disabled={!connected || busy} style={[styles.primaryButton, (!connected || busy) && styles.disabled]}><Text style={styles.primaryButtonText}>Run Buy-or-Wait</Text></Pressable>
+    {result && <View style={styles.betaResult}><Text style={styles.cardLabel}>COMBINED RECOMMENDATION</Text><Text style={styles.decision}>{result.decision.replaceAll("_", " ")}</Text><Text style={styles.cardBody}>{result.explanation}</Text><Text style={styles.rowSub}>Price {result.price_verdict} ({result.price_confidence}) · finances {result.affordability_verdict} ({result.financial_confidence}) · freshness {result.financial_freshness}</Text><Text style={styles.rowSub}>Safe now {result.safe_to_pay_now} · safe full payment {result.earliest_financially_safe_date ?? "not within forecast"}</Text>{result.warnings.map(warning => <Text key={warning} style={styles.warning}>{warning}</Text>)}</View>}
+  </View>;
 }
 
 function FinancePicker({ value, onChange, disabled }: { value: FinanceFixture; onChange: (v: FinanceFixture) => void; disabled: boolean }) {
@@ -409,6 +495,14 @@ const styles = StyleSheet.create({
   financeChipLabelActive: { color: "#8be9c1" },
   financeChipHint: { color: "#9db2c9", fontSize: 12, marginTop: 4 },
   financeChipHintActive: { color: "#d6e3f2" },
+  betaPanel: { backgroundColor: "#102d2b", borderRadius: 16, padding: 18, gap: 10, borderColor: "#3fa787", borderWidth: 1 },
+  betaBody: { color: "#d6e3f2", fontSize: 14, lineHeight: 20 },
+  betaStatusRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 12 },
+  betaStatus: { color: "#8be9c1", fontWeight: "700", textTransform: "uppercase", fontSize: 12 },
+  betaActions: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
+  betaInput: { backgroundColor: "#18263a", color: "#f7fbff", borderColor: "#2c5874", borderWidth: 1, borderRadius: 10, padding: 12, fontSize: 15 },
+  betaResult: { backgroundColor: "#183a2f", borderRadius: 12, padding: 14, gap: 5, borderColor: "#3fa787", borderWidth: 1 },
+  warning: { color: "#f4b47a", fontSize: 12, lineHeight: 18 },
   card: { backgroundColor: "#18334a", borderRadius: 16, padding: 20, gap: 8, borderColor: "#2c5874", borderWidth: 1 },
   cardLabel: { color: "#8be9c1", fontSize: 12, letterSpacing: 2, fontWeight: "700" },
   decision: { color: "#ffffff", fontSize: 26, fontWeight: "800" },

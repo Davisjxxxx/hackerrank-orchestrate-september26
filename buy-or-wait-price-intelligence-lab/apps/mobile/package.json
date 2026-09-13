@@ -13,6 +13,7 @@
   "dependencies": {
     "expo": "^57.0.22",
     "expo-camera": "^57.0.4",
+    "expo-document-picker": "~57.0.2",
     "expo-image-picker": "^57.0.17",
     "expo-linking": "^57.0.10",
     "react": "19.2.3",

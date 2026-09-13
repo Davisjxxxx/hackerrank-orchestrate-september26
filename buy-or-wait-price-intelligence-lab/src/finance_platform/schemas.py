@@ -72,6 +72,26 @@ class DecisionInput(BaseModel):
         return value.upper()
 
 
+class BuyOrWaitInput(BaseModel):
+    """User-facing purchase request for the composed beta decision."""
+    model_config = ConfigDict(extra="forbid")
+    product_name: str = Field(min_length=1, max_length=500)
+    merchant: str | None = Field(default=None, max_length=200)
+    price: Decimal = Field(gt=0)
+    currency: str = Field(default="USD", min_length=3, max_length=3)
+    category: str | None = Field(default=None, max_length=120)
+    desired_purchase_date: date | None = None
+    desired_completion_date: date | None = None
+    allows_partial_payment: bool = True
+    price_context: dict[str, Any] = Field(default_factory=dict)
+    payment_options: list[dict[str, Any]] = Field(default_factory=list)
+
+    @field_validator("currency")
+    @classmethod
+    def normalize_currency(cls, value: str) -> str:
+        return value.upper()
+
+
 class DecisionOutput(BaseModel):
     amount_safe_to_pay_now: Decimal
     status: Literal["affordable_now", "affordable_with_plan", "affordable_later", "not_affordable"]

@@ -8,7 +8,8 @@ Plaid / Gmail / CSV-OFX / documents / FX
         -> recurring stream detector
         -> canonical state service
         -> deterministic 90-day affordability service
-        -> decision request/result API
+        -> price/finance composition service
+        -> decision request/result API and mobile beta UI
 ```
 
 Connectors are provider-neutral and expose `connect`, `disconnect`, `sync`,
@@ -23,7 +24,8 @@ ignores cancelled/failed/unrealized records, treats explicit internal
 transfers as neutral, and gives uncertain evidence a review state. All output
 includes evidence counts and stream source IDs.
 
-The existing price-intelligence service is intentionally separate. A future
-composition layer can produce `good price + affordable`, `good price + wait
-for cash`, or `bad price + affordable` without allowing the price signal to
-override financial safety.
+The existing price-intelligence service remains separate. The current
+`BuyOrWaitService` produces `BUY_NOW`, `WAIT_FOR_PRICE`, `WAIT_FOR_CASH_FLOW`,
+`USE_PAYMENT_PLAN`, and `DO_NOT_BUY` without allowing the price signal to
+override financial safety. Inline jobs are a local implementation of the
+provider-neutral queue seam; a worker-backed queue is a deployment concern.

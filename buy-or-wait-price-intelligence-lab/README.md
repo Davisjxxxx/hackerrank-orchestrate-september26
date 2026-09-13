@@ -12,8 +12,9 @@ events. The canonical state service resolves lifecycle and evidence semantics;
 the recurring detector produces confidence- and provenance-bearing streams;
 the deterministic affordability service performs all forecast arithmetic.
 
-The existing `price_intel` package remains a separate product-price lane and
-can be composed later through the existing finance adapter boundary.
+The existing `price_intel` package remains a separate product-price lane. The
+`BuyOrWaitService` composes it with financial capacity without allowing price
+data to bypass the minimum-balance safety check.
 
 ## Local start
 
@@ -58,8 +59,20 @@ first with `/preview`. Submit an affordability request to `POST /v1/decisions`:
 {"amount":"1000","currency":"USD","description":"Laptop","category":"electronics","allows_partial_payment":true}
 ```
 
-Useful read routes are `GET /v1/state`, `GET /v1/decisions/{id}`, and
-`GET /v1/connectors`. Documents are uploaded to `POST /v1/documents`.
+Useful read routes are `GET /v1/state`, `GET /v1/decisions/{id}`,
+`GET /v1/connectors`, `GET /v1/connections`, and `GET /v1/accounts`. Documents
+are uploaded to `POST /v1/documents`.
+
+The combined beta endpoint is `POST /v1/buy-or-wait`:
+
+```json
+{"product_name":"55-inch OLED TV","merchant":"Example Retailer","price":"899.99","currency":"USD","category":"electronics","allows_partial_payment":true,"price_context":{"historical_prices":["999.99","949.99","899.99"]}}
+```
+
+It returns separate price and financial verdicts, confidence values, the
+financial-state freshness/as-of timestamp, the safe amount, and one composed
+action such as `BUY_NOW`, `WAIT_FOR_PRICE`, `WAIT_FOR_CASH_FLOW`,
+`USE_PAYMENT_PLAN`, or `DO_NOT_BUY`.
 
 ## Data and security
 
@@ -73,3 +86,7 @@ Plaid is read-only and Sandbox-ready. Gmail requests read-only OAuth scope.
 Uploaded files are size/type checked and stored outside the public web root.
 Provider tokens require `FINANCE_TOKEN_ENCRYPTION_KEY` and are never returned
 by API responses. See `docs/security/THREAT_MODEL.md`.
+
+For the beta acceptance boundary, run `./scripts/acceptance_plaid_sandbox.sh`.
+Without Plaid credentials it exits with `PLAID CREDENTIALS REQUIRED`; the
+deterministic local CSV path remains fully usable.

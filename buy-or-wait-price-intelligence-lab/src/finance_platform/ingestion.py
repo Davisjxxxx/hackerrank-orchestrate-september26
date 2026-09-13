@@ -11,7 +11,7 @@ from typing import Any
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from .db import FinancialEvent, RawIngestionRecord, SourceAccount, SourceConnection, User, new_id
+from .db import ConnectorCursor, FinancialEvent, RawIngestionRecord, SourceAccount, SourceConnection, User, new_id
 from .schemas import EventInput
 from .connectors.base import ConnectorSyncResult
 from .sync import record_sync
@@ -159,6 +159,7 @@ class TransactionImportService:
             else:
                 session.add(FinancialEvent(user_id=user_id, account_id=account.id, source="file_import", external_id=event.external_id, event_type=event.event_type, direction=event.direction, amount=event.amount, currency=event.currency, transaction_date=event.transaction_date, authorized_date=event.authorized_date, settlement_date=event.settlement_date, status=event.status, merchant=event.merchant, description=event.description, category=event.category, pending_transaction_id=event.pending_transaction_id, linked_event_id=event.linked_event_id, confidence=event.confidence, recurrence_eligible=event.recurrence_eligible, flexibility=event.flexibility, minimum_allowed_amount=event.minimum_allowed_amount, provider_metadata=event.provider_metadata))
                 inserted += 1
+        connection.last_successful_sync = datetime.now(timezone.utc)
         session.commit()
         record_sync(session, connection, ConnectorSyncResult(provider="file_import", fetched=len(events), inserted=inserted, duplicates=duplicates))
         return {"provider": "file_import", "inserted": inserted, "duplicates": duplicates, "rows": len(events)}
@@ -177,3 +178,46 @@ def normalize_plaid_transaction(record: dict[str, Any]) -> EventInput:
     tx_date = _date(str(record.get("date") or record.get("authorized_date")))
     pending = bool(record.get("pending"))
     return EventInput(event_type="expense" if direction == "debit" else "income", direction=direction, amount=abs(amount), currency=str(record.get("iso_currency_code") or "USD"), transaction_date=tx_date, authorized_date=_date(str(record["authorized_date"])) if record.get("authorized_date") else None, settlement_date=None if pending else tx_date, status="pending" if pending else "settled", merchant=record.get("merchant_name"), description=record.get("name") or record.get("merchant_name") or "Plaid transaction", category=(record.get("personal_finance_category") or {}).get("primary") if isinstance(record.get("personal_finance_category"), dict) else None, external_id=record.get("transaction_id"), pending_transaction_id=record.get("pending_transaction_id"), provider_metadata={"provider": "plaid", "account_id": record.get("account_id")})
+
+
+def reconcile_plaid_sync(session: Session, *, user_id: str, connection: SourceConnection, records: list[dict[str, Any]], next_cursor: str | None) -> dict[str, int | str | None]:
+    """Persist one Plaid sync, reconciling lifecycle changes exactly once."""
+    inserted = updated = duplicates = removed = 0
+    for record in records:
+        external_id = str(record.get("transaction_id") or record.get("id") or "")
+        raw_bytes = json_bytes(record); digest = hashlib.sha256(raw_bytes).hexdigest()
+        if session.scalar(select(RawIngestionRecord).where(RawIngestionRecord.provider == "plaid", RawIngestionRecord.connection_id == connection.id, RawIngestionRecord.external_id == external_id, RawIngestionRecord.payload_hash == digest)):
+            duplicates += 1; continue
+        session.add(RawIngestionRecord(user_id=user_id, provider="plaid", connection_id=connection.id, external_id=external_id, payload_hash=digest, provider_timestamp=datetime.now(timezone.utc), raw_payload=record))
+        event = session.scalar(select(FinancialEvent).where(FinancialEvent.user_id == user_id, FinancialEvent.source == "plaid", FinancialEvent.external_id == external_id))
+        # Plaid commonly emits a posted transaction with a new transaction_id
+        # and pending_transaction_id pointing at the earlier pending row. The
+        # lifecycle link is authoritative: update the existing canonical event
+        # instead of creating a second balance effect.
+        if event is None and record.get("pending_transaction_id"):
+            event = session.scalar(select(FinancialEvent).where(FinancialEvent.user_id == user_id, FinancialEvent.source == "plaid", FinancialEvent.external_id == str(record["pending_transaction_id"])))
+        if event is None and record.get("_removed"):
+            candidates = session.scalars(select(FinancialEvent).where(FinancialEvent.user_id == user_id, FinancialEvent.source == "plaid")).all()
+            event = next((candidate for candidate in candidates if str((candidate.provider_metadata or {}).get("pending_transaction_id")) == external_id or str((candidate.provider_metadata or {}).get("superseded_external_id")) == external_id), None)
+        if record.get("_removed"):
+            if event: event.status = "cancelled"; event.provider_metadata = {**(event.provider_metadata or {}), "removed_by_provider": True}; removed += 1
+            continue
+        normalized = normalize_plaid_transaction(record)
+        account_external = str(record.get("account_id") or "unknown")
+        account = session.scalar(select(SourceAccount).where(SourceAccount.connection_id == connection.id, SourceAccount.external_id == account_external))
+        if account is None:
+            account = SourceAccount(connection_id=connection.id, user_id=user_id, external_id=account_external, name="Plaid account", currency=normalized.currency); session.add(account); session.flush()
+        values = {"account_id": account.id, "event_type": normalized.event_type, "direction": normalized.direction, "amount": normalized.amount, "currency": normalized.currency, "transaction_date": normalized.transaction_date, "authorized_date": normalized.authorized_date, "settlement_date": normalized.settlement_date, "status": normalized.status, "merchant": normalized.merchant, "description": normalized.description, "category": normalized.category, "pending_transaction_id": normalized.pending_transaction_id, "provider_metadata": normalized.provider_metadata}
+        if event is None:
+            session.add(FinancialEvent(user_id=user_id, source="plaid", external_id=external_id, recurrence_eligible=normalized.recurrence_eligible, confidence=normalized.confidence, flexibility=normalized.flexibility, **values)); inserted += 1
+        else:
+            for key, value in values.items(): setattr(event, key, value)
+            if event.external_id != external_id:
+                event.provider_metadata = {**(event.provider_metadata or {}), "superseded_external_id": event.external_id}
+                event.external_id = external_id
+            updated += 1
+    cursor = session.get(ConnectorCursor, connection.id)
+    if cursor is None: session.add(ConnectorCursor(connection_id=connection.id, cursor=next_cursor, updated_at=datetime.now(timezone.utc)))
+    else: cursor.cursor, cursor.updated_at = next_cursor, datetime.now(timezone.utc)
+    connection.last_successful_sync = datetime.now(timezone.utc); session.commit()
+    return {"inserted": inserted, "updated": updated, "duplicates": duplicates, "removed": removed, "cursor": next_cursor}
