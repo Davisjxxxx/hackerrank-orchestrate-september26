@@ -1,123 +1,75 @@
-# Buy or Wait? — Price Intelligence & Purchase Decision App Lab
+# Buy or Wait? — production-shaped finance service
 
-This is an **isolated prototype lane** for evolving Buy or Wait? from a financial affordability agent into a deployable purchase-decision application.
+Buy or Wait? combines a user's actual cash-flow capacity with an optional
+product-price signal. Financial safety remains the veto: the price engine may
+say a deal is good, but it cannot make an unsafe purchase safe.
 
-It remains separate from the active hackathon runtime so it can be iterated without destabilizing the scored S1–S19 build.
+## Architecture
 
-## Product vision
+`finance_platform` is independent of the legacy fixture-backed price package.
+Connectors first preserve immutable raw payloads, then normalize to canonical
+events. The canonical state service resolves lifecycle and evidence semantics;
+the recurring detector produces confidence- and provenance-bearing streams;
+the deterministic affordability service performs all forecast arithmetic.
 
-A user should eventually be able to:
+The existing `price_intel` package remains a separate product-price lane and
+can be composed later through the existing finance adapter boundary.
 
-- scan a barcode in a store;
-- take a live photo of the item, label, or shelf tag;
-- upload a screenshot/photo;
-- paste or share a product link;
-- search/type a product;
+## Local start
 
-and receive one decision that combines:
-
-> **Can I safely afford this?**
-
-with:
-
-> **Is this a strategically good time and price to buy it?**
-
-Financial safety always has veto authority.
-
-## Current lab capabilities
-
-- canonical product identity model;
-- deterministic product-intake normalization;
-- GTIN-8/12/13/14 check-digit validation and canonical GTIN-14 representation;
-- URL normalization and safe Amazon ASIN extraction;
-- source-agnostic product-resolution connector protocol;
-- current offers and first-party historical price observations with identity, variant, condition, provenance, freshness, shipping, and currency;
-- condition-aware price comparison so new/used/refurbished/open-box are not mixed;
-- deterministic historical percentile / median / quartile calculations;
-- target-buy-price estimation;
-- deal-frequency and estimated-wait heuristics;
-- urgency-aware timing decisions;
-- used/refurbished alternative recommendation;
-- server-side financial-safety provider seam with fail-closed coverage checks;
-- trust-partitioned first-party observations: provider history versus user-private captures;
-- fixture-backed subject authentication and tenant-scoped watch/decision reads;
-- connector capability catalog;
-- initial regression tests.
-
-Integration-lane additions:
-
-- `price_intelligence.py` exposes a machine-readable price record;
-- `sqlite_store.py` provides durable first-party history behind the observation port;
-- `governance.py` implements synthesis, adversarial review, certification,
-  committee selection, and the deterministic release veto;
-- `financial_adapter.py` protects the finance-core convergence boundary;
-- `POST /v1/products/{product_id}/governed-evaluate` exposes governance state
-  in the existing API without accepting client-controlled finance arithmetic.
-
-Current test baseline:
-
-```text
-71 passed (49 supplied, 19 independent red-team, 3 remediation-boundary)
+```bash
+python -m pip install -e '.[dev]'
+alembic upgrade head
+PYTHONPATH=src uvicorn finance_platform.main:app --reload
 ```
 
-The lab is now fixture-backed release-candidate work: FastAPI/OpenAPI, an Expo mobile shell, a first-party canonical observation store, decision-aware watches, optional provider adapters, financial-veto composition, and adversarial regression coverage. User-captured prices are private evidence and do not mutate shared provider history. Keepa is optional Amazon-specific validation/backfill only and is not required for CI, V1, or watch refreshes.
+Use `X-User-Id: demo-user` only in development, or use
+`Authorization: Bearer user:demo-user`. Production authentication must replace
+the development identity adapter before deployment.
 
-## Intended user decisions
+Run the credential-free workflow:
 
-- `BUY_NOW`
-- `HOLD_FOR_PRICE`
-- `SET_PRICE_WATCH`
-- `CONSIDER_USED_OR_REFURBISHED`
-- `FINANCIALLY_WAIT`
-- `DO_NOT_BUY`
+```bash
+./scripts/demo_local_real_ingestion.sh
+```
 
-## Connector direction
-
-### Aggregation accelerator
-
-1. **Authorized current/bootstrap sources** — ShopSavvy, eBay Browse, Best Buy, and other sanctioned feeds are normalized once into first-party history; no provider is mandatory.
-
-### Direct / validation sources
-
-2. Keepa — optional Amazon-specific historical validation/backfill only; not required for V1, CI, or watch refreshes.
-3. eBay Browse API — marketplace listings/conditions.
-4. Best Buy APIs — current product/pricing/open-box.
-5. SerpApi Google Shopping — broad current-price aggregation if justified.
-6. Slickdeals authorized API/partner lane — deal signal.
-
-### Deferred
-
-- CamelCamelCamel automation without an official supported API;
-- Brad's Deals without an authorized feed;
-- Facebook Marketplace/local marketplace scraping without sanctioned access.
-
-## Product/app architecture
-
-See:
-
-- `APP_PRODUCT_SPEC.md` — mobile-first UI, capture modes, API/backend, persistence, watch flow.
-- `PRICE_INTELLIGENCE_SPEC.md` — deterministic price-intelligence and connector contract.
-- `COMPETITIVE_LANDSCAPE.md` — current market/GitHub research.
-- `CLAUDE_EXECUTION_PROMPT.md` — iterative execution/red-team prompt.
-
-## Run tests
+Run tests and the organizer-runtime dependency gate:
 
 ```bash
 python -m pytest -q
+PYTHONPATH=src python scripts/check_no_hackathon_runtime_dependencies.py
 ```
 
-The local API uses `Authorization: Bearer fixture:<subject>` as its fixture authentication seam. The legacy `X-User-Id` header exists only for compatibility with the supplied lab tests and is not production authentication. Native barcode/camera/image-picker/OCR capture, durable persistence, scheduler runtime, and live-provider evaluation remain explicitly deferred adapters.
+## API examples
 
-Run the deterministic product stories with:
+Create a local user:
 
 ```bash
-PYTHONPATH=src python scripts/run_governed_demos.py
+curl -X POST 'http://localhost:8000/v1/users?user_id=demo-user'
+curl -X PUT http://localhost:8000/v1/profile -H 'X-User-Id: demo-user' \
+  -H 'Content-Type: application/json' \
+  -d '{"home_currency":"USD","current_available_cash":"3000","minimum_balance_to_keep":"1000","payment_methods":["full_payment","wait","partial_payment"]}'
 ```
 
-The stories use sanitized fixtures and must not be described as live pricing.
-The integration architecture and governance contract are documented in the
-repository-level `docs/` directory.
+Import a CSV statement with `POST /v1/imports/transactions` and preview it
+first with `/preview`. Submit an affordability request to `POST /v1/decisions`:
 
-## Promotion rule
+```json
+{"amount":"1000","currency":"USD","description":"Laptop","category":"electronics","allows_partial_payment":true}
+```
 
-Claude may iterate locally and prepare a release candidate, but it must **not push to GitHub** until reviewed and explicitly authorized.
+Useful read routes are `GET /v1/state`, `GET /v1/decisions/{id}`, and
+`GET /v1/connectors`. Documents are uploaded to `POST /v1/documents`.
+
+## Data and security
+
+PostgreSQL is the production database target; SQLite is supported for local
+tests. Alembic owns the schema migration. Raw provider records are immutable,
+canonical events retain source IDs, and user-scoped queries prevent cross-user
+reads. Pending credits are not spendable; pending debits are reserved. One-time
+credits do not recur, and uncertain document/email facts remain review-only.
+
+Plaid is read-only and Sandbox-ready. Gmail requests read-only OAuth scope.
+Uploaded files are size/type checked and stored outside the public web root.
+Provider tokens require `FINANCE_TOKEN_ENCRYPTION_KEY` and are never returned
+by API responses. See `docs/security/THREAT_MODEL.md`.
