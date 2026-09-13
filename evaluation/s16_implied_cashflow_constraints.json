@@ -1,0 +1,2858 @@
+[
+  {
+    "actual_amount_safe_to_pay": "25256",
+    "actual_earliest_full_payment": "2024-03-03",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "57320.68",
+        "date": "2024-03-03",
+        "flow": "-1160.42",
+        "payment": "0"
+      },
+      {
+        "balance": "57320.68",
+        "date": "2024-03-04",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "56753.08",
+        "date": "2024-03-05",
+        "flow": "-567.6",
+        "payment": "0"
+      },
+      {
+        "balance": "55101.27",
+        "date": "2024-03-06",
+        "flow": "-1651.81",
+        "payment": "0"
+      },
+      {
+        "balance": "55101.27",
+        "date": "2024-03-07",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "51826.89",
+        "date": "2024-03-08",
+        "flow": "-3274.38",
+        "payment": "0"
+      },
+      {
+        "balance": "51826.89",
+        "date": "2024-03-09",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "50583.33",
+        "date": "2024-03-10",
+        "flow": "-1243.56",
+        "payment": "0"
+      },
+      {
+        "balance": "46860.93",
+        "date": "2024-03-11",
+        "flow": "-3722.4",
+        "payment": "0"
+      },
+      {
+        "balance": "46860.93",
+        "date": "2024-03-12",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "46554.03",
+        "date": "2024-03-13",
+        "flow": "-306.9",
+        "payment": "0"
+      },
+      {
+        "balance": "45536.92",
+        "date": "2024-03-14",
+        "flow": "-1017.11",
+        "payment": "0"
+      },
+      {
+        "balance": "67957.88",
+        "date": "2024-03-15",
+        "flow": "22420.96",
+        "payment": "0"
+      },
+      {
+        "balance": "67957.88",
+        "date": "2024-03-16",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "67957.88",
+        "date": "2024-03-17",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "67957.88",
+        "date": "2024-03-18",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "67957.88",
+        "date": "2024-03-19",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "67957.88",
+        "date": "2024-03-20",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "67957.88",
+        "date": "2024-03-21",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "67058.84",
+        "date": "2024-03-22",
+        "flow": "-899.04",
+        "payment": "0"
+      },
+      {
+        "balance": "67058.84",
+        "date": "2024-03-23",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "65815.28",
+        "date": "2024-03-24",
+        "flow": "-1243.56",
+        "payment": "0"
+      },
+      {
+        "balance": "65261.54",
+        "date": "2024-03-25",
+        "flow": "-553.74",
+        "payment": "0"
+      },
+      {
+        "balance": "65261.54",
+        "date": "2024-03-26",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "65261.54",
+        "date": "2024-03-27",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "65261.54",
+        "date": "2024-03-28",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "64362.50",
+        "date": "2024-03-29",
+        "flow": "-899.04",
+        "payment": "0"
+      },
+      {
+        "balance": "63917.94",
+        "date": "2024-03-30",
+        "flow": "-444.56",
+        "payment": "0"
+      },
+      {
+        "balance": "63917.94",
+        "date": "2024-03-31",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "63917.94",
+        "date": "2024-04-01",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "58769.94",
+        "date": "2024-04-02",
+        "flow": "-5148",
+        "payment": "0"
+      },
+      {
+        "balance": "57609.52",
+        "date": "2024-04-03",
+        "flow": "-1160.42",
+        "payment": "0"
+      },
+      {
+        "balance": "57609.52",
+        "date": "2024-04-04",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "56710.48",
+        "date": "2024-04-05",
+        "flow": "-899.04",
+        "payment": "0"
+      },
+      {
+        "balance": "55058.67",
+        "date": "2024-04-06",
+        "flow": "-1651.81",
+        "payment": "0"
+      },
+      {
+        "balance": "53815.11",
+        "date": "2024-04-07",
+        "flow": "-1243.56",
+        "payment": "0"
+      },
+      {
+        "balance": "51993.51",
+        "date": "2024-04-08",
+        "flow": "-1821.6",
+        "payment": "0"
+      },
+      {
+        "balance": "51993.51",
+        "date": "2024-04-09",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "51993.51",
+        "date": "2024-04-10",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "47717.37",
+        "date": "2024-04-11",
+        "flow": "-4276.14",
+        "payment": "0"
+      },
+      {
+        "balance": "46818.33",
+        "date": "2024-04-12",
+        "flow": "-899.04",
+        "payment": "0"
+      },
+      {
+        "balance": "46511.43",
+        "date": "2024-04-13",
+        "flow": "-306.9",
+        "payment": "0"
+      },
+      {
+        "balance": "45494.32",
+        "date": "2024-04-14",
+        "flow": "-1017.11",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "full_payment",
+    "actual_minimum_balance": "45494.32",
+    "actual_minimum_date": "2024-04-14",
+    "actual_status": "affordable_now",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "58481.1",
+    "expected_amount_safe_to_pay": "25256",
+    "expected_earliest_full_payment": "2024-03-03",
+    "expected_implied_balance_constraint": "43256",
+    "expected_method": "full_payment",
+    "expected_status": "affordable_now",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "18000",
+    "request_date": "2024-03-03",
+    "request_id": "request_01",
+    "requested_amount": "25256",
+    "safe_amount_delta_actual_minus_expected": "0",
+    "user_id": "user_01"
+  },
+  {
+    "actual_amount_safe_to_pay": "18479330.16",
+    "actual_earliest_full_payment": "2025-09-15",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "60383889.2",
+        "date": "2025-08-05",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "60383889.2",
+        "date": "2025-08-06",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "58242039.26",
+        "date": "2025-08-07",
+        "flow": "-2141849.94",
+        "payment": "0"
+      },
+      {
+        "balance": "55458539.26",
+        "date": "2025-08-08",
+        "flow": "-2783500",
+        "payment": "0"
+      },
+      {
+        "balance": "52418539.26",
+        "date": "2025-08-09",
+        "flow": "-3040000",
+        "payment": "0"
+      },
+      {
+        "balance": "52418539.26",
+        "date": "2025-08-10",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "50776870.54",
+        "date": "2025-08-11",
+        "flow": "-1641668.72",
+        "payment": "0"
+      },
+      {
+        "balance": "48007280.16",
+        "date": "2025-08-12",
+        "flow": "-2769590.38",
+        "payment": "0"
+      },
+      {
+        "balance": "47637730.16",
+        "date": "2025-08-13",
+        "flow": "-369550",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "installments",
+    "actual_minimum_balance": "47637730.16",
+    "actual_minimum_date": "2025-08-13",
+    "actual_status": "affordable_with_plan",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "60383889.2",
+    "expected_amount_safe_to_pay": "17229139.2",
+    "expected_earliest_full_payment": "2025-09-15",
+    "expected_implied_balance_constraint": "46387539.2",
+    "expected_method": "installments",
+    "expected_status": "affordable_with_plan",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "29158400",
+    "request_date": "2025-08-05",
+    "request_id": "request_02",
+    "requested_amount": "46018000",
+    "safe_amount_delta_actual_minus_expected": "1250190.96",
+    "user_id": "user_02"
+  },
+  {
+    "actual_amount_safe_to_pay": "1050071.39",
+    "actual_earliest_full_payment": "2019-11-15",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "5810300",
+        "date": "2019-09-03",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "4670300",
+        "date": "2019-09-04",
+        "flow": "-1140000",
+        "payment": "0"
+      },
+      {
+        "balance": "4670300",
+        "date": "2019-09-05",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "4670300",
+        "date": "2019-09-06",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "4575300",
+        "date": "2019-09-07",
+        "flow": "-95000",
+        "payment": "0"
+      },
+      {
+        "balance": "4037866.68",
+        "date": "2019-09-08",
+        "flow": "-537433.32",
+        "payment": "0"
+      },
+      {
+        "balance": "4037866.68",
+        "date": "2019-09-09",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "4037866.68",
+        "date": "2019-09-10",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "3920066.68",
+        "date": "2019-09-11",
+        "flow": "-117800",
+        "payment": "0"
+      },
+      {
+        "balance": "3920066.68",
+        "date": "2019-09-12",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "3920066.68",
+        "date": "2019-09-13",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "3718771.39",
+        "date": "2019-09-14",
+        "flow": "-201295.29",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "wait",
+    "actual_minimum_balance": "3718771.39",
+    "actual_minimum_date": "2019-09-14",
+    "actual_status": "affordable_later",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "5810300",
+    "expected_amount_safe_to_pay": "873000",
+    "expected_earliest_full_payment": "2019-11-15",
+    "expected_implied_balance_constraint": "3541700",
+    "expected_method": "wait",
+    "expected_status": "affordable_later",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "2668700",
+    "request_date": "2019-09-03",
+    "request_id": "request_03",
+    "requested_amount": "5491000",
+    "safe_amount_delta_actual_minus_expected": "177071.39",
+    "user_id": "user_03"
+  },
+  {
+    "actual_amount_safe_to_pay": "11584778.17",
+    "actual_earliest_full_payment": "2024-06-15",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "52206950",
+        "date": "2024-06-04",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "50173081.17",
+        "date": "2024-06-05",
+        "flow": "-2033868.83",
+        "payment": "0"
+      },
+      {
+        "balance": "50173081.17",
+        "date": "2024-06-06",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "50173081.17",
+        "date": "2024-06-07",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "50173081.17",
+        "date": "2024-06-08",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "48114804.27",
+        "date": "2024-06-09",
+        "flow": "-2058276.9",
+        "payment": "0"
+      },
+      {
+        "balance": "47782304.27",
+        "date": "2024-06-10",
+        "flow": "-332500",
+        "payment": "0"
+      },
+      {
+        "balance": "46078004.27",
+        "date": "2024-06-11",
+        "flow": "-1704300",
+        "payment": "0"
+      },
+      {
+        "balance": "45700854.27",
+        "date": "2024-06-12",
+        "flow": "-377150",
+        "payment": "0"
+      },
+      {
+        "balance": "42271378.17",
+        "date": "2024-06-13",
+        "flow": "-3429476.1",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "wait",
+    "actual_minimum_balance": "42271378.17",
+    "actual_minimum_date": "2024-06-13",
+    "actual_status": "affordable_later",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "52206950",
+    "expected_amount_safe_to_pay": "8401800",
+    "expected_earliest_full_payment": "2024-06-15",
+    "expected_implied_balance_constraint": "39088400",
+    "expected_method": "wait",
+    "expected_status": "affordable_later",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "30686600",
+    "request_date": "2024-06-04",
+    "request_id": "request_04",
+    "requested_amount": "12693000",
+    "safe_amount_delta_actual_minus_expected": "3182978.17",
+    "user_id": "user_04"
+  },
+  {
+    "actual_amount_safe_to_pay": "7006.21",
+    "actual_earliest_full_payment": "",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "45724.21",
+        "date": "2025-11-06",
+        "flow": "-750.89",
+        "payment": "0"
+      },
+      {
+        "balance": "45724.21",
+        "date": "2025-11-07",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "45724.21",
+        "date": "2025-11-08",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "45724.21",
+        "date": "2025-11-09",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "45001.84",
+        "date": "2025-11-10",
+        "flow": "-722.37",
+        "payment": "0"
+      },
+      {
+        "balance": "44033.84",
+        "date": "2025-11-11",
+        "flow": "-968",
+        "payment": "0"
+      },
+      {
+        "balance": "43497.87",
+        "date": "2025-11-12",
+        "flow": "-535.97",
+        "payment": "0"
+      },
+      {
+        "balance": "42657.47",
+        "date": "2025-11-13",
+        "flow": "-840.4",
+        "payment": "0"
+      },
+      {
+        "balance": "42657.47",
+        "date": "2025-11-14",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "42657.47",
+        "date": "2025-11-15",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "42657.47",
+        "date": "2025-11-16",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "42657.47",
+        "date": "2025-11-17",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "42657.47",
+        "date": "2025-11-18",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "42657.47",
+        "date": "2025-11-19",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "42657.47",
+        "date": "2025-11-20",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "42657.47",
+        "date": "2025-11-21",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "42657.47",
+        "date": "2025-11-22",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "42657.47",
+        "date": "2025-11-23",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "42657.47",
+        "date": "2025-11-24",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "42657.47",
+        "date": "2025-11-25",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "42657.47",
+        "date": "2025-11-26",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "42657.47",
+        "date": "2025-11-27",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "42657.47",
+        "date": "2025-11-28",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "42657.47",
+        "date": "2025-11-29",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "42657.47",
+        "date": "2025-11-30",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "42657.47",
+        "date": "2025-12-01",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "37685.47",
+        "date": "2025-12-02",
+        "flow": "-4972",
+        "payment": "0"
+      },
+      {
+        "balance": "37685.47",
+        "date": "2025-12-03",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "37685.47",
+        "date": "2025-12-04",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "37685.47",
+        "date": "2025-12-05",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "36934.58",
+        "date": "2025-12-06",
+        "flow": "-750.89",
+        "payment": "0"
+      },
+      {
+        "balance": "36934.58",
+        "date": "2025-12-07",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "36934.58",
+        "date": "2025-12-08",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "36934.58",
+        "date": "2025-12-09",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "36212.21",
+        "date": "2025-12-10",
+        "flow": "-722.37",
+        "payment": "0"
+      },
+      {
+        "balance": "35244.21",
+        "date": "2025-12-11",
+        "flow": "-968",
+        "payment": "0"
+      },
+      {
+        "balance": "34708.24",
+        "date": "2025-12-12",
+        "flow": "-535.97",
+        "payment": "0"
+      },
+      {
+        "balance": "33867.84",
+        "date": "2025-12-13",
+        "flow": "-840.4",
+        "payment": "0"
+      },
+      {
+        "balance": "33867.84",
+        "date": "2025-12-14",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "33867.84",
+        "date": "2025-12-15",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "33867.84",
+        "date": "2025-12-16",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "33867.84",
+        "date": "2025-12-17",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "33867.84",
+        "date": "2025-12-18",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "33867.84",
+        "date": "2025-12-19",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "33867.84",
+        "date": "2025-12-20",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "33867.84",
+        "date": "2025-12-21",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "33867.84",
+        "date": "2025-12-22",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "33867.84",
+        "date": "2025-12-23",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "33867.84",
+        "date": "2025-12-24",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "33867.84",
+        "date": "2025-12-25",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "33867.84",
+        "date": "2025-12-26",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "33867.84",
+        "date": "2025-12-27",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "33867.84",
+        "date": "2025-12-28",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "33867.84",
+        "date": "2025-12-29",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "33867.84",
+        "date": "2025-12-30",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "33867.84",
+        "date": "2025-12-31",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "33867.84",
+        "date": "2026-01-01",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "28895.84",
+        "date": "2026-01-02",
+        "flow": "-4972",
+        "payment": "0"
+      },
+      {
+        "balance": "28895.84",
+        "date": "2026-01-03",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "28895.84",
+        "date": "2026-01-04",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "28895.84",
+        "date": "2026-01-05",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "28144.95",
+        "date": "2026-01-06",
+        "flow": "-750.89",
+        "payment": "0"
+      },
+      {
+        "balance": "28144.95",
+        "date": "2026-01-07",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "28144.95",
+        "date": "2026-01-08",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "28144.95",
+        "date": "2026-01-09",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "27422.58",
+        "date": "2026-01-10",
+        "flow": "-722.37",
+        "payment": "0"
+      },
+      {
+        "balance": "26454.58",
+        "date": "2026-01-11",
+        "flow": "-968",
+        "payment": "0"
+      },
+      {
+        "balance": "25918.61",
+        "date": "2026-01-12",
+        "flow": "-535.97",
+        "payment": "0"
+      },
+      {
+        "balance": "25078.21",
+        "date": "2026-01-13",
+        "flow": "-840.4",
+        "payment": "0"
+      },
+      {
+        "balance": "25078.21",
+        "date": "2026-01-14",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "25078.21",
+        "date": "2026-01-15",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "25078.21",
+        "date": "2026-01-16",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "25078.21",
+        "date": "2026-01-17",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "25078.21",
+        "date": "2026-01-18",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "25078.21",
+        "date": "2026-01-19",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "25078.21",
+        "date": "2026-01-20",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "25078.21",
+        "date": "2026-01-21",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "25078.21",
+        "date": "2026-01-22",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "25078.21",
+        "date": "2026-01-23",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "25078.21",
+        "date": "2026-01-24",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "25078.21",
+        "date": "2026-01-25",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "25078.21",
+        "date": "2026-01-26",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "25078.21",
+        "date": "2026-01-27",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "25078.21",
+        "date": "2026-01-28",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "25078.21",
+        "date": "2026-01-29",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "25078.21",
+        "date": "2026-01-30",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "25078.21",
+        "date": "2026-01-31",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "25078.21",
+        "date": "2026-02-01",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "20106.21",
+        "date": "2026-02-02",
+        "flow": "-4972",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "not_recommended",
+    "actual_minimum_balance": "20106.21",
+    "actual_minimum_date": "2026-02-02",
+    "actual_status": "not_affordable",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "46475.1",
+    "expected_amount_safe_to_pay": "737",
+    "expected_earliest_full_payment": "",
+    "expected_implied_balance_constraint": "13837",
+    "expected_method": "not_recommended",
+    "expected_status": "not_affordable",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "13100",
+    "request_date": "2025-11-06",
+    "request_id": "request_05",
+    "requested_amount": "15488",
+    "safe_amount_delta_actual_minus_expected": "6269.21",
+    "user_id": "user_05"
+  },
+  {
+    "actual_amount_safe_to_pay": "620.4",
+    "actual_earliest_full_payment": "2026-01-03",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "1688.3",
+        "date": "2026-01-03",
+        "flow": "-254.1",
+        "payment": "0"
+      },
+      {
+        "balance": "1688.3",
+        "date": "2026-01-04",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "1688.3",
+        "date": "2026-01-05",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "1688.3",
+        "date": "2026-01-06",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "1577.77",
+        "date": "2026-01-07",
+        "flow": "-110.53",
+        "payment": "0"
+      },
+      {
+        "balance": "1551.77",
+        "date": "2026-01-08",
+        "flow": "-26",
+        "payment": "0"
+      },
+      {
+        "balance": "1551.77",
+        "date": "2026-01-09",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "1532.77",
+        "date": "2026-01-10",
+        "flow": "-19",
+        "payment": "0"
+      },
+      {
+        "balance": "1475.20",
+        "date": "2026-01-11",
+        "flow": "-57.57",
+        "payment": "0"
+      },
+      {
+        "balance": "1475.20",
+        "date": "2026-01-12",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "1430.32",
+        "date": "2026-01-13",
+        "flow": "-44.88",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "full_payment",
+    "actual_minimum_balance": "1430.32",
+    "actual_minimum_date": "2026-01-13",
+    "actual_status": "affordable_now",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "1942.4",
+    "expected_amount_safe_to_pay": "603.3",
+    "expected_earliest_full_payment": "2026-01-15",
+    "expected_implied_balance_constraint": "1403.3",
+    "expected_method": "full_payment",
+    "expected_status": "affordable_with_plan",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "800",
+    "request_date": "2026-01-03",
+    "request_id": "request_06",
+    "requested_amount": "620.4",
+    "safe_amount_delta_actual_minus_expected": "17.1",
+    "user_id": "user_06"
+  },
+  {
+    "actual_amount_safe_to_pay": "98080.53",
+    "actual_earliest_full_payment": "2024-10-23",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "218945.56",
+        "date": "2024-09-05",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "218945.56",
+        "date": "2024-09-06",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "218945.56",
+        "date": "2024-09-07",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "211558.15",
+        "date": "2024-09-08",
+        "flow": "-7387.41",
+        "payment": "0"
+      },
+      {
+        "balance": "211558.15",
+        "date": "2024-09-09",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "211558.15",
+        "date": "2024-09-10",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "211558.15",
+        "date": "2024-09-11",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "211558.15",
+        "date": "2024-09-12",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "194903.15",
+        "date": "2024-09-13",
+        "flow": "-16655",
+        "payment": "0"
+      },
+      {
+        "balance": "194903.15",
+        "date": "2024-09-14",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "194903.15",
+        "date": "2024-09-15",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "194903.15",
+        "date": "2024-09-16",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "194903.15",
+        "date": "2024-09-17",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "194903.15",
+        "date": "2024-09-18",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "194903.15",
+        "date": "2024-09-19",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "191080.53",
+        "date": "2024-09-20",
+        "flow": "-3822.62",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "installments",
+    "actual_minimum_balance": "191080.53",
+    "actual_minimum_date": "2024-09-20",
+    "actual_status": "affordable_with_plan",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "218945.56",
+    "expected_amount_safe_to_pay": "87170.56",
+    "expected_earliest_full_payment": "2024-10-23",
+    "expected_implied_balance_constraint": "180170.56",
+    "expected_method": "installments",
+    "expected_status": "affordable_with_plan",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "93000",
+    "request_date": "2024-09-05",
+    "request_id": "request_07",
+    "requested_amount": "197400",
+    "safe_amount_delta_actual_minus_expected": "10909.97",
+    "user_id": "user_07"
+  },
+  {
+    "actual_amount_safe_to_pay": "383.59",
+    "actual_earliest_full_payment": "2025-04-15",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "1447.57",
+        "date": "2025-02-07",
+        "flow": "-89",
+        "payment": "0"
+      },
+      {
+        "balance": "1447.57",
+        "date": "2025-02-08",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "1447.57",
+        "date": "2025-02-09",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "1207.59",
+        "date": "2025-02-10",
+        "flow": "-239.98",
+        "payment": "0"
+      },
+      {
+        "balance": "1207.59",
+        "date": "2025-02-11",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "1183.59",
+        "date": "2025-02-12",
+        "flow": "-24",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "wait",
+    "actual_minimum_balance": "1183.59",
+    "actual_minimum_date": "2025-02-12",
+    "actual_status": "affordable_later",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "1536.57",
+    "expected_amount_safe_to_pay": "284.57",
+    "expected_earliest_full_payment": "2025-04-15",
+    "expected_implied_balance_constraint": "1084.57",
+    "expected_method": "wait",
+    "expected_status": "affordable_later",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "800",
+    "request_date": "2025-02-07",
+    "request_id": "request_08",
+    "requested_amount": "996.6",
+    "safe_amount_delta_actual_minus_expected": "99.02",
+    "user_id": "user_08"
+  },
+  {
+    "actual_amount_safe_to_pay": "166.61",
+    "actual_earliest_full_payment": "2026-07-04",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "2231.1",
+        "date": "2026-07-04",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "2231.1",
+        "date": "2026-07-05",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "2160.06",
+        "date": "2026-07-06",
+        "flow": "-71.04",
+        "payment": "0"
+      },
+      {
+        "balance": "2160.06",
+        "date": "2026-07-07",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "2160.06",
+        "date": "2026-07-08",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "2140.06",
+        "date": "2026-07-09",
+        "flow": "-20",
+        "payment": "0"
+      },
+      {
+        "balance": "2140.06",
+        "date": "2026-07-10",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "2140.06",
+        "date": "2026-07-11",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "2106.74",
+        "date": "2026-07-12",
+        "flow": "-33.32",
+        "payment": "0"
+      },
+      {
+        "balance": "2106.74",
+        "date": "2026-07-13",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "2106.74",
+        "date": "2026-07-14",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "2106.74",
+        "date": "2026-07-15",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "2106.74",
+        "date": "2026-07-16",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "2106.74",
+        "date": "2026-07-17",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "2106.74",
+        "date": "2026-07-18",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "2051.84",
+        "date": "2026-07-19",
+        "flow": "-54.9",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "full_payment",
+    "actual_minimum_balance": "2051.84",
+    "actual_minimum_date": "2026-07-19",
+    "actual_status": "affordable_now",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "2231.1",
+    "expected_amount_safe_to_pay": "166.61",
+    "expected_earliest_full_payment": "2026-07-04",
+    "expected_implied_balance_constraint": "766.61",
+    "expected_method": "full_payment",
+    "expected_status": "affordable_now",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "600",
+    "request_date": "2026-07-04",
+    "request_id": "request_09",
+    "requested_amount": "166.61",
+    "safe_amount_delta_actual_minus_expected": "0.00",
+    "user_id": "user_09"
+  },
+  {
+    "actual_amount_safe_to_pay": "266700",
+    "actual_earliest_full_payment": "2024-12-06",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "743572.61",
+        "date": "2024-12-06",
+        "flow": "-6582.39",
+        "payment": "0"
+      },
+      {
+        "balance": "725801.48",
+        "date": "2024-12-07",
+        "flow": "-17771.13",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "not_recommended",
+    "actual_minimum_balance": "725801.48",
+    "actual_minimum_date": "2024-12-07",
+    "actual_status": "not_affordable",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "750155",
+    "expected_amount_safe_to_pay": "12700",
+    "expected_earliest_full_payment": "",
+    "expected_implied_balance_constraint": "238100",
+    "expected_method": "not_recommended",
+    "expected_status": "not_affordable",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "225400",
+    "request_date": "2024-12-06",
+    "request_id": "request_10",
+    "requested_amount": "266700",
+    "safe_amount_delta_actual_minus_expected": "254000",
+    "user_id": "user_10"
+  },
+  {
+    "actual_amount_safe_to_pay": "13110000",
+    "actual_earliest_full_payment": "2025-05-03",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "63531795",
+        "date": "2025-05-03",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "63531795",
+        "date": "2025-05-04",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "59364390.67",
+        "date": "2025-05-05",
+        "flow": "-4167404.33",
+        "payment": "0"
+      },
+      {
+        "balance": "59364390.67",
+        "date": "2025-05-06",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "59364390.67",
+        "date": "2025-05-07",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "56568225.49",
+        "date": "2025-05-08",
+        "flow": "-2796165.18",
+        "payment": "0"
+      },
+      {
+        "balance": "54687225.49",
+        "date": "2025-05-09",
+        "flow": "-1881000",
+        "payment": "0"
+      },
+      {
+        "balance": "52143125.49",
+        "date": "2025-05-10",
+        "flow": "-2544100",
+        "payment": "0"
+      },
+      {
+        "balance": "52143125.49",
+        "date": "2025-05-11",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "48977487.19",
+        "date": "2025-05-12",
+        "flow": "-3165638.3",
+        "payment": "0"
+      },
+      {
+        "balance": "48977487.19",
+        "date": "2025-05-13",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "48809337.19",
+        "date": "2025-05-14",
+        "flow": "-168150",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "full_payment",
+    "actual_minimum_balance": "48809337.19",
+    "actual_minimum_date": "2025-05-14",
+    "actual_status": "affordable_now",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "63531795",
+    "expected_amount_safe_to_pay": "12510645",
+    "expected_earliest_full_payment": "2025-07-15",
+    "expected_implied_balance_constraint": "46651245",
+    "expected_method": "full_payment",
+    "expected_status": "affordable_with_plan",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "34140600",
+    "request_date": "2025-05-03",
+    "request_id": "request_11",
+    "requested_amount": "13110000",
+    "safe_amount_delta_actual_minus_expected": "599355",
+    "user_id": "user_11"
+  },
+  {
+    "actual_amount_safe_to_pay": "65164",
+    "actual_earliest_full_payment": "2026-04-05",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "189333.93",
+        "date": "2026-04-05",
+        "flow": "-3755.96",
+        "payment": "0"
+      },
+      {
+        "balance": "189333.93",
+        "date": "2026-04-06",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "186901.02",
+        "date": "2026-04-07",
+        "flow": "-2432.91",
+        "payment": "0"
+      },
+      {
+        "balance": "185396.22",
+        "date": "2026-04-08",
+        "flow": "-1504.8",
+        "payment": "0"
+      },
+      {
+        "balance": "185396.22",
+        "date": "2026-04-09",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "185396.22",
+        "date": "2026-04-10",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "183546.53",
+        "date": "2026-04-11",
+        "flow": "-1849.69",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "installments",
+    "actual_minimum_balance": "183546.53",
+    "actual_minimum_date": "2026-04-11",
+    "actual_status": "affordable_with_plan",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "193089.89",
+    "expected_amount_safe_to_pay": "65164",
+    "expected_earliest_full_payment": "2026-04-05",
+    "expected_implied_balance_constraint": "108364",
+    "expected_method": "installments",
+    "expected_status": "affordable_with_plan",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "43200",
+    "request_date": "2026-04-05",
+    "request_id": "request_12",
+    "requested_amount": "65164",
+    "safe_amount_delta_actual_minus_expected": "0",
+    "user_id": "user_12"
+  },
+  {
+    "actual_amount_safe_to_pay": "941.6",
+    "actual_earliest_full_payment": "2024-03-07",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "2789.52",
+        "date": "2024-03-07",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "2789.52",
+        "date": "2024-03-08",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "2789.52",
+        "date": "2024-03-09",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "2728.52",
+        "date": "2024-03-10",
+        "flow": "-61",
+        "payment": "0"
+      },
+      {
+        "balance": "2699.52",
+        "date": "2024-03-11",
+        "flow": "-29",
+        "payment": "0"
+      },
+      {
+        "balance": "2597.27",
+        "date": "2024-03-12",
+        "flow": "-102.25",
+        "payment": "0"
+      },
+      {
+        "balance": "2576.27",
+        "date": "2024-03-13",
+        "flow": "-21",
+        "payment": "0"
+      },
+      {
+        "balance": "2538.37",
+        "date": "2024-03-14",
+        "flow": "-37.9",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "full_payment",
+    "actual_minimum_balance": "2538.37",
+    "actual_minimum_date": "2024-03-14",
+    "actual_status": "affordable_now",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "2789.52",
+    "expected_amount_safe_to_pay": "433.4",
+    "expected_earliest_full_payment": "2024-05-15",
+    "expected_implied_balance_constraint": "1733.4",
+    "expected_method": "wait",
+    "expected_status": "affordable_later",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "1300",
+    "request_date": "2024-03-07",
+    "request_id": "request_13",
+    "requested_amount": "941.6",
+    "safe_amount_delta_actual_minus_expected": "508.2",
+    "user_id": "user_13"
+  },
+  {
+    "actual_amount_safe_to_pay": "613.64",
+    "actual_earliest_full_payment": "",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "3931.74",
+        "date": "2025-08-04",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "3931.74",
+        "date": "2025-08-05",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "3931.74",
+        "date": "2025-08-06",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "3778.05",
+        "date": "2025-08-07",
+        "flow": "-153.69",
+        "payment": "0"
+      },
+      {
+        "balance": "3778.05",
+        "date": "2025-08-08",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "3778.05",
+        "date": "2025-08-09",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "3639.20",
+        "date": "2025-08-10",
+        "flow": "-138.85",
+        "payment": "0"
+      },
+      {
+        "balance": "3544.03",
+        "date": "2025-08-11",
+        "flow": "-95.17",
+        "payment": "0"
+      },
+      {
+        "balance": "3194.03",
+        "date": "2025-08-12",
+        "flow": "-350",
+        "payment": "0"
+      },
+      {
+        "balance": "3039.64",
+        "date": "2025-08-13",
+        "flow": "-154.39",
+        "payment": "0"
+      },
+      {
+        "balance": "2813.64",
+        "date": "2025-08-14",
+        "flow": "-226",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "not_recommended",
+    "actual_minimum_balance": "2813.64",
+    "actual_minimum_date": "2025-08-14",
+    "actual_status": "not_affordable",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "3931.74",
+    "expected_amount_safe_to_pay": "597.74",
+    "expected_earliest_full_payment": "",
+    "expected_implied_balance_constraint": "2797.74",
+    "expected_method": "not_recommended",
+    "expected_status": "not_affordable",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "2200",
+    "request_date": "2025-08-04",
+    "request_id": "request_14",
+    "requested_amount": "5414.2",
+    "safe_amount_delta_actual_minus_expected": "15.90",
+    "user_id": "user_14"
+  },
+  {
+    "actual_amount_safe_to_pay": "225.66",
+    "actual_earliest_full_payment": "",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "1770.05",
+        "date": "2026-01-06",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "1770.05",
+        "date": "2026-01-07",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "1679.66",
+        "date": "2026-01-08",
+        "flow": "-90.39",
+        "payment": "0"
+      },
+      {
+        "balance": "1679.66",
+        "date": "2026-01-09",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "1520.66",
+        "date": "2026-01-10",
+        "flow": "-159",
+        "payment": "0"
+      },
+      {
+        "balance": "1520.66",
+        "date": "2026-01-11",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "1520.66",
+        "date": "2026-01-12",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "1425.66",
+        "date": "2026-01-13",
+        "flow": "-95",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "not_recommended",
+    "actual_minimum_balance": "1425.66",
+    "actual_minimum_date": "2026-01-13",
+    "actual_status": "not_affordable",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "1770.05",
+    "expected_amount_safe_to_pay": "83.05",
+    "expected_earliest_full_payment": "",
+    "expected_implied_balance_constraint": "1283.05",
+    "expected_method": "not_recommended",
+    "expected_status": "not_affordable",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "1200",
+    "request_date": "2026-01-06",
+    "request_id": "request_15",
+    "requested_amount": "3685",
+    "safe_amount_delta_actual_minus_expected": "142.61",
+    "user_id": "user_15"
+  },
+  {
+    "actual_amount_safe_to_pay": "122500",
+    "actual_earliest_full_payment": "2023-08-12",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "362370",
+        "date": "2023-08-12",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "362370",
+        "date": "2023-08-13",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "362370",
+        "date": "2023-08-14",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "535370",
+        "date": "2023-08-15",
+        "flow": "173000",
+        "payment": "0"
+      },
+      {
+        "balance": "426486.85",
+        "date": "2023-08-16",
+        "flow": "-108883.15",
+        "payment": "0"
+      },
+      {
+        "balance": "421419.19",
+        "date": "2023-08-17",
+        "flow": "-5067.66",
+        "payment": "0"
+      },
+      {
+        "balance": "421419.19",
+        "date": "2023-08-18",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "421419.19",
+        "date": "2023-08-19",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "421419.19",
+        "date": "2023-08-20",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "421419.19",
+        "date": "2023-08-21",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "421419.19",
+        "date": "2023-08-22",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "412536.04",
+        "date": "2023-08-23",
+        "flow": "-8883.15",
+        "payment": "0"
+      },
+      {
+        "balance": "412536.04",
+        "date": "2023-08-24",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "412536.04",
+        "date": "2023-08-25",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "412536.04",
+        "date": "2023-08-26",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "412536.04",
+        "date": "2023-08-27",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "412536.04",
+        "date": "2023-08-28",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "412536.04",
+        "date": "2023-08-29",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "403652.89",
+        "date": "2023-08-30",
+        "flow": "-8883.15",
+        "payment": "0"
+      },
+      {
+        "balance": "403652.89",
+        "date": "2023-08-31",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "346552.89",
+        "date": "2023-09-01",
+        "flow": "-57100",
+        "payment": "0"
+      },
+      {
+        "balance": "346552.89",
+        "date": "2023-09-02",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "346552.89",
+        "date": "2023-09-03",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "346552.89",
+        "date": "2023-09-04",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "335040.02",
+        "date": "2023-09-05",
+        "flow": "-11512.87",
+        "payment": "0"
+      },
+      {
+        "balance": "326156.87",
+        "date": "2023-09-06",
+        "flow": "-8883.15",
+        "payment": "0"
+      },
+      {
+        "balance": "326156.87",
+        "date": "2023-09-07",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "322646.87",
+        "date": "2023-09-08",
+        "flow": "-3510",
+        "payment": "0"
+      },
+      {
+        "balance": "322646.87",
+        "date": "2023-09-09",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "304896.87",
+        "date": "2023-09-10",
+        "flow": "-17750",
+        "payment": "0"
+      },
+      {
+        "balance": "293663.31",
+        "date": "2023-09-11",
+        "flow": "-11233.56",
+        "payment": "0"
+      },
+      {
+        "balance": "293663.31",
+        "date": "2023-09-12",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "284780.16",
+        "date": "2023-09-13",
+        "flow": "-8883.15",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "full_payment",
+    "actual_minimum_balance": "284780.16",
+    "actual_minimum_date": "2023-09-13",
+    "actual_status": "affordable_now",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "362370",
+    "expected_amount_safe_to_pay": "122500",
+    "expected_earliest_full_payment": "2023-08-12",
+    "expected_implied_balance_constraint": "244900",
+    "expected_method": "full_payment",
+    "expected_status": "affordable_now",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "122400",
+    "request_date": "2023-08-12",
+    "request_id": "request_16",
+    "requested_amount": "122500",
+    "safe_amount_delta_actual_minus_expected": "0",
+    "user_id": "user_16"
+  },
+  {
+    "actual_amount_safe_to_pay": "248325.96",
+    "actual_earliest_full_payment": "2026-03-15",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "538946.25",
+        "date": "2026-03-01",
+        "flow": "-11433.33",
+        "payment": "0"
+      },
+      {
+        "balance": "489346.25",
+        "date": "2026-03-02",
+        "flow": "-49600",
+        "payment": "0"
+      },
+      {
+        "balance": "489346.25",
+        "date": "2026-03-03",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "489346.25",
+        "date": "2026-03-04",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "489346.25",
+        "date": "2026-03-05",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "479099.72",
+        "date": "2026-03-06",
+        "flow": "-10246.53",
+        "payment": "0"
+      },
+      {
+        "balance": "479099.72",
+        "date": "2026-03-07",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "465439.72",
+        "date": "2026-03-08",
+        "flow": "-13660",
+        "payment": "0"
+      },
+      {
+        "balance": "459789.29",
+        "date": "2026-03-09",
+        "flow": "-5650.43",
+        "payment": "0"
+      },
+      {
+        "balance": "459789.29",
+        "date": "2026-03-10",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "416100.96",
+        "date": "2026-03-11",
+        "flow": "-43688.33",
+        "payment": "0"
+      },
+      {
+        "balance": "416100.96",
+        "date": "2026-03-12",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "414425.96",
+        "date": "2026-03-13",
+        "flow": "-1675",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "installments",
+    "actual_minimum_balance": "414425.96",
+    "actual_minimum_date": "2026-03-13",
+    "actual_status": "affordable_with_plan",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "550379.58",
+    "expected_amount_safe_to_pay": "243849.58",
+    "expected_earliest_full_payment": "2026-03-15",
+    "expected_implied_balance_constraint": "409949.58",
+    "expected_method": "installments",
+    "expected_status": "affordable_with_plan",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "166100",
+    "request_date": "2026-03-01",
+    "request_id": "request_17",
+    "requested_amount": "274600",
+    "safe_amount_delta_actual_minus_expected": "4476.38",
+    "user_id": "user_17"
+  },
+  {
+    "actual_amount_safe_to_pay": "662.19",
+    "actual_earliest_full_payment": "2026-08-15",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "2360.6",
+        "date": "2026-07-07",
+        "flow": "-125.4",
+        "payment": "0"
+      },
+      {
+        "balance": "2292.6",
+        "date": "2026-07-08",
+        "flow": "-68",
+        "payment": "0"
+      },
+      {
+        "balance": "2292.6",
+        "date": "2026-07-09",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "2224.6",
+        "date": "2026-07-10",
+        "flow": "-68",
+        "payment": "0"
+      },
+      {
+        "balance": "2062.19",
+        "date": "2026-07-11",
+        "flow": "-162.41",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "wait",
+    "actual_minimum_balance": "2062.19",
+    "actual_minimum_date": "2026-07-11",
+    "actual_status": "affordable_later",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "2486",
+    "expected_amount_safe_to_pay": "462",
+    "expected_earliest_full_payment": "2026-09-15",
+    "expected_implied_balance_constraint": "1862",
+    "expected_method": "wait",
+    "expected_status": "affordable_later",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "1400",
+    "request_date": "2026-07-07",
+    "request_id": "request_18",
+    "requested_amount": "3246.1",
+    "safe_amount_delta_actual_minus_expected": "200.19",
+    "user_id": "user_18"
+  },
+  {
+    "actual_amount_safe_to_pay": "37555.87",
+    "actual_earliest_full_payment": "2024-09-15",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "163445",
+        "date": "2024-09-04",
+        "flow": "-36100",
+        "payment": "0"
+      },
+      {
+        "balance": "163445",
+        "date": "2024-09-05",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "163445",
+        "date": "2024-09-06",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "163445",
+        "date": "2024-09-07",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "157315.81",
+        "date": "2024-09-08",
+        "flow": "-6129.19",
+        "payment": "0"
+      },
+      {
+        "balance": "157315.81",
+        "date": "2024-09-09",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "157315.81",
+        "date": "2024-09-10",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "157315.81",
+        "date": "2024-09-11",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "148670.45",
+        "date": "2024-09-12",
+        "flow": "-8645.36",
+        "payment": "0"
+      },
+      {
+        "balance": "136820.45",
+        "date": "2024-09-13",
+        "flow": "-11850",
+        "payment": "0"
+      },
+      {
+        "balance": "130355.87",
+        "date": "2024-09-14",
+        "flow": "-6464.58",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "partial_payment",
+    "actual_minimum_balance": "130355.87",
+    "actual_minimum_date": "2024-09-14",
+    "actual_status": "affordable_with_plan",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "199545",
+    "expected_amount_safe_to_pay": "28820",
+    "expected_earliest_full_payment": "2024-09-15",
+    "expected_implied_balance_constraint": "121620",
+    "expected_method": "partial_payment",
+    "expected_status": "affordable_with_plan",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "92800",
+    "request_date": "2024-09-04",
+    "request_id": "request_19",
+    "requested_amount": "39660",
+    "safe_amount_delta_actual_minus_expected": "8735.87",
+    "user_id": "user_19"
+  },
+  {
+    "actual_amount_safe_to_pay": "14941.75",
+    "actual_earliest_full_payment": "",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "93869.05",
+        "date": "2026-02-07",
+        "flow": "-8740",
+        "payment": "0"
+      },
+      {
+        "balance": "89399.05",
+        "date": "2026-02-08",
+        "flow": "-4470",
+        "payment": "0"
+      },
+      {
+        "balance": "81922.67",
+        "date": "2026-02-09",
+        "flow": "-7476.38",
+        "payment": "0"
+      },
+      {
+        "balance": "81922.67",
+        "date": "2026-02-10",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "81557.67",
+        "date": "2026-02-11",
+        "flow": "-365",
+        "payment": "0"
+      },
+      {
+        "balance": "81557.67",
+        "date": "2026-02-12",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "79441.75",
+        "date": "2026-02-13",
+        "flow": "-2115.92",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "not_recommended",
+    "actual_minimum_balance": "79441.75",
+    "actual_minimum_date": "2026-02-13",
+    "actual_status": "not_affordable",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "102609.05",
+    "expected_amount_safe_to_pay": "5400",
+    "expected_earliest_full_payment": "",
+    "expected_implied_balance_constraint": "69900",
+    "expected_method": "not_recommended",
+    "expected_status": "not_affordable",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "64500",
+    "request_date": "2026-02-07",
+    "request_id": "request_20",
+    "requested_amount": "303700",
+    "safe_amount_delta_actual_minus_expected": "9541.75",
+    "user_id": "user_20"
+  },
+  {
+    "actual_amount_safe_to_pay": "1574.4",
+    "actual_earliest_full_payment": "2026-04-03",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "3911.35",
+        "date": "2026-04-03",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "3911.35",
+        "date": "2026-04-04",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "3858.35",
+        "date": "2026-04-05",
+        "flow": "-53",
+        "payment": "0"
+      },
+      {
+        "balance": "3630.08",
+        "date": "2026-04-06",
+        "flow": "-228.27",
+        "payment": "0"
+      },
+      {
+        "balance": "3630.08",
+        "date": "2026-04-07",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "3630.08",
+        "date": "2026-04-08",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "3583.08",
+        "date": "2026-04-09",
+        "flow": "-47",
+        "payment": "0"
+      },
+      {
+        "balance": "3583.08",
+        "date": "2026-04-10",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "3583.08",
+        "date": "2026-04-11",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "3445.70",
+        "date": "2026-04-12",
+        "flow": "-137.38",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "full_payment",
+    "actual_minimum_balance": "3445.70",
+    "actual_minimum_date": "2026-04-12",
+    "actual_status": "affordable_now",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "3911.35",
+    "expected_amount_safe_to_pay": "1543.35",
+    "expected_earliest_full_payment": "2026-04-15",
+    "expected_implied_balance_constraint": "3343.35",
+    "expected_method": "full_payment",
+    "expected_status": "affordable_with_plan",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "1800",
+    "request_date": "2026-04-03",
+    "request_id": "request_21",
+    "requested_amount": "1574.4",
+    "safe_amount_delta_actual_minus_expected": "31.05",
+    "user_id": "user_21"
+  },
+  {
+    "actual_amount_safe_to_pay": "514.86",
+    "actual_earliest_full_payment": "2024-12-15",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "1117.38",
+        "date": "2024-12-05",
+        "flow": "-15.08",
+        "payment": "0"
+      },
+      {
+        "balance": "1117.38",
+        "date": "2024-12-06",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "1085.86",
+        "date": "2024-12-07",
+        "flow": "-31.52",
+        "payment": "0"
+      },
+      {
+        "balance": "1042.86",
+        "date": "2024-12-08",
+        "flow": "-43",
+        "payment": "0"
+      },
+      {
+        "balance": "1042.86",
+        "date": "2024-12-09",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "1042.86",
+        "date": "2024-12-10",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "1025.86",
+        "date": "2024-12-11",
+        "flow": "-17",
+        "payment": "0"
+      },
+      {
+        "balance": "1019.86",
+        "date": "2024-12-12",
+        "flow": "-6",
+        "payment": "0"
+      },
+      {
+        "balance": "1019.86",
+        "date": "2024-12-13",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "1014.86",
+        "date": "2024-12-14",
+        "flow": "-5",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "installments",
+    "actual_minimum_balance": "1014.86",
+    "actual_minimum_date": "2024-12-14",
+    "actual_status": "affordable_with_plan",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "1132.46",
+    "expected_amount_safe_to_pay": "475.46",
+    "expected_earliest_full_payment": "2025-01-15",
+    "expected_implied_balance_constraint": "975.46",
+    "expected_method": "installments",
+    "expected_status": "affordable_with_plan",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "500",
+    "request_date": "2024-12-05",
+    "request_id": "request_22",
+    "requested_amount": "731.5",
+    "safe_amount_delta_actual_minus_expected": "39.40",
+    "user_id": "user_22"
+  },
+  {
+    "actual_amount_safe_to_pay": "9303.91",
+    "actual_earliest_full_payment": "2025-07-15",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "51957.9",
+        "date": "2025-05-07",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "49042.23",
+        "date": "2025-05-08",
+        "flow": "-2915.67",
+        "payment": "0"
+      },
+      {
+        "balance": "49042.23",
+        "date": "2025-05-09",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "49042.23",
+        "date": "2025-05-10",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "47489.03",
+        "date": "2025-05-11",
+        "flow": "-1553.2",
+        "payment": "0"
+      },
+      {
+        "balance": "46049.12",
+        "date": "2025-05-12",
+        "flow": "-1439.91",
+        "payment": "0"
+      },
+      {
+        "balance": "40197.12",
+        "date": "2025-05-13",
+        "flow": "-5852",
+        "payment": "0"
+      },
+      {
+        "balance": "36303.91",
+        "date": "2025-05-14",
+        "flow": "-3893.21",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "wait",
+    "actual_minimum_balance": "36303.91",
+    "actual_minimum_date": "2025-05-14",
+    "actual_status": "affordable_later",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "51957.9",
+    "expected_amount_safe_to_pay": "9152",
+    "expected_earliest_full_payment": "2025-07-15",
+    "expected_implied_balance_constraint": "36152",
+    "expected_method": "wait",
+    "expected_status": "affordable_later",
+    "first_actual_incompatibility_date": null,
+    "minimum_balance_to_keep": "27000",
+    "request_date": "2025-05-07",
+    "request_id": "request_23",
+    "requested_amount": "38016",
+    "safe_amount_delta_actual_minus_expected": "151.91",
+    "user_id": "user_23"
+  },
+  {
+    "actual_amount_safe_to_pay": "12557.36",
+    "actual_earliest_full_payment": "",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "85045",
+        "date": "2026-01-04",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "81554.5",
+        "date": "2026-01-05",
+        "flow": "-3490.5",
+        "payment": "0"
+      },
+      {
+        "balance": "76783.77",
+        "date": "2026-01-06",
+        "flow": "-4770.73",
+        "payment": "0"
+      },
+      {
+        "balance": "76783.77",
+        "date": "2026-01-07",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "75583.77",
+        "date": "2026-01-08",
+        "flow": "-1200",
+        "payment": "0"
+      },
+      {
+        "balance": "73983.59",
+        "date": "2026-01-09",
+        "flow": "-1600.18",
+        "payment": "0"
+      },
+      {
+        "balance": "72090.21",
+        "date": "2026-01-10",
+        "flow": "-1893.38",
+        "payment": "0"
+      },
+      {
+        "balance": "67224.43",
+        "date": "2026-01-11",
+        "flow": "-4865.78",
+        "payment": "0"
+      },
+      {
+        "balance": "65473.52",
+        "date": "2026-01-12",
+        "flow": "-1750.91",
+        "payment": "0"
+      },
+      {
+        "balance": "63557.36",
+        "date": "2026-01-13",
+        "flow": "-1916.16",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "not_recommended",
+    "actual_minimum_balance": "63557.36",
+    "actual_minimum_date": "2026-01-13",
+    "actual_status": "not_affordable",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "85045",
+    "expected_amount_safe_to_pay": "13420",
+    "expected_earliest_full_payment": "",
+    "expected_implied_balance_constraint": "64420",
+    "expected_method": "not_recommended",
+    "expected_status": "not_affordable",
+    "first_actual_incompatibility_date": "2026-01-13",
+    "minimum_balance_to_keep": "51000",
+    "request_date": "2026-01-04",
+    "request_id": "request_24",
+    "requested_amount": "109600",
+    "safe_amount_delta_actual_minus_expected": "-862.64",
+    "user_id": "user_24"
+  },
+  {
+    "actual_amount_safe_to_pay": "0",
+    "actual_earliest_full_payment": "",
+    "actual_future_flows_through_minimum": [
+      {
+        "balance": "29772390.58",
+        "date": "2024-03-06",
+        "flow": "-2290659.42",
+        "payment": "0"
+      },
+      {
+        "balance": "28867990.58",
+        "date": "2024-03-07",
+        "flow": "-904400",
+        "payment": "0"
+      },
+      {
+        "balance": "26249421.57",
+        "date": "2024-03-08",
+        "flow": "-2618569.01",
+        "payment": "0"
+      },
+      {
+        "balance": "24574276.75",
+        "date": "2024-03-09",
+        "flow": "-1675144.82",
+        "payment": "0"
+      },
+      {
+        "balance": "24574276.75",
+        "date": "2024-03-10",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "24574276.75",
+        "date": "2024-03-11",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "23277655.46",
+        "date": "2024-03-12",
+        "flow": "-1296621.29",
+        "payment": "0"
+      },
+      {
+        "balance": "23277655.46",
+        "date": "2024-03-13",
+        "flow": "0",
+        "payment": "0"
+      },
+      {
+        "balance": "22772958.09",
+        "date": "2024-03-14",
+        "flow": "-504697.37",
+        "payment": "0"
+      }
+    ],
+    "actual_method": "not_recommended",
+    "actual_minimum_balance": "22772958.09",
+    "actual_minimum_date": "2024-03-14",
+    "actual_status": "not_affordable",
+    "binding_assumption": "expected safe amount plus reserve is treated as an implied trough only when the expected amount is not request-capped",
+    "current_available_balance": "32063050",
+    "expected_amount_safe_to_pay": "1425000",
+    "expected_earliest_full_payment": "",
+    "expected_implied_balance_constraint": "24804100",
+    "expected_method": "not_recommended",
+    "expected_status": "not_affordable",
+    "first_actual_incompatibility_date": "2024-03-09",
+    "minimum_balance_to_keep": "23379100",
+    "request_date": "2024-03-06",
+    "request_id": "request_25",
+    "requested_amount": "60496000",
+    "safe_amount_delta_actual_minus_expected": "-1425000",
+    "user_id": "user_25"
+  }
+]

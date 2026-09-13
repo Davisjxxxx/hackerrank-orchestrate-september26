@@ -1,0 +1,2176 @@
+{
+  "rows": [
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 110,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "-45588.82",
+            "date": "2025-08-12",
+            "event_ids": [
+              "event_174@2025-08-12"
+            ],
+            "id": "replace_amount:event_174@2025-08-12:1374936.26",
+            "kind": "replace_observed_amount",
+            "label": "replace event_174@2025-08-12 amount with observed historical 1374936.26",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "1374936.26",
+            "source_event_ids": []
+          },
+          "delta_explained": "-45588.82",
+          "residual": "-1204602.14"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-45588.82",
+            "date": "2025-08-26",
+            "event_ids": [
+              "event_174@2025-08-26"
+            ],
+            "id": "replace_amount:event_174@2025-08-26:1374936.26",
+            "kind": "replace_observed_amount",
+            "label": "replace event_174@2025-08-26 amount with observed historical 1374936.26",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "1374936.26",
+            "source_event_ids": []
+          },
+          "delta_explained": "-45588.82",
+          "residual": "-1204602.14"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-45588.82",
+            "date": "2025-09-09",
+            "event_ids": [
+              "event_174@2025-09-09"
+            ],
+            "id": "replace_amount:event_174@2025-09-09:1374936.26",
+            "kind": "replace_observed_amount",
+            "label": "replace event_174@2025-09-09 amount with observed historical 1374936.26",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "1374936.26",
+            "source_event_ids": []
+          },
+          "delta_explained": "-45588.82",
+          "residual": "-1204602.14"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-45588.82",
+            "date": "2025-09-23",
+            "event_ids": [
+              "event_174@2025-09-23"
+            ],
+            "id": "replace_amount:event_174@2025-09-23:1374936.26",
+            "kind": "replace_observed_amount",
+            "label": "replace event_174@2025-09-23 amount with observed historical 1374936.26",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "1374936.26",
+            "source_event_ids": []
+          },
+          "delta_explained": "-45588.82",
+          "residual": "-1204602.14"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-45588.82",
+            "date": "2025-10-07",
+            "event_ids": [
+              "event_174@2025-10-07"
+            ],
+            "id": "replace_amount:event_174@2025-10-07:1374936.26",
+            "kind": "replace_observed_amount",
+            "label": "replace event_174@2025-10-07 amount with observed historical 1374936.26",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "1374936.26",
+            "source_event_ids": []
+          },
+          "delta_explained": "-45588.82",
+          "residual": "-1204602.14"
+        }
+      ],
+      "request_id": "request_02",
+      "required_flow_correction_expected_minus_actual": "-1250190.96",
+      "required_safe_delta_actual_minus_expected": "1250190.96",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 83,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "-3878.73",
+            "date": "2019-09-14",
+            "event_ids": [
+              "event_216@2019-09-14"
+            ],
+            "id": "replace_amount:event_216@2019-09-14:184274.02",
+            "kind": "replace_observed_amount",
+            "label": "replace event_216@2019-09-14 amount with observed historical 184274.02",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "184274.02",
+            "source_event_ids": []
+          },
+          "delta_explained": "-3878.73",
+          "residual": "-173192.66"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-3878.73",
+            "date": "2019-10-14",
+            "event_ids": [
+              "event_216@2019-10-14"
+            ],
+            "id": "replace_amount:event_216@2019-10-14:184274.02",
+            "kind": "replace_observed_amount",
+            "label": "replace event_216@2019-10-14 amount with observed historical 184274.02",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "184274.02",
+            "source_event_ids": []
+          },
+          "delta_explained": "-3878.73",
+          "residual": "-173192.66"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-3878.73",
+            "date": "2019-11-14",
+            "event_ids": [
+              "event_216@2019-11-14"
+            ],
+            "id": "replace_amount:event_216@2019-11-14:184274.02",
+            "kind": "replace_observed_amount",
+            "label": "replace event_216@2019-11-14 amount with observed historical 184274.02",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "184274.02",
+            "source_event_ids": []
+          },
+          "delta_explained": "-3878.73",
+          "residual": "-173192.66"
+        },
+        {
+          "candidate": {
+            "correction_flow": "4077.89",
+            "date": "2019-09-08",
+            "event_ids": [
+              "event_219@2019-09-08"
+            ],
+            "id": "replace_amount:event_219@2019-09-08:230312.98",
+            "kind": "replace_observed_amount",
+            "label": "replace event_219@2019-09-08 amount with observed historical 230312.98",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "230312.98",
+            "source_event_ids": []
+          },
+          "delta_explained": "4077.89",
+          "residual": "-181149.28"
+        },
+        {
+          "candidate": {
+            "correction_flow": "4077.89",
+            "date": "2019-09-18",
+            "event_ids": [
+              "event_219@2019-09-18"
+            ],
+            "id": "replace_amount:event_219@2019-09-18:230312.98",
+            "kind": "replace_observed_amount",
+            "label": "replace event_219@2019-09-18 amount with observed historical 230312.98",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "230312.98",
+            "source_event_ids": []
+          },
+          "delta_explained": "4077.89",
+          "residual": "-181149.28"
+        }
+      ],
+      "request_id": "request_03",
+      "required_flow_correction_expected_minus_actual": "-177071.39",
+      "required_safe_delta_actual_minus_expected": "177071.39",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 167,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "15128.08",
+            "date": "2024-06-26",
+            "event_ids": [
+              "event_342@2024-06-26"
+            ],
+            "id": "replace_amount:event_342@2024-06-26:874634.88",
+            "kind": "replace_observed_amount",
+            "label": "replace event_342@2024-06-26 amount with observed historical 874634.88",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "874634.88",
+            "source_event_ids": []
+          },
+          "delta_explained": "15128.08",
+          "residual": "-3198106.25"
+        },
+        {
+          "candidate": {
+            "correction_flow": "15128.08",
+            "date": "2024-07-27",
+            "event_ids": [
+              "event_342@2024-07-27"
+            ],
+            "id": "replace_amount:event_342@2024-07-27:874634.88",
+            "kind": "replace_observed_amount",
+            "label": "replace event_342@2024-07-27 amount with observed historical 874634.88",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "874634.88",
+            "source_event_ids": []
+          },
+          "delta_explained": "15128.08",
+          "residual": "-3198106.25"
+        },
+        {
+          "candidate": {
+            "correction_flow": "15128.08",
+            "date": "2024-08-27",
+            "event_ids": [
+              "event_342@2024-08-27"
+            ],
+            "id": "replace_amount:event_342@2024-08-27:874634.88",
+            "kind": "replace_observed_amount",
+            "label": "replace event_342@2024-08-27 amount with observed historical 874634.88",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "874634.88",
+            "source_event_ids": []
+          },
+          "delta_explained": "15128.08",
+          "residual": "-3198106.25"
+        },
+        {
+          "candidate": {
+            "correction_flow": "16765.46",
+            "date": "2024-06-05",
+            "event_ids": [
+              "event_286@2024-06-05"
+            ],
+            "id": "replace_amount:event_286@2024-06-05:2017103.37",
+            "kind": "replace_observed_amount",
+            "label": "replace event_286@2024-06-05 amount with observed historical 2017103.37",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "2017103.37",
+            "source_event_ids": []
+          },
+          "delta_explained": "16765.46",
+          "residual": "-3199743.63"
+        },
+        {
+          "candidate": {
+            "correction_flow": "16765.46",
+            "date": "2024-07-05",
+            "event_ids": [
+              "event_286@2024-07-05"
+            ],
+            "id": "replace_amount:event_286@2024-07-05:2017103.37",
+            "kind": "replace_observed_amount",
+            "label": "replace event_286@2024-07-05 amount with observed historical 2017103.37",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "2017103.37",
+            "source_event_ids": []
+          },
+          "delta_explained": "16765.46",
+          "residual": "-3199743.63"
+        }
+      ],
+      "request_id": "request_04",
+      "required_flow_correction_expected_minus_actual": "-3182978.17",
+      "required_safe_delta_actual_minus_expected": "3182978.17",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 64,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "-54.90",
+            "date": "2025-11-10",
+            "event_ids": [
+              "event_394@2025-11-10"
+            ],
+            "id": "replace_amount:event_394@2025-11-10:777.27",
+            "kind": "replace_observed_amount",
+            "label": "replace event_394@2025-11-10 amount with observed historical 777.27",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "777.27",
+            "source_event_ids": []
+          },
+          "delta_explained": "-54.90",
+          "residual": "-6214.31"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-54.90",
+            "date": "2025-12-10",
+            "event_ids": [
+              "event_394@2025-12-10"
+            ],
+            "id": "replace_amount:event_394@2025-12-10:777.27",
+            "kind": "replace_observed_amount",
+            "label": "replace event_394@2025-12-10 amount with observed historical 777.27",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "777.27",
+            "source_event_ids": []
+          },
+          "delta_explained": "-54.90",
+          "residual": "-6214.31"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-54.90",
+            "date": "2026-01-10",
+            "event_ids": [
+              "event_394@2026-01-10"
+            ],
+            "id": "replace_amount:event_394@2026-01-10:777.27",
+            "kind": "replace_observed_amount",
+            "label": "replace event_394@2026-01-10 amount with observed historical 777.27",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "777.27",
+            "source_event_ids": []
+          },
+          "delta_explained": "-54.90",
+          "residual": "-6214.31"
+        },
+        {
+          "candidate": {
+            "correction_flow": "0.93",
+            "date": "2025-11-10",
+            "event_ids": [
+              "event_394@2025-11-10"
+            ],
+            "id": "replace_amount:event_394@2025-11-10:721.44",
+            "kind": "replace_observed_amount",
+            "label": "replace event_394@2025-11-10 amount with observed historical 721.44",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "721.44",
+            "source_event_ids": []
+          },
+          "delta_explained": "0.93",
+          "residual": "-6270.14"
+        },
+        {
+          "candidate": {
+            "correction_flow": "0.93",
+            "date": "2025-12-10",
+            "event_ids": [
+              "event_394@2025-12-10"
+            ],
+            "id": "replace_amount:event_394@2025-12-10:721.44",
+            "kind": "replace_observed_amount",
+            "label": "replace event_394@2025-12-10 amount with observed historical 721.44",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "721.44",
+            "source_event_ids": []
+          },
+          "delta_explained": "0.93",
+          "residual": "-6270.14"
+        }
+      ],
+      "request_id": "request_05",
+      "required_flow_correction_expected_minus_actual": "-6269.21",
+      "required_safe_delta_actual_minus_expected": "6269.21",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 157,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "-6.37",
+            "date": "2026-01-13",
+            "event_ids": [
+              "event_477@2026-01-13"
+            ],
+            "id": "replace_amount:event_477@2026-01-13:46.25",
+            "kind": "replace_observed_amount",
+            "label": "replace event_477@2026-01-13 amount with observed historical 46.25",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "46.25",
+            "source_event_ids": []
+          },
+          "delta_explained": "-6.37",
+          "residual": "-10.73"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-6.37",
+            "date": "2026-02-13",
+            "event_ids": [
+              "event_477@2026-02-13"
+            ],
+            "id": "replace_amount:event_477@2026-02-13:46.25",
+            "kind": "replace_observed_amount",
+            "label": "replace event_477@2026-02-13 amount with observed historical 46.25",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "46.25",
+            "source_event_ids": []
+          },
+          "delta_explained": "-6.37",
+          "residual": "-10.73"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-6.37",
+            "date": "2026-03-13",
+            "event_ids": [
+              "event_477@2026-03-13"
+            ],
+            "id": "replace_amount:event_477@2026-03-13:46.25",
+            "kind": "replace_observed_amount",
+            "label": "replace event_477@2026-03-13 amount with observed historical 46.25",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "46.25",
+            "source_event_ids": []
+          },
+          "delta_explained": "-6.37",
+          "residual": "-10.73"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-1.56",
+            "date": "2026-01-13",
+            "event_ids": [
+              "event_477@2026-01-13"
+            ],
+            "id": "replace_amount:event_477@2026-01-13:41.44",
+            "kind": "replace_observed_amount",
+            "label": "replace event_477@2026-01-13 amount with observed historical 41.44",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "41.44",
+            "source_event_ids": []
+          },
+          "delta_explained": "-1.56",
+          "residual": "-15.54"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-1.56",
+            "date": "2026-02-13",
+            "event_ids": [
+              "event_477@2026-02-13"
+            ],
+            "id": "replace_amount:event_477@2026-02-13:41.44",
+            "kind": "replace_observed_amount",
+            "label": "replace event_477@2026-02-13 amount with observed historical 41.44",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "41.44",
+            "source_event_ids": []
+          },
+          "delta_explained": "-1.56",
+          "residual": "-15.54"
+        }
+      ],
+      "request_id": "request_06",
+      "required_flow_correction_expected_minus_actual": "-17.1",
+      "required_safe_delta_actual_minus_expected": "17.1",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 43,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "48.70",
+            "date": "2024-09-20",
+            "event_ids": [
+              "event_604@2024-09-20"
+            ],
+            "id": "replace_amount:event_604@2024-09-20:3773.92",
+            "kind": "replace_observed_amount",
+            "label": "replace event_604@2024-09-20 amount with observed historical 3773.92",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "3773.92",
+            "source_event_ids": []
+          },
+          "delta_explained": "48.70",
+          "residual": "-10958.67"
+        },
+        {
+          "candidate": {
+            "correction_flow": "48.70",
+            "date": "2024-10-11",
+            "event_ids": [
+              "event_604@2024-10-11"
+            ],
+            "id": "replace_amount:event_604@2024-10-11:3773.92",
+            "kind": "replace_observed_amount",
+            "label": "replace event_604@2024-10-11 amount with observed historical 3773.92",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "3773.92",
+            "source_event_ids": []
+          },
+          "delta_explained": "48.70",
+          "residual": "-10958.67"
+        },
+        {
+          "candidate": {
+            "correction_flow": "48.70",
+            "date": "2024-11-01",
+            "event_ids": [
+              "event_604@2024-11-01"
+            ],
+            "id": "replace_amount:event_604@2024-11-01:3773.92",
+            "kind": "replace_observed_amount",
+            "label": "replace event_604@2024-11-01 amount with observed historical 3773.92",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "3773.92",
+            "source_event_ids": []
+          },
+          "delta_explained": "48.70",
+          "residual": "-10958.67"
+        },
+        {
+          "candidate": {
+            "correction_flow": "48.70",
+            "date": "2024-11-22",
+            "event_ids": [
+              "event_604@2024-11-22"
+            ],
+            "id": "replace_amount:event_604@2024-11-22:3773.92",
+            "kind": "replace_observed_amount",
+            "label": "replace event_604@2024-11-22 amount with observed historical 3773.92",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "3773.92",
+            "source_event_ids": []
+          },
+          "delta_explained": "48.70",
+          "residual": "-10958.67"
+        },
+        {
+          "candidate": {
+            "correction_flow": "168.10",
+            "date": "2024-09-08",
+            "event_ids": [
+              "event_580@2024-09-08"
+            ],
+            "id": "replace_amount:event_580@2024-09-08:7219.31",
+            "kind": "replace_observed_amount",
+            "label": "replace event_580@2024-09-08 amount with observed historical 7219.31",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "7219.31",
+            "source_event_ids": []
+          },
+          "delta_explained": "168.10",
+          "residual": "-11078.07"
+        }
+      ],
+      "request_id": "request_07",
+      "required_flow_correction_expected_minus_actual": "-10909.97",
+      "required_safe_delta_actual_minus_expected": "10909.97",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 109,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "-4.07",
+            "date": "2025-02-18",
+            "event_ids": [
+              "event_661@2025-02-18"
+            ],
+            "id": "replace_amount:event_661@2025-02-18:78.42",
+            "kind": "replace_observed_amount",
+            "label": "replace event_661@2025-02-18 amount with observed historical 78.42",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "78.42",
+            "source_event_ids": []
+          },
+          "delta_explained": "-4.07",
+          "residual": "-94.95"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-4.07",
+            "date": "2025-03-04",
+            "event_ids": [
+              "event_661@2025-03-04"
+            ],
+            "id": "replace_amount:event_661@2025-03-04:78.42",
+            "kind": "replace_observed_amount",
+            "label": "replace event_661@2025-03-04 amount with observed historical 78.42",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "78.42",
+            "source_event_ids": []
+          },
+          "delta_explained": "-4.07",
+          "residual": "-94.95"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-4.07",
+            "date": "2025-03-18",
+            "event_ids": [
+              "event_661@2025-03-18"
+            ],
+            "id": "replace_amount:event_661@2025-03-18:78.42",
+            "kind": "replace_observed_amount",
+            "label": "replace event_661@2025-03-18 amount with observed historical 78.42",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "78.42",
+            "source_event_ids": []
+          },
+          "delta_explained": "-4.07",
+          "residual": "-94.95"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-4.07",
+            "date": "2025-04-01",
+            "event_ids": [
+              "event_661@2025-04-01"
+            ],
+            "id": "replace_amount:event_661@2025-04-01:78.42",
+            "kind": "replace_observed_amount",
+            "label": "replace event_661@2025-04-01 amount with observed historical 78.42",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "78.42",
+            "source_event_ids": []
+          },
+          "delta_explained": "-4.07",
+          "residual": "-94.95"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-4.07",
+            "date": "2025-04-15",
+            "event_ids": [
+              "event_661@2025-04-15"
+            ],
+            "id": "replace_amount:event_661@2025-04-15:78.42",
+            "kind": "replace_observed_amount",
+            "label": "replace event_661@2025-04-15 amount with observed historical 78.42",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "78.42",
+            "source_event_ids": []
+          },
+          "delta_explained": "-4.07",
+          "residual": "-94.95"
+        }
+      ],
+      "request_id": "request_08",
+      "required_flow_correction_expected_minus_actual": "-99.02",
+      "required_safe_delta_actual_minus_expected": "99.02",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 18,
+      "candidate_count": 57,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "-0.82",
+            "date": "2026-07-12",
+            "event_ids": [
+              "event_751@2026-07-12"
+            ],
+            "id": "replace_amount:event_751@2026-07-12:29.14",
+            "kind": "replace_observed_amount",
+            "label": "replace event_751@2026-07-12 amount with observed historical 29.14",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "29.14",
+            "source_event_ids": []
+          },
+          "delta_explained": "-0.82",
+          "residual": "0.82"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-0.82",
+            "date": "2026-08-12",
+            "event_ids": [
+              "event_751@2026-08-12"
+            ],
+            "id": "replace_amount:event_751@2026-08-12:29.14",
+            "kind": "replace_observed_amount",
+            "label": "replace event_751@2026-08-12 amount with observed historical 29.14",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "29.14",
+            "source_event_ids": []
+          },
+          "delta_explained": "-0.82",
+          "residual": "0.82"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-0.82",
+            "date": "2026-09-12",
+            "event_ids": [
+              "event_751@2026-09-12"
+            ],
+            "id": "replace_amount:event_751@2026-09-12:29.14",
+            "kind": "replace_observed_amount",
+            "label": "replace event_751@2026-09-12 amount with observed historical 29.14",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "29.14",
+            "source_event_ids": []
+          },
+          "delta_explained": "-0.82",
+          "residual": "0.82"
+        },
+        {
+          "candidate": {
+            "correction_flow": "1.76",
+            "date": "2026-07-19",
+            "event_ids": [
+              "event_760@2026-07-19"
+            ],
+            "id": "replace_amount:event_760@2026-07-19:53.14",
+            "kind": "replace_observed_amount",
+            "label": "replace event_760@2026-07-19 amount with observed historical 53.14",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "53.14",
+            "source_event_ids": []
+          },
+          "delta_explained": "1.76",
+          "residual": "-1.76"
+        },
+        {
+          "candidate": {
+            "correction_flow": "1.76",
+            "date": "2026-08-19",
+            "event_ids": [
+              "event_760@2026-08-19"
+            ],
+            "id": "replace_amount:event_760@2026-08-19:53.14",
+            "kind": "replace_observed_amount",
+            "label": "replace event_760@2026-08-19 amount with observed historical 53.14",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "53.14",
+            "source_event_ids": []
+          },
+          "delta_explained": "1.76",
+          "residual": "-1.76"
+        }
+      ],
+      "request_id": "request_09",
+      "required_flow_correction_expected_minus_actual": "0.00",
+      "required_safe_delta_actual_minus_expected": "0.00",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 235,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "-304387.05",
+            "date": "2024-12-20",
+            "event_ids": [
+              "event_839@2024-12-20",
+              "event_839@2025-01-05",
+              "event_839@2025-01-21",
+              "event_839@2025-02-06",
+              "event_839@2025-02-22"
+            ],
+            "id": "remove_stream:event_839",
+            "kind": "remove_stream",
+            "label": "remove all projected occurrences of inferred stream event_839",
+            "provenance": "chronological source stream grouping; diagnostic only",
+            "source_event_ids": [
+              "event_839"
+            ]
+          },
+          "delta_explained": "-304387.05",
+          "residual": "50387.05"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-82667.27",
+            "date": "2024-12-10",
+            "event_ids": [
+              "event_832@2024-12-10"
+            ],
+            "id": "remove_occurrence:event_832@2024-12-10",
+            "kind": "remove_occurrence",
+            "label": "remove projected occurrence event_832@2024-12-10",
+            "provenance": "current projected occurrence; removal is a diagnostic counterfactual",
+            "source_event_ids": []
+          },
+          "delta_explained": "-82667.27",
+          "residual": "-171332.73"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-82667.27",
+            "date": "2024-12-25",
+            "event_ids": [
+              "event_832@2024-12-25"
+            ],
+            "id": "remove_occurrence:event_832@2024-12-25",
+            "kind": "remove_occurrence",
+            "label": "remove projected occurrence event_832@2024-12-25",
+            "provenance": "current projected occurrence; removal is a diagnostic counterfactual",
+            "source_event_ids": []
+          },
+          "delta_explained": "-82667.27",
+          "residual": "-171332.73"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-82667.27",
+            "date": "2025-01-09",
+            "event_ids": [
+              "event_832@2025-01-09"
+            ],
+            "id": "remove_occurrence:event_832@2025-01-09",
+            "kind": "remove_occurrence",
+            "label": "remove projected occurrence event_832@2025-01-09",
+            "provenance": "current projected occurrence; removal is a diagnostic counterfactual",
+            "source_event_ids": []
+          },
+          "delta_explained": "-82667.27",
+          "residual": "-171332.73"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-82667.27",
+            "date": "2025-01-24",
+            "event_ids": [
+              "event_832@2025-01-24"
+            ],
+            "id": "remove_occurrence:event_832@2025-01-24",
+            "kind": "remove_occurrence",
+            "label": "remove projected occurrence event_832@2025-01-24",
+            "provenance": "current projected occurrence; removal is a diagnostic counterfactual",
+            "source_event_ids": []
+          },
+          "delta_explained": "-82667.27",
+          "residual": "-171332.73"
+        }
+      ],
+      "request_id": "request_10",
+      "required_flow_correction_expected_minus_actual": "-254000",
+      "required_safe_delta_actual_minus_expected": "254000",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 92,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "-726164.16",
+            "date": "2025-05-24",
+            "event_ids": [
+              "event_924@2025-05-24"
+            ],
+            "id": "replace_amount:event_924@2025-05-24:15989420",
+            "kind": "replace_observed_amount",
+            "label": "replace event_924@2025-05-24 amount with observed historical 15989420",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "15989420",
+            "source_event_ids": []
+          },
+          "delta_explained": "-726164.16",
+          "residual": "126809.16"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-726164.16",
+            "date": "2025-06-24",
+            "event_ids": [
+              "event_924@2025-06-24"
+            ],
+            "id": "replace_amount:event_924@2025-06-24:15989420",
+            "kind": "replace_observed_amount",
+            "label": "replace event_924@2025-06-24 amount with observed historical 15989420",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "15989420",
+            "source_event_ids": []
+          },
+          "delta_explained": "-726164.16",
+          "residual": "126809.16"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-726164.16",
+            "date": "2025-07-24",
+            "event_ids": [
+              "event_924@2025-07-24"
+            ],
+            "id": "replace_amount:event_924@2025-07-24:15989420",
+            "kind": "replace_observed_amount",
+            "label": "replace event_924@2025-07-24 amount with observed historical 15989420",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "15989420",
+            "source_event_ids": []
+          },
+          "delta_explained": "-726164.16",
+          "residual": "126809.16"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-120147.43",
+            "date": "2025-05-08",
+            "event_ids": [
+              "event_944@2025-05-08"
+            ],
+            "id": "replace_amount:event_944@2025-05-08:2916312.61",
+            "kind": "replace_observed_amount",
+            "label": "replace event_944@2025-05-08 amount with observed historical 2916312.61",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "2916312.61",
+            "source_event_ids": []
+          },
+          "delta_explained": "-120147.43",
+          "residual": "-479207.57"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-120147.43",
+            "date": "2025-06-08",
+            "event_ids": [
+              "event_944@2025-06-08"
+            ],
+            "id": "replace_amount:event_944@2025-06-08:2916312.61",
+            "kind": "replace_observed_amount",
+            "label": "replace event_944@2025-06-08 amount with observed historical 2916312.61",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "2916312.61",
+            "source_event_ids": []
+          },
+          "delta_explained": "-120147.43",
+          "residual": "-479207.57"
+        }
+      ],
+      "request_id": "request_11",
+      "required_flow_correction_expected_minus_actual": "-599355",
+      "required_safe_delta_actual_minus_expected": "599355",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 82,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "-177.29",
+            "date": "2024-03-20",
+            "event_ids": [
+              "event_1080@2024-03-20"
+            ],
+            "id": "replace_amount:event_1080@2024-03-20:771.17",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1080@2024-03-20 amount with observed historical 771.17",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "771.17",
+            "source_event_ids": []
+          },
+          "delta_explained": "-177.29",
+          "residual": "-330.91"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-177.29",
+            "date": "2024-04-20",
+            "event_ids": [
+              "event_1080@2024-04-20"
+            ],
+            "id": "replace_amount:event_1080@2024-04-20:771.17",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1080@2024-04-20 amount with observed historical 771.17",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "771.17",
+            "source_event_ids": []
+          },
+          "delta_explained": "-177.29",
+          "residual": "-330.91"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-177.29",
+            "date": "2024-05-20",
+            "event_ids": [
+              "event_1080@2024-05-20"
+            ],
+            "id": "replace_amount:event_1080@2024-05-20:771.17",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1080@2024-05-20 amount with observed historical 771.17",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "771.17",
+            "source_event_ids": []
+          },
+          "delta_explained": "-177.29",
+          "residual": "-330.91"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-948.46",
+            "date": "2024-03-20",
+            "event_ids": [
+              "event_1080@2024-03-20"
+            ],
+            "id": "remove_occurrence:event_1080@2024-03-20",
+            "kind": "remove_occurrence",
+            "label": "remove projected occurrence event_1080@2024-03-20",
+            "provenance": "current projected occurrence; removal is a diagnostic counterfactual",
+            "source_event_ids": []
+          },
+          "delta_explained": "-948.46",
+          "residual": "440.26"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-948.46",
+            "date": "2024-04-20",
+            "event_ids": [
+              "event_1080@2024-04-20"
+            ],
+            "id": "remove_occurrence:event_1080@2024-04-20",
+            "kind": "remove_occurrence",
+            "label": "remove projected occurrence event_1080@2024-04-20",
+            "provenance": "current projected occurrence; removal is a diagnostic counterfactual",
+            "source_event_ids": []
+          },
+          "delta_explained": "-948.46",
+          "residual": "440.26"
+        }
+      ],
+      "request_id": "request_13",
+      "required_flow_correction_expected_minus_actual": "-508.2",
+      "required_safe_delta_actual_minus_expected": "508.2",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 91,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "-2.39",
+            "date": "2025-08-07",
+            "event_ids": [
+              "event_1194@2025-08-07"
+            ],
+            "id": "replace_amount:event_1194@2025-08-07:156.08",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1194@2025-08-07 amount with observed historical 156.08",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "156.08",
+            "source_event_ids": []
+          },
+          "delta_explained": "-2.39",
+          "residual": "-13.51"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-2.39",
+            "date": "2025-09-07",
+            "event_ids": [
+              "event_1194@2025-09-07"
+            ],
+            "id": "replace_amount:event_1194@2025-09-07:156.08",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1194@2025-09-07 amount with observed historical 156.08",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "156.08",
+            "source_event_ids": []
+          },
+          "delta_explained": "-2.39",
+          "residual": "-13.51"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-2.39",
+            "date": "2025-10-07",
+            "event_ids": [
+              "event_1194@2025-10-07"
+            ],
+            "id": "replace_amount:event_1194@2025-10-07:156.08",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1194@2025-10-07 amount with observed historical 156.08",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "156.08",
+            "source_event_ids": []
+          },
+          "delta_explained": "-2.39",
+          "residual": "-13.51"
+        },
+        {
+          "candidate": {
+            "correction_flow": "2.52",
+            "date": "2025-08-11",
+            "event_ids": [
+              "event_1196@2025-08-11"
+            ],
+            "id": "replace_amount:event_1196@2025-08-11:92.65",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1196@2025-08-11 amount with observed historical 92.65",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "92.65",
+            "source_event_ids": []
+          },
+          "delta_explained": "2.52",
+          "residual": "-18.42"
+        },
+        {
+          "candidate": {
+            "correction_flow": "2.52",
+            "date": "2025-09-11",
+            "event_ids": [
+              "event_1196@2025-09-11"
+            ],
+            "id": "replace_amount:event_1196@2025-09-11:92.65",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1196@2025-09-11 amount with observed historical 92.65",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "92.65",
+            "source_event_ids": []
+          },
+          "delta_explained": "2.52",
+          "residual": "-18.42"
+        }
+      ],
+      "request_id": "request_14",
+      "required_flow_correction_expected_minus_actual": "-15.90",
+      "required_safe_delta_actual_minus_expected": "15.90",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 79,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "-15.6",
+            "date": "2026-02-03",
+            "event_ids": [
+              "event_1296@2026-02-03"
+            ],
+            "id": "replace_amount:event_1296@2026-02-03:72.3",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1296@2026-02-03 amount with observed historical 72.3",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "72.3",
+            "source_event_ids": []
+          },
+          "delta_explained": "-15.6",
+          "residual": "-127.01"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-15.6",
+            "date": "2026-03-17",
+            "event_ids": [
+              "event_1296@2026-03-17"
+            ],
+            "id": "replace_amount:event_1296@2026-03-17:72.3",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1296@2026-03-17 amount with observed historical 72.3",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "72.3",
+            "source_event_ids": []
+          },
+          "delta_explained": "-15.6",
+          "residual": "-127.01"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-11.33",
+            "date": "2026-02-03",
+            "event_ids": [
+              "event_1296@2026-02-03"
+            ],
+            "id": "replace_amount:event_1296@2026-02-03:68.03",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1296@2026-02-03 amount with observed historical 68.03",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "68.03",
+            "source_event_ids": []
+          },
+          "delta_explained": "-11.33",
+          "residual": "-131.28"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-11.33",
+            "date": "2026-03-17",
+            "event_ids": [
+              "event_1296@2026-03-17"
+            ],
+            "id": "replace_amount:event_1296@2026-03-17:68.03",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1296@2026-03-17 amount with observed historical 68.03",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "68.03",
+            "source_event_ids": []
+          },
+          "delta_explained": "-11.33",
+          "residual": "-131.28"
+        },
+        {
+          "candidate": {
+            "correction_flow": "1.07",
+            "date": "2026-02-03",
+            "event_ids": [
+              "event_1296@2026-02-03"
+            ],
+            "id": "replace_amount:event_1296@2026-02-03:55.63",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1296@2026-02-03 amount with observed historical 55.63",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "55.63",
+            "source_event_ids": []
+          },
+          "delta_explained": "1.07",
+          "residual": "-143.68"
+        }
+      ],
+      "request_id": "request_15",
+      "required_flow_correction_expected_minus_actual": "-142.61",
+      "required_safe_delta_actual_minus_expected": "142.61",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 167,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "-520.27",
+            "date": "2026-03-09",
+            "event_ids": [
+              "event_1526@2026-03-09"
+            ],
+            "id": "replace_amount:event_1526@2026-03-09:6170.7",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1526@2026-03-09 amount with observed historical 6170.7",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "6170.7",
+            "source_event_ids": []
+          },
+          "delta_explained": "-520.27",
+          "residual": "-3956.11"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-520.27",
+            "date": "2026-03-19",
+            "event_ids": [
+              "event_1526@2026-03-19"
+            ],
+            "id": "replace_amount:event_1526@2026-03-19:6170.7",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1526@2026-03-19 amount with observed historical 6170.7",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "6170.7",
+            "source_event_ids": []
+          },
+          "delta_explained": "-520.27",
+          "residual": "-3956.11"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-520.27",
+            "date": "2026-03-29",
+            "event_ids": [
+              "event_1526@2026-03-29"
+            ],
+            "id": "replace_amount:event_1526@2026-03-29:6170.7",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1526@2026-03-29 amount with observed historical 6170.7",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "6170.7",
+            "source_event_ids": []
+          },
+          "delta_explained": "-520.27",
+          "residual": "-3956.11"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-520.27",
+            "date": "2026-04-08",
+            "event_ids": [
+              "event_1526@2026-04-08"
+            ],
+            "id": "replace_amount:event_1526@2026-04-08:6170.7",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1526@2026-04-08 amount with observed historical 6170.7",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "6170.7",
+            "source_event_ids": []
+          },
+          "delta_explained": "-520.27",
+          "residual": "-3956.11"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-520.27",
+            "date": "2026-04-18",
+            "event_ids": [
+              "event_1526@2026-04-18"
+            ],
+            "id": "replace_amount:event_1526@2026-04-18:6170.7",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1526@2026-04-18 amount with observed historical 6170.7",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "6170.7",
+            "source_event_ids": []
+          },
+          "delta_explained": "-520.27",
+          "residual": "-3956.11"
+        }
+      ],
+      "request_id": "request_17",
+      "required_flow_correction_expected_minus_actual": "-4476.38",
+      "required_safe_delta_actual_minus_expected": "4476.38",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 64,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "-3.96",
+            "date": "2026-07-28",
+            "event_ids": [
+              "event_1606@2026-07-28"
+            ],
+            "id": "replace_amount:event_1606@2026-07-28:54.53",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1606@2026-07-28 amount with observed historical 54.53",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "54.53",
+            "source_event_ids": []
+          },
+          "delta_explained": "-3.96",
+          "residual": "-196.23"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-3.96",
+            "date": "2026-08-25",
+            "event_ids": [
+              "event_1606@2026-08-25"
+            ],
+            "id": "replace_amount:event_1606@2026-08-25:54.53",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1606@2026-08-25 amount with observed historical 54.53",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "54.53",
+            "source_event_ids": []
+          },
+          "delta_explained": "-3.96",
+          "residual": "-196.23"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-3.96",
+            "date": "2026-09-22",
+            "event_ids": [
+              "event_1606@2026-09-22"
+            ],
+            "id": "replace_amount:event_1606@2026-09-22:54.53",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1606@2026-09-22 amount with observed historical 54.53",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "54.53",
+            "source_event_ids": []
+          },
+          "delta_explained": "-3.96",
+          "residual": "-196.23"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-2.33",
+            "date": "2026-07-28",
+            "event_ids": [
+              "event_1606@2026-07-28"
+            ],
+            "id": "replace_amount:event_1606@2026-07-28:52.9",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1606@2026-07-28 amount with observed historical 52.9",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "52.9",
+            "source_event_ids": []
+          },
+          "delta_explained": "-2.33",
+          "residual": "-197.86"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-2.33",
+            "date": "2026-08-25",
+            "event_ids": [
+              "event_1606@2026-08-25"
+            ],
+            "id": "replace_amount:event_1606@2026-08-25:52.9",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1606@2026-08-25 amount with observed historical 52.9",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "52.9",
+            "source_event_ids": []
+          },
+          "delta_explained": "-2.33",
+          "residual": "-197.86"
+        }
+      ],
+      "request_id": "request_18",
+      "required_flow_correction_expected_minus_actual": "-200.19",
+      "required_safe_delta_actual_minus_expected": "200.19",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 114,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "-1240.47",
+            "date": "2024-09-18",
+            "event_ids": [
+              "event_1686@2024-09-18"
+            ],
+            "id": "replace_amount:event_1686@2024-09-18:5908.15",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1686@2024-09-18 amount with observed historical 5908.15",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "5908.15",
+            "source_event_ids": []
+          },
+          "delta_explained": "-1240.47",
+          "residual": "-7495.40"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-1240.47",
+            "date": "2024-10-09",
+            "event_ids": [
+              "event_1686@2024-10-09"
+            ],
+            "id": "replace_amount:event_1686@2024-10-09:5908.15",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1686@2024-10-09 amount with observed historical 5908.15",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "5908.15",
+            "source_event_ids": []
+          },
+          "delta_explained": "-1240.47",
+          "residual": "-7495.40"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-1240.47",
+            "date": "2024-10-30",
+            "event_ids": [
+              "event_1686@2024-10-30"
+            ],
+            "id": "replace_amount:event_1686@2024-10-30:5908.15",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1686@2024-10-30 amount with observed historical 5908.15",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "5908.15",
+            "source_event_ids": []
+          },
+          "delta_explained": "-1240.47",
+          "residual": "-7495.40"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-1240.47",
+            "date": "2024-11-20",
+            "event_ids": [
+              "event_1686@2024-11-20"
+            ],
+            "id": "replace_amount:event_1686@2024-11-20:5908.15",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1686@2024-11-20 amount with observed historical 5908.15",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "5908.15",
+            "source_event_ids": []
+          },
+          "delta_explained": "-1240.47",
+          "residual": "-7495.40"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-974.52",
+            "date": "2024-09-12",
+            "event_ids": [
+              "event_1658@2024-09-12"
+            ],
+            "id": "replace_amount:event_1658@2024-09-12:9619.88",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1658@2024-09-12 amount with observed historical 9619.88",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "9619.88",
+            "source_event_ids": []
+          },
+          "delta_explained": "-974.52",
+          "residual": "-7761.35"
+        }
+      ],
+      "request_id": "request_19",
+      "required_flow_correction_expected_minus_actual": "-8735.87",
+      "required_safe_delta_actual_minus_expected": "8735.87",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 89,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "-288.88",
+            "date": "2026-03-05",
+            "event_ids": [
+              "event_1742@2026-03-05"
+            ],
+            "id": "replace_amount:event_1742@2026-03-05:8058.75",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1742@2026-03-05 amount with observed historical 8058.75",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "8058.75",
+            "source_event_ids": []
+          },
+          "delta_explained": "-288.88",
+          "residual": "-9252.87"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-288.88",
+            "date": "2026-04-05",
+            "event_ids": [
+              "event_1742@2026-04-05"
+            ],
+            "id": "replace_amount:event_1742@2026-04-05:8058.75",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1742@2026-04-05 amount with observed historical 8058.75",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "8058.75",
+            "source_event_ids": []
+          },
+          "delta_explained": "-288.88",
+          "residual": "-9252.87"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-288.88",
+            "date": "2026-05-05",
+            "event_ids": [
+              "event_1742@2026-05-05"
+            ],
+            "id": "replace_amount:event_1742@2026-05-05:8058.75",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1742@2026-05-05 amount with observed historical 8058.75",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "8058.75",
+            "source_event_ids": []
+          },
+          "delta_explained": "-288.88",
+          "residual": "-9252.87"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-207.81",
+            "date": "2026-03-05",
+            "event_ids": [
+              "event_1742@2026-03-05"
+            ],
+            "id": "replace_amount:event_1742@2026-03-05:7977.68",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1742@2026-03-05 amount with observed historical 7977.68",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "7977.68",
+            "source_event_ids": []
+          },
+          "delta_explained": "-207.81",
+          "residual": "-9333.94"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-207.81",
+            "date": "2026-04-05",
+            "event_ids": [
+              "event_1742@2026-04-05"
+            ],
+            "id": "replace_amount:event_1742@2026-04-05:7977.68",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1742@2026-04-05 amount with observed historical 7977.68",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "7977.68",
+            "source_event_ids": []
+          },
+          "delta_explained": "-207.81",
+          "residual": "-9333.94"
+        }
+      ],
+      "request_id": "request_20",
+      "required_flow_correction_expected_minus_actual": "-9541.75",
+      "required_safe_delta_actual_minus_expected": "9541.75",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 72,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "-7.00",
+            "date": "2026-04-12",
+            "event_ids": [
+              "event_1817@2026-04-12"
+            ],
+            "id": "replace_amount:event_1817@2026-04-12:133.38",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1817@2026-04-12 amount with observed historical 133.38",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "133.38",
+            "source_event_ids": []
+          },
+          "delta_explained": "-7.00",
+          "residual": "-24.05"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-7.00",
+            "date": "2026-05-12",
+            "event_ids": [
+              "event_1817@2026-05-12"
+            ],
+            "id": "replace_amount:event_1817@2026-05-12:133.38",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1817@2026-05-12 amount with observed historical 133.38",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "133.38",
+            "source_event_ids": []
+          },
+          "delta_explained": "-7.00",
+          "residual": "-24.05"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-7.00",
+            "date": "2026-06-12",
+            "event_ids": [
+              "event_1817@2026-06-12"
+            ],
+            "id": "replace_amount:event_1817@2026-06-12:133.38",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1817@2026-06-12 amount with observed historical 133.38",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "133.38",
+            "source_event_ids": []
+          },
+          "delta_explained": "-7.00",
+          "residual": "-24.05"
+        },
+        {
+          "candidate": {
+            "correction_flow": "0.36",
+            "date": "2026-04-06",
+            "event_ids": [
+              "event_1814@2026-04-06"
+            ],
+            "id": "replace_amount:event_1814@2026-04-06:123.72",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1814@2026-04-06 amount with observed historical 123.72",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "123.72",
+            "source_event_ids": []
+          },
+          "delta_explained": "0.36",
+          "residual": "-31.41"
+        },
+        {
+          "candidate": {
+            "correction_flow": "0.36",
+            "date": "2026-05-06",
+            "event_ids": [
+              "event_1814@2026-05-06"
+            ],
+            "id": "replace_amount:event_1814@2026-05-06:123.72",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1814@2026-05-06 amount with observed historical 123.72",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "123.72",
+            "source_event_ids": []
+          },
+          "delta_explained": "0.36",
+          "residual": "-31.41"
+        }
+      ],
+      "request_id": "request_21",
+      "required_flow_correction_expected_minus_actual": "-31.05",
+      "required_safe_delta_actual_minus_expected": "31.05",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 85,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "-2.21",
+            "date": "2024-12-07",
+            "event_ids": [
+              "event_1889@2024-12-07"
+            ],
+            "id": "replace_amount:event_1889@2024-12-07:33.73",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1889@2024-12-07 amount with observed historical 33.73",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "33.73",
+            "source_event_ids": []
+          },
+          "delta_explained": "-2.21",
+          "residual": "-37.19"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-2.21",
+            "date": "2025-01-07",
+            "event_ids": [
+              "event_1889@2025-01-07"
+            ],
+            "id": "replace_amount:event_1889@2025-01-07:33.73",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1889@2025-01-07 amount with observed historical 33.73",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "33.73",
+            "source_event_ids": []
+          },
+          "delta_explained": "-2.21",
+          "residual": "-37.19"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-2.21",
+            "date": "2025-02-07",
+            "event_ids": [
+              "event_1889@2025-02-07"
+            ],
+            "id": "replace_amount:event_1889@2025-02-07:33.73",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1889@2025-02-07 amount with observed historical 33.73",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "33.73",
+            "source_event_ids": []
+          },
+          "delta_explained": "-2.21",
+          "residual": "-37.19"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-1.01",
+            "date": "2024-12-07",
+            "event_ids": [
+              "event_1889@2024-12-07"
+            ],
+            "id": "replace_amount:event_1889@2024-12-07:32.53",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1889@2024-12-07 amount with observed historical 32.53",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "32.53",
+            "source_event_ids": []
+          },
+          "delta_explained": "-1.01",
+          "residual": "-38.39"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-1.01",
+            "date": "2025-01-07",
+            "event_ids": [
+              "event_1889@2025-01-07"
+            ],
+            "id": "replace_amount:event_1889@2025-01-07:32.53",
+            "kind": "replace_observed_amount",
+            "label": "replace event_1889@2025-01-07 amount with observed historical 32.53",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "32.53",
+            "source_event_ids": []
+          },
+          "delta_explained": "-1.01",
+          "residual": "-38.39"
+        }
+      ],
+      "request_id": "request_22",
+      "required_flow_correction_expected_minus_actual": "-39.40",
+      "required_safe_delta_actual_minus_expected": "39.40",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 102,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "-74.94",
+            "date": "2025-06-12",
+            "event_ids": [
+              "event_2040@2025-06-12"
+            ],
+            "id": "replace_amount:event_2040@2025-06-12:1121.5",
+            "kind": "replace_observed_amount",
+            "label": "replace event_2040@2025-06-12 amount with observed historical 1121.5",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "1121.5",
+            "source_event_ids": []
+          },
+          "delta_explained": "-74.94",
+          "residual": "-76.97"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-74.94",
+            "date": "2025-07-24",
+            "event_ids": [
+              "event_2040@2025-07-24"
+            ],
+            "id": "replace_amount:event_2040@2025-07-24:1121.5",
+            "kind": "replace_observed_amount",
+            "label": "replace event_2040@2025-07-24 amount with observed historical 1121.5",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "1121.5",
+            "source_event_ids": []
+          },
+          "delta_explained": "-74.94",
+          "residual": "-76.97"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-6.94",
+            "date": "2025-05-14",
+            "event_ids": [
+              "event_2001@2025-05-14"
+            ],
+            "id": "replace_amount:event_2001@2025-05-14:1396.33",
+            "kind": "replace_observed_amount",
+            "label": "replace event_2001@2025-05-14 amount with observed historical 1396.33",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "1396.33",
+            "source_event_ids": []
+          },
+          "delta_explained": "-6.94",
+          "residual": "-144.97"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-6.94",
+            "date": "2025-06-14",
+            "event_ids": [
+              "event_2001@2025-06-14"
+            ],
+            "id": "replace_amount:event_2001@2025-06-14:1396.33",
+            "kind": "replace_observed_amount",
+            "label": "replace event_2001@2025-06-14 amount with observed historical 1396.33",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "1396.33",
+            "source_event_ids": []
+          },
+          "delta_explained": "-6.94",
+          "residual": "-144.97"
+        },
+        {
+          "candidate": {
+            "correction_flow": "-6.94",
+            "date": "2025-07-14",
+            "event_ids": [
+              "event_2001@2025-07-14"
+            ],
+            "id": "replace_amount:event_2001@2025-07-14:1396.33",
+            "kind": "replace_observed_amount",
+            "label": "replace event_2001@2025-07-14 amount with observed historical 1396.33",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "1396.33",
+            "source_event_ids": []
+          },
+          "delta_explained": "-6.94",
+          "residual": "-144.97"
+        }
+      ],
+      "request_id": "request_23",
+      "required_flow_correction_expected_minus_actual": "-151.91",
+      "required_safe_delta_actual_minus_expected": "151.91",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 262,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "681.60",
+            "date": "2026-01-12",
+            "event_ids": [
+              "event_2121@2026-01-12"
+            ],
+            "id": "replace_amount:event_2121@2026-01-12:1069.31",
+            "kind": "replace_observed_amount",
+            "label": "replace event_2121@2026-01-12 amount with observed historical 1069.31",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "1069.31",
+            "source_event_ids": []
+          },
+          "delta_explained": "681.60",
+          "residual": "181.04"
+        },
+        {
+          "candidate": {
+            "correction_flow": "681.60",
+            "date": "2026-01-22",
+            "event_ids": [
+              "event_2121@2026-01-22"
+            ],
+            "id": "replace_amount:event_2121@2026-01-22:1069.31",
+            "kind": "replace_observed_amount",
+            "label": "replace event_2121@2026-01-22 amount with observed historical 1069.31",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "1069.31",
+            "source_event_ids": []
+          },
+          "delta_explained": "681.60",
+          "residual": "181.04"
+        },
+        {
+          "candidate": {
+            "correction_flow": "681.60",
+            "date": "2026-02-01",
+            "event_ids": [
+              "event_2121@2026-02-01"
+            ],
+            "id": "replace_amount:event_2121@2026-02-01:1069.31",
+            "kind": "replace_observed_amount",
+            "label": "replace event_2121@2026-02-01 amount with observed historical 1069.31",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "1069.31",
+            "source_event_ids": []
+          },
+          "delta_explained": "681.60",
+          "residual": "181.04"
+        },
+        {
+          "candidate": {
+            "correction_flow": "681.60",
+            "date": "2026-02-11",
+            "event_ids": [
+              "event_2121@2026-02-11"
+            ],
+            "id": "replace_amount:event_2121@2026-02-11:1069.31",
+            "kind": "replace_observed_amount",
+            "label": "replace event_2121@2026-02-11 amount with observed historical 1069.31",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "1069.31",
+            "source_event_ids": []
+          },
+          "delta_explained": "681.60",
+          "residual": "181.04"
+        },
+        {
+          "candidate": {
+            "correction_flow": "681.60",
+            "date": "2026-02-21",
+            "event_ids": [
+              "event_2121@2026-02-21"
+            ],
+            "id": "replace_amount:event_2121@2026-02-21:1069.31",
+            "kind": "replace_observed_amount",
+            "label": "replace event_2121@2026-02-21 amount with observed historical 1069.31",
+            "provenance": "same production stream, observed historical amount",
+            "replacement_amount": "1069.31",
+            "source_event_ids": []
+          },
+          "delta_explained": "681.60",
+          "residual": "181.04"
+        }
+      ],
+      "request_id": "request_24",
+      "required_flow_correction_expected_minus_actual": "862.64",
+      "required_safe_delta_actual_minus_expected": "-862.64",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    },
+    {
+      "bounded_candidate_count": 28,
+      "candidate_count": 218,
+      "classification": "no evidence-supported explanation",
+      "matching_candidate_sets": [],
+      "matching_set_count": 0,
+      "nearest_single_candidate_corrections": [
+        {
+          "candidate": {
+            "correction_flow": "1369082.68",
+            "date": "2024-03-08",
+            "event_ids": [
+              "event_2223@2024-03-08"
+            ],
+            "id": "remove_occurrence:event_2223@2024-03-08",
+            "kind": "remove_occurrence",
+            "label": "remove projected occurrence event_2223@2024-03-08",
+            "provenance": "current projected occurrence; removal is a diagnostic counterfactual",
+            "source_event_ids": []
+          },
+          "delta_explained": "1369082.68",
+          "residual": "55917.32"
+        },
+        {
+          "candidate": {
+            "correction_flow": "1369082.68",
+            "date": "2024-04-08",
+            "event_ids": [
+              "event_2223@2024-04-08"
+            ],
+            "id": "remove_occurrence:event_2223@2024-04-08",
+            "kind": "remove_occurrence",
+            "label": "remove projected occurrence event_2223@2024-04-08",
+            "provenance": "current projected occurrence; removal is a diagnostic counterfactual",
+            "source_event_ids": []
+          },
+          "delta_explained": "1369082.68",
+          "residual": "55917.32"
+        },
+        {
+          "candidate": {
+            "correction_flow": "1369082.68",
+            "date": "2024-05-08",
+            "event_ids": [
+              "event_2223@2024-05-08"
+            ],
+            "id": "remove_occurrence:event_2223@2024-05-08",
+            "kind": "remove_occurrence",
+            "label": "remove projected occurrence event_2223@2024-05-08",
+            "provenance": "current projected occurrence; removal is a diagnostic counterfactual",
+            "source_event_ids": []
+          },
+          "delta_explained": "1369082.68",
+          "residual": "55917.32"
+        },
+        {
+          "candidate": {
+            "correction_flow": "1341541.39",
+            "date": "2024-03-06",
+            "event_ids": [
+              "event_2201@2024-03-06"
+            ],
+            "id": "remove_occurrence:event_2201@2024-03-06",
+            "kind": "remove_occurrence",
+            "label": "remove projected occurrence event_2201@2024-03-06",
+            "provenance": "current projected occurrence; removal is a diagnostic counterfactual",
+            "source_event_ids": []
+          },
+          "delta_explained": "1341541.39",
+          "residual": "83458.61"
+        },
+        {
+          "candidate": {
+            "correction_flow": "1341541.39",
+            "date": "2024-04-06",
+            "event_ids": [
+              "event_2201@2024-04-06"
+            ],
+            "id": "remove_occurrence:event_2201@2024-04-06",
+            "kind": "remove_occurrence",
+            "label": "remove projected occurrence event_2201@2024-04-06",
+            "provenance": "current projected occurrence; removal is a diagnostic counterfactual",
+            "source_event_ids": []
+          },
+          "delta_explained": "1341541.39",
+          "residual": "83458.61"
+        }
+      ],
+      "request_id": "request_25",
+      "required_flow_correction_expected_minus_actual": "1425000",
+      "required_safe_delta_actual_minus_expected": "-1425000",
+      "search_bound": "combinations of up to 3 observed occurrence/stream/amount edits; candidate values are observed events or observed historical amounts",
+      "smallest_matching_edit_count": null
+    }
+  ]
+}

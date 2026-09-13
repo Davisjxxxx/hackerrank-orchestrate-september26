@@ -1,0 +1,453 @@
+{
+  "clusters": {
+    "deterministic explanation family follows the selected decision": [
+      "request_04",
+      "request_05",
+      "request_06",
+      "request_09",
+      "request_10",
+      "request_11",
+      "request_13",
+      "request_14",
+      "request_15",
+      "request_18",
+      "request_19",
+      "request_20",
+      "request_21",
+      "request_24"
+    ],
+    "forecast date calculation / same-day ordering": [
+      "request_06",
+      "request_10",
+      "request_11",
+      "request_13",
+      "request_18",
+      "request_21",
+      "request_22"
+    ],
+    "forecast semantics: recurrence/lifecycle/evidence affects the binding trough": [
+      "request_02",
+      "request_03",
+      "request_04",
+      "request_05",
+      "request_06",
+      "request_07",
+      "request_08",
+      "request_10",
+      "request_11",
+      "request_13",
+      "request_14",
+      "request_15",
+      "request_17",
+      "request_18",
+      "request_19",
+      "request_20",
+      "request_21",
+      "request_22",
+      "request_23",
+      "request_24",
+      "request_25"
+    ],
+    "planner candidate eligibility/ranking derived from the forecast predicate": [
+      "request_13"
+    ],
+    "planner date/amount construction or field-specific serialization": [
+      "request_13",
+      "request_18",
+      "request_19"
+    ],
+    "planner eligibility/status derived from the forecast predicate": [
+      "request_06",
+      "request_11",
+      "request_13",
+      "request_21"
+    ],
+    "spending-change legality/enumeration or binding forecast trough": [
+      "request_06",
+      "request_11",
+      "request_21"
+    ]
+  },
+  "field_counts": {
+    "affordability_status": 4,
+    "amount_safe_to_pay": 21,
+    "decision_explanation": 14,
+    "earliest_date_for_full_payment": 7,
+    "payment_plan": 3,
+    "recommended_payment_method": 1,
+    "spending_changes_needed": 3
+  },
+  "rows": [
+    {
+      "actual": "18479330.16",
+      "expected": "17229139.2",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_02"
+    },
+    {
+      "actual": "1050071.39",
+      "expected": "873000",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_03"
+    },
+    {
+      "actual": "11584778.17",
+      "expected": "8401800",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_04"
+    },
+    {
+      "actual": "Pay IDR 12,693,000 in full on 15 June 2024. Paying earlier would take the balance below the IDR 30,686,600 minimum.",
+      "expected": "Wait until 15 June 2024, then pay IDR 12,693,000 in full. Paying sooner would put the IDR 30,686,600 minimum at risk.",
+      "field": "decision_explanation",
+      "likely_root_cause": "deterministic explanation family follows the selected decision",
+      "request_id": "request_04"
+    },
+    {
+      "actual": "7006.21",
+      "expected": "737",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_05"
+    },
+    {
+      "actual": "Do not proceed with the ZAR 15,488 request. Although ZAR 7,006.21 is available today, the full amount cannot be completed safely within 90 days.",
+      "expected": "Do not make this payment by 12 January 2026. None of the available options keeps the ZAR 13,100 minimum protected.",
+      "field": "decision_explanation",
+      "likely_root_cause": "deterministic explanation family follows the selected decision",
+      "request_id": "request_05"
+    },
+    {
+      "actual": "620.4",
+      "expected": "603.3",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_06"
+    },
+    {
+      "actual": "affordable_now",
+      "expected": "affordable_with_plan",
+      "field": "affordability_status",
+      "likely_root_cause": "planner eligibility/status derived from the forecast predicate",
+      "request_id": "request_06"
+    },
+    {
+      "actual": "2026-01-03",
+      "expected": "2026-01-15",
+      "field": "earliest_date_for_full_payment",
+      "likely_root_cause": "forecast date calculation / same-day ordering",
+      "request_id": "request_06"
+    },
+    {
+      "actual": "none",
+      "expected": "stop:event_476",
+      "field": "spending_changes_needed",
+      "likely_root_cause": "spending-change legality/enumeration or binding forecast trough",
+      "request_id": "request_06"
+    },
+    {
+      "actual": "Pay EUR 620.40 today. This leaves at least EUR 800 available over the next 90 days.",
+      "expected": "Stop the family streaming plan, then pay EUR 620.40 today. This leaves at least EUR 800 available.",
+      "field": "decision_explanation",
+      "likely_root_cause": "deterministic explanation family follows the selected decision",
+      "request_id": "request_06"
+    },
+    {
+      "actual": "98080.53",
+      "expected": "87170.56",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_07"
+    },
+    {
+      "actual": "383.59",
+      "expected": "284.57",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_08"
+    },
+    {
+      "actual": "Pay EUR 166.61 today. This leaves at least EUR 600 available over the next 90 days.",
+      "expected": "Pay EUR 166.61 today. This keeps the EUR 600 minimum available over the next 90 days.",
+      "field": "decision_explanation",
+      "likely_root_cause": "deterministic explanation family follows the selected decision",
+      "request_id": "request_09"
+    },
+    {
+      "actual": "266700",
+      "expected": "12700",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_10"
+    },
+    {
+      "actual": "2024-12-06",
+      "expected": "",
+      "field": "earliest_date_for_full_payment",
+      "likely_root_cause": "forecast date calculation / same-day ordering",
+      "request_id": "request_10"
+    },
+    {
+      "actual": "Do not proceed with the INR 266,700 request. Although INR 266,700 is available today, the full amount cannot be completed safely within 90 days.",
+      "expected": "Do not make this payment by 10 February 2025. None of the available options keeps the INR 225,400 minimum protected.",
+      "field": "decision_explanation",
+      "likely_root_cause": "deterministic explanation family follows the selected decision",
+      "request_id": "request_10"
+    },
+    {
+      "actual": "13110000",
+      "expected": "12510645",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_11"
+    },
+    {
+      "actual": "affordable_now",
+      "expected": "affordable_with_plan",
+      "field": "affordability_status",
+      "likely_root_cause": "planner eligibility/status derived from the forecast predicate",
+      "request_id": "request_11"
+    },
+    {
+      "actual": "2025-05-03",
+      "expected": "2025-07-15",
+      "field": "earliest_date_for_full_payment",
+      "likely_root_cause": "forecast date calculation / same-day ordering",
+      "request_id": "request_11"
+    },
+    {
+      "actual": "none",
+      "expected": "reduce_to:event_989:665950",
+      "field": "spending_changes_needed",
+      "likely_root_cause": "spending-change legality/enumeration or binding forecast trough",
+      "request_id": "request_11"
+    },
+    {
+      "actual": "Pay IDR 13,110,000 today. This leaves at least IDR 34,140,600 available over the next 90 days.",
+      "expected": "Reduce the weekend food delivery to IDR 665,950, then pay IDR 13,110,000 today. This leaves at least IDR 34,140,600 available.",
+      "field": "decision_explanation",
+      "likely_root_cause": "deterministic explanation family follows the selected decision",
+      "request_id": "request_11"
+    },
+    {
+      "actual": "941.6",
+      "expected": "433.4",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_13"
+    },
+    {
+      "actual": "affordable_now",
+      "expected": "affordable_later",
+      "field": "affordability_status",
+      "likely_root_cause": "planner eligibility/status derived from the forecast predicate",
+      "request_id": "request_13"
+    },
+    {
+      "actual": "full_payment",
+      "expected": "wait",
+      "field": "recommended_payment_method",
+      "likely_root_cause": "planner candidate eligibility/ranking derived from the forecast predicate",
+      "request_id": "request_13"
+    },
+    {
+      "actual": "2024-03-07:941.60",
+      "expected": "2024-05-15:941.60",
+      "field": "payment_plan",
+      "likely_root_cause": "planner date/amount construction or field-specific serialization",
+      "request_id": "request_13"
+    },
+    {
+      "actual": "2024-03-07",
+      "expected": "2024-05-15",
+      "field": "earliest_date_for_full_payment",
+      "likely_root_cause": "forecast date calculation / same-day ordering",
+      "request_id": "request_13"
+    },
+    {
+      "actual": "Pay EUR 941.60 today. This leaves at least EUR 1,300 available over the next 90 days.",
+      "expected": "Pay EUR 941.60 in full on 15 May 2024. Paying earlier would take the balance below the EUR 1,300 minimum.",
+      "field": "decision_explanation",
+      "likely_root_cause": "deterministic explanation family follows the selected decision",
+      "request_id": "request_13"
+    },
+    {
+      "actual": "613.64",
+      "expected": "597.74",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_14"
+    },
+    {
+      "actual": "Do not proceed with the EUR 5,414.20 request. Although EUR 613.64 is available today, the full amount cannot be completed safely within 90 days.",
+      "expected": "Do not proceed with the EUR 5,414.20 request. Although EUR 597.74 is available today, the full amount cannot be completed safely within 90 days.",
+      "field": "decision_explanation",
+      "likely_root_cause": "deterministic explanation family follows the selected decision",
+      "request_id": "request_14"
+    },
+    {
+      "actual": "225.66",
+      "expected": "83.05",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_15"
+    },
+    {
+      "actual": "Do not proceed with the EUR 3,685 request. Although EUR 225.66 is available today, the full amount cannot be completed safely within 90 days.",
+      "expected": "Do not make this payment by 1 February 2026. None of the available options keeps the EUR 1,200 minimum protected.",
+      "field": "decision_explanation",
+      "likely_root_cause": "deterministic explanation family follows the selected decision",
+      "request_id": "request_15"
+    },
+    {
+      "actual": "248325.96",
+      "expected": "243849.58",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_17"
+    },
+    {
+      "actual": "662.19",
+      "expected": "462",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_18"
+    },
+    {
+      "actual": "2026-08-15:3246.10",
+      "expected": "2026-09-15:3246.10",
+      "field": "payment_plan",
+      "likely_root_cause": "planner date/amount construction or field-specific serialization",
+      "request_id": "request_18"
+    },
+    {
+      "actual": "2026-08-15",
+      "expected": "2026-09-15",
+      "field": "earliest_date_for_full_payment",
+      "likely_root_cause": "forecast date calculation / same-day ordering",
+      "request_id": "request_18"
+    },
+    {
+      "actual": "Pay EUR 3,246.10 in full on 15 August 2026. Paying earlier would take the balance below the EUR 1,400 minimum.",
+      "expected": "Pay EUR 3,246.10 in full on 15 September 2026. Paying earlier would take the balance below the EUR 1,400 minimum.",
+      "field": "decision_explanation",
+      "likely_root_cause": "deterministic explanation family follows the selected decision",
+      "request_id": "request_18"
+    },
+    {
+      "actual": "37555.87",
+      "expected": "28820",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_19"
+    },
+    {
+      "actual": "2024-09-04:37555.87|2024-09-15:2104.13",
+      "expected": "2024-09-04:28820|2024-09-15:10840",
+      "field": "payment_plan",
+      "likely_root_cause": "planner date/amount construction or field-specific serialization",
+      "request_id": "request_19"
+    },
+    {
+      "actual": "Pay INR 37,555.87 today and the remaining INR 2,104.13 on 15 September 2024. This completes the full request and keeps the INR 92,800 minimum protected.",
+      "expected": "Pay INR 28,820 today and the remaining INR 10,840 on 15 September 2024. This completes the full request and keeps the INR 92,800 minimum protected.",
+      "field": "decision_explanation",
+      "likely_root_cause": "deterministic explanation family follows the selected decision",
+      "request_id": "request_19"
+    },
+    {
+      "actual": "14941.75",
+      "expected": "5400",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_20"
+    },
+    {
+      "actual": "Do not proceed with the INR 303,700 request. Although INR 14,941.75 is available today, the full amount cannot be completed safely within 90 days.",
+      "expected": "Do not make this payment by 22 February 2026. None of the available options keeps the INR 64,500 minimum protected.",
+      "field": "decision_explanation",
+      "likely_root_cause": "deterministic explanation family follows the selected decision",
+      "request_id": "request_20"
+    },
+    {
+      "actual": "1574.4",
+      "expected": "1543.35",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_21"
+    },
+    {
+      "actual": "affordable_now",
+      "expected": "affordable_with_plan",
+      "field": "affordability_status",
+      "likely_root_cause": "planner eligibility/status derived from the forecast predicate",
+      "request_id": "request_21"
+    },
+    {
+      "actual": "2026-04-03",
+      "expected": "2026-04-15",
+      "field": "earliest_date_for_full_payment",
+      "likely_root_cause": "forecast date calculation / same-day ordering",
+      "request_id": "request_21"
+    },
+    {
+      "actual": "none",
+      "expected": "stop:event_1815|reduce_to:event_1816:23.50",
+      "field": "spending_changes_needed",
+      "likely_root_cause": "spending-change legality/enumeration or binding forecast trough",
+      "request_id": "request_21"
+    },
+    {
+      "actual": "Pay USD 1,574.40 today. This leaves at least USD 1,800 available over the next 90 days.",
+      "expected": "Stop the online backup subscription and reduce the streaming subscription to USD 23.50, then pay USD 1,574.40 today. This leaves at least USD 1,800 available.",
+      "field": "decision_explanation",
+      "likely_root_cause": "deterministic explanation family follows the selected decision",
+      "request_id": "request_21"
+    },
+    {
+      "actual": "514.86",
+      "expected": "475.46",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_22"
+    },
+    {
+      "actual": "2024-12-15",
+      "expected": "2025-01-15",
+      "field": "earliest_date_for_full_payment",
+      "likely_root_cause": "forecast date calculation / same-day ordering",
+      "request_id": "request_22"
+    },
+    {
+      "actual": "9303.91",
+      "expected": "9152",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_23"
+    },
+    {
+      "actual": "12557.36",
+      "expected": "13420",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_24"
+    },
+    {
+      "actual": "Do not proceed with the INR 109,600 request. Although INR 12,557.36 is available today, the full amount cannot be completed safely within 90 days.",
+      "expected": "Do not proceed with the INR 109,600 request. Although INR 13,420 is available today, the full amount cannot be completed safely within 90 days.",
+      "field": "decision_explanation",
+      "likely_root_cause": "deterministic explanation family follows the selected decision",
+      "request_id": "request_24"
+    },
+    {
+      "actual": "0",
+      "expected": "1425000",
+      "field": "amount_safe_to_pay",
+      "likely_root_cause": "forecast semantics: recurrence/lifecycle/evidence affects the binding trough",
+      "request_id": "request_25"
+    }
+  ]
+}
