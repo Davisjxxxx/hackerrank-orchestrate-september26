@@ -6,7 +6,7 @@ This checkpoint is a deterministic implementation foundation, not a submission-r
 |---|---|---|
 | S1-S8 | PASS for the implemented checks | `s1_smoke.txt`, `differential_report.md` |
 | S9-S15 | Partial deterministic coverage | `test_contract.py` |
-| S16 | FAIL: 3/25 exact solved rows | `golden_report.md` |
+| S16 | PARTIAL: 3/25 exact solved rows, 53 differing fields | `golden_report.md`, `s16_residual_53_matrix.{md,json}` |
 | S17 | BLOCKED: G1-G51 matrix not run | `adversarial_report.md` |
 | S18 | PASS structural dry run: 250 output rows | `output.csv` and gate-run output |
 | S19 | PASS: three-run deterministic replay | `replay_evidence.md` |
