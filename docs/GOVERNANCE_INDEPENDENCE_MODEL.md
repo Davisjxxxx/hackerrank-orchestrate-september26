@@ -16,6 +16,12 @@ recurrence, identity/variant mismatch, seller/condition disagreement, sparse
 history, outliers, source inconsistency, and prompt injection. Evidence order
 and candidate selection are not used to modify financial arithmetic.
 
+The current local reviewer does not independently reconstruct raw Lane A
+financial events. It escalates explicit control failures and unresolved attack
+markers supplied by the finance/product adapters. Lane A convergence must map
+its normalized lifecycle findings into those controls; an absent mapping must
+remain a certification failure rather than becoming an implicit PASS.
+
 ## Diversity controls
 
 - separate synthesis, challenge, certification, and committee interfaces;

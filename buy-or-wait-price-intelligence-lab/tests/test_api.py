@@ -5,6 +5,8 @@ from fastapi.testclient import TestClient
 
 from price_intel.api.app import AppState, create_app
 from price_intel.demo import DEMO_NOW
+from price_intel.financial import FinancialEvidenceUnavailable
+from price_intel.observation_store import InMemoryObservationStore
 from price_intel.resolver import canonical_product_id
 
 
@@ -111,6 +113,53 @@ def test_governed_evaluation_exposes_review_certification_and_release():
     assert body["recommendation"] in {"HOLD_FOR_BETTER_PRICE", "SET_PRICE_WATCH"}
     assert body["governance"]["certification"]["status"] == "CERTIFIED"
     assert body["governance"]["release"]["status"] == "RELEASED"
+
+
+def test_governed_api_invalid_product_is_404():
+    response = client().post("/v1/products/does-not-exist/governed-evaluate", json={})
+    assert response.status_code == 404
+
+
+def test_governed_api_missing_finance_provider_fails_closed():
+    class MissingProvider:
+        def evaluate(self, **_kwargs):
+            raise FinancialEvidenceUnavailable("finance provider unavailable")
+
+    state = AppState(financial_provider=MissingProvider())
+    api = TestClient(create_app(state))
+    product_id = next(iter(state.products))
+    response = api.post(f"/v1/products/{product_id}/governed-evaluate", json={})
+    assert response.status_code == 422
+
+
+def test_governed_api_missing_price_evidence_returns_blocked_release():
+    state = AppState()
+    state.observation_store = InMemoryObservationStore()
+    api = TestClient(create_app(state))
+    product_id = next(iter(state.products))
+    response = api.post(
+        f"/v1/products/{product_id}/governed-evaluate",
+        json={"financial_state": "safe_now", "financial_coverage_state": "full", "as_of": DEMO_NOW.isoformat()},
+    )
+    assert response.status_code == 200
+    body = response.json()
+    assert body["governance"]["release"]["status"] == "RELEASE_BLOCKED"
+    assert "CURRENT_PRICE_MISSING" in body["governance"]["release"]["reason_codes"]
+
+
+def test_governed_api_challenge_blocks_release():
+    state = AppState()
+    state.governance_control_evidence["pending_debits_checked"] = False
+    api = TestClient(create_app(state))
+    product_id = next(iter(state.products))
+    response = api.post(
+        f"/v1/products/{product_id}/governed-evaluate",
+        json={"financial_state": "safe_now", "financial_coverage_state": "full", "as_of": DEMO_NOW.isoformat()},
+    )
+    assert response.status_code == 200
+    body = response.json()
+    assert body["governance"]["review"]["status"] == "ABSTAIN"
+    assert body["governance"]["release"]["status"] == "RELEASE_BLOCKED"
 
 
 def body_to_product(body):

@@ -115,7 +115,7 @@ class AppState:
         self.watch_service = WatchService(InMemoryWatchRepository(), observation_store=self.observation_store)
         self.governance_service = GovernedDecisionService()
         self.governance_control_evidence = {key: True for key in MANDATORY_EVIDENCE}
-        self.governance_control_evidence.update({"unsupported_income_used": False, "payment_plan_legal": True, "deadline_respected": True})
+        self.governance_control_evidence.update({"unsupported_income_used": False, "payment_plan_legal": True, "deadline_respected": True, "payment_plan_arithmetic_reconciles": True})
         product_id = canonical_product_id(DEMO_PRODUCT)
         self.products[product_id] = DEMO_PRODUCT
         self.observation_store.append(product_id, DEMO_PRODUCT, demo_observations(), ingested_at=DEMO_NOW)

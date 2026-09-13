@@ -15,6 +15,7 @@ import json
 import platform
 import sys
 from typing import Any, Mapping, Protocol, Sequence
+from types import MappingProxyType
 
 from .models import FinancialCoverageState, FinancialSafetyResult, FinancialState, ProductIdentity
 from .price_intelligence import PriceIntelligenceRecord
@@ -99,6 +100,15 @@ class DecisionEvidenceEnvelope:
     control_evidence: Mapping[str, Any]
     product_identity_confidence: Decimal
     current_price: Decimal | None
+    governance_trace: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        # Reviewers receive a snapshot, never a mutable reference to trusted
+        # finance/payment/control data that could be edited before certification.
+        object.__setattr__(self, "payment_plan", MappingProxyType(dict(self.payment_plan)))
+        object.__setattr__(self, "control_evidence", MappingProxyType(dict(self.control_evidence)))
+        object.__setattr__(self, "provenance", MappingProxyType(dict(self.provenance)))
+        object.__setattr__(self, "unresolved_evidence", tuple(self.unresolved_evidence))
 
     def to_dict(self) -> dict[str, Any]:
         return _jsonable(self)
@@ -189,6 +199,28 @@ class LocalAdversarialReviewer:
             major.append("PRICE_SIGNAL_UNKNOWN")
         if evidence_envelope.unresolved_evidence:
             major.append("UNRESOLVED_EVIDENCE_PRESENT")
+            evidence_blob = " ".join(evidence_envelope.unresolved_evidence).lower()
+            critical_markers = {
+                "duplicate_income": "DUPLICATE_INCOME_EVIDENCE",
+                "unsupported_future_income": "UNSUPPORTED_FUTURE_INCOME",
+                "omitted_liability": "OMITTED_LIABILITY_EVIDENCE",
+                "pending_credit": "PENDING_CREDIT_MISUSE",
+                "pending_debit": "PENDING_DEBIT_OMISSION",
+                "identity_mismatch": "PRODUCT_IDENTITY_MISMATCH",
+                "wrong_variant": "WRONG_PRODUCT_VARIANT",
+                "condition_mismatch": "CONDITION_MISMATCH",
+                "prompt_injection": "PROMPT_INJECTION",
+                "duplicate_future": "DUPLICATE_FUTURE_OCCURRENCE",
+            }
+            for marker, finding in critical_markers.items():
+                if marker in evidence_blob:
+                    critical.append(finding)
+            if ("sparse_history" in evidence_blob or "anomalous_price" in evidence_blob or "outlier" in evidence_blob
+                    or "stale_recurrence" in evidence_blob or "seller_disagreement" in evidence_blob
+                    or "source_inconsistency" in evidence_blob):
+                major.append("PRICE_EVIDENCE_REQUIRES_REVIEW")
+        if controls.get("unsupported_income_used") is True:
+            critical.append("UNSUPPORTED_INCOME_USED")
         blob = json.dumps(_jsonable(evidence_envelope.provenance), sort_keys=True).lower()
         if any(token in blob for token in ("ignore trusted", "override finance", "system prompt", "disregard rules")):
             critical.append("UNTRUSTED_TEXT_PROMPT_INJECTION_DETECTED")
@@ -209,10 +241,12 @@ class LocalAdversarialReviewer:
 
 
 class CertificationGate:
-    def certify(self, envelope: DecisionEvidenceEnvelope, review: ChallengeReport) -> CertificationReport:
+    def certify(self, envelope: DecisionEvidenceEnvelope, review: ChallengeReport | None) -> CertificationReport:
         controls = envelope.control_evidence
         missing = tuple(sorted(key for key in MANDATORY_EVIDENCE if controls.get(key) is not True))
-        if review.status == ReviewStatus.ABSTAIN or review.critical_findings:
+        if review is None:
+            missing = tuple(sorted(set(missing) | {"adversarial_review_completed", "critical_challenges_resolved"}))
+        elif review.status == ReviewStatus.ABSTAIN or review.critical_findings:
             missing = tuple(sorted(set(missing) | {"critical_challenges_resolved"}))
         status = CertificationStatus.CERTIFIED if not missing else CertificationStatus.CERTIFICATION_FAILED
         return CertificationReport(
@@ -242,7 +276,7 @@ class DecisionCommittee:
             }
             for candidate in candidates
         }
-        if certification.status != CertificationStatus.CERTIFIED or review.critical_findings:
+        if certification.status != CertificationStatus.CERTIFIED or review is None or review.critical_findings:
             status = CommitteeStatus.ESCALATE
             selected = None
             reason = "governance prerequisites are not satisfied"
@@ -264,14 +298,23 @@ class DecisionCommittee:
 
 class FinalSafetyVeto:
     def release(self, envelope: DecisionEvidenceEnvelope, committee: CommitteeDecision,
-                certification: CertificationReport, review: ChallengeReport,
+                certification: CertificationReport | None, review: ChallengeReport | None,
                 candidates: Sequence[DecisionCandidate]) -> ReleaseResult:
         reasons: list[str] = []
-        selected = next((candidate for candidate in candidates if candidate.candidate_id == committee.selected_candidate), None)
-        if certification.status != CertificationStatus.CERTIFIED:
+        selected_id = committee.selected_candidate if committee is not None else None
+        selected = next((candidate for candidate in candidates if candidate.candidate_id == selected_id), None)
+        if certification is None or certification.status != CertificationStatus.CERTIFIED:
             reasons.append("CERTIFICATION_FAILED")
-        if review.critical_findings:
+        if review is None:
+            reasons.append("ADVERSARIAL_REVIEW_NOT_EXECUTED")
+        elif review.critical_findings:
             reasons.append("CRITICAL_CHALLENGE_UNRESOLVED")
+        if committee is None:
+            reasons.append("COMMITTEE_NOT_EXECUTED")
+        elif committee.status != CommitteeStatus.APPROVED:
+            reasons.append("COMMITTEE_NOT_APPROVED")
+        elif selected_id not in committee.eligible_candidates:
+            reasons.append("COMMITTEE_SELECTED_INELIGIBLE_CANDIDATE")
         if selected is None:
             reasons.append("NO_COMMITTEE_CANDIDATE")
         if selected and not _candidate_financially_legal(selected, envelope):
@@ -286,12 +329,16 @@ class FinalSafetyVeto:
             reasons.append("PAYMENT_PLAN_NOT_VERIFIED")
         if envelope.control_evidence.get("deadline_respected") is not True:
             reasons.append("DEADLINE_NOT_VERIFIED")
+        if envelope.control_evidence.get("payment_plan_arithmetic_reconciles") is not True:
+            reasons.append("PAYMENT_ARITHMETIC_NOT_VERIFIED")
         if (selected and selected.recommendation in {RecommendationState.BUY_NOW, RecommendationState.CONSIDER_USED_OR_REFURBISHED}
                 and (envelope.safe_amount_today is None or envelope.current_price is None
                      or envelope.safe_amount_today < envelope.current_price)):
             reasons.append("SAFE_AMOUNT_BELOW_CURRENT_PRICE")
         if envelope.product_identity_confidence < Decimal("0.85"):
             reasons.append("PRODUCT_IDENTITY_NOT_CERTIFIED")
+        if envelope.current_price is None:
+            reasons.append("CURRENT_PRICE_MISSING")
         if reasons:
             return ReleaseResult(ReleaseStatus.RELEASE_BLOCKED, None, tuple(sorted(set(reasons))))
         return ReleaseResult(ReleaseStatus.RELEASED, selected.candidate_id if selected else None, ("DETERMINISTIC_VETO_PASSED",))
@@ -356,7 +403,7 @@ class GovernedDecisionService:
             price_engine_version=price_engine_version, price_input_hash=_fingerprint(price.to_dict()),
             price_observation_ids=price.observation_ids, price_history_status=price.price_history_status,
             price_signal=price.price_signal, price_confidence=price.confidence,
-            candidate_recommendation=selected, unresolved_evidence=tuple(),
+            candidate_recommendation=selected, unresolved_evidence=tuple(str(item) for item in request.get("unresolved_evidence", ())),
             provenance={"product": product.source_provenance, "price": list(price.provenance),
                         "runtime": {"python": platform.python_version(), "implementation": sys.implementation.name},
                         "request_source": request.get("source", "local"),
@@ -372,6 +419,7 @@ class GovernedDecisionService:
         certification = self.certifier.certify(envelope, review)
         committee = self.committee.select(envelope, candidates, certification, review)
         release = self.veto.release(envelope, committee, certification, review, candidates)
+        envelope = replace(envelope, governance_trace=("decision_synthesis", "adversarial_review", "certification_gate", "decision_committee", "deterministic_safety_veto"))
         return GovernedDecisionResult(envelope, candidates, review, certification, committee, release)
 
 

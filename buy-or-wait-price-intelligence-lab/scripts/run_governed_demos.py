@@ -25,6 +25,7 @@ CONTROLS = {
     "price_history_state_declared": True, "condition_handling_verified": True,
     "decision_explanation_grounded": True, "safe_amount_covers_current_price": True,
     "unsupported_income_used": False, "payment_plan_legal": True, "deadline_respected": True,
+    "payment_plan_arithmetic_reconciles": True,
 }
 
 
