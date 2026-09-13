@@ -20,7 +20,7 @@
 
 ## Fingerprint
 
-The current candidate is the dirty worktree state at HEAD `250cb88` (parent production baseline `74f44ecb3505aa15ffe16e832f795cce01d7eb09`).
+The current candidate is the dirty worktree state at HEAD `8f82a25` (parent production baseline `74f44ecb3505aa15ffe16e832f795cce01d7eb09`).
 
 Current file hashes:
 
