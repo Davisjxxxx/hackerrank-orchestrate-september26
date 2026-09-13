@@ -162,6 +162,107 @@ def test_governed_api_challenge_blocks_release():
     assert body["governance"]["release"]["status"] == "RELEASE_BLOCKED"
 
 
+def test_search_intake_yields_needs_confirmation_with_candidate_gtin():
+    """Text search of the demo title returns NEEDS_CONFIRMATION and the top
+    candidate carries the strong identifier the frontend uses to confirm."""
+
+    api = client()
+    response = api.post("/v1/intake/search", json={"query_text": "Example OLED TV 55-inch"})
+    assert response.status_code == 200
+    body = response.json()
+    assert body["state"] == "needs_confirmation"
+    assert "AMBIGUOUS_PRODUCT_IDENTITY" in body["reason_codes"]
+    assert "product_id" not in body, "ambiguous intake must not silently promote a product"
+    assert body["candidates"], "confirmation flow needs candidates to render"
+    top = body["candidates"][0]
+    assert top["product"]["gtin"] == "036000291452"
+
+
+def test_needs_confirmation_confirmed_via_gtin_becomes_exact():
+    """The mobile confirmation flow reissues the top candidate's GTIN so that
+    the exact-identity gate opens without inventing evidence."""
+
+    api = client()
+    ambiguous = api.post("/v1/intake/search", json={"query_text": "Example OLED TV 55-inch"}).json()
+    assert ambiguous["state"] == "needs_confirmation"
+    top_gtin = ambiguous["candidates"][0]["product"]["gtin"]
+    confirmed = api.post(
+        "/v1/intake/barcode",
+        json={"barcode": top_gtin, "user_confirmed": True},
+    ).json()
+    assert confirmed["state"] == "exact"
+    assert confirmed["product_id"]
+
+
+def test_governed_finance_veto_beats_strong_price_signal():
+    """Instruction 6: a strong price opportunity plus financially unsafe
+    must produce FINANCIALLY_WAIT / NOT_RECOMMENDED rather than BUY_NOW."""
+
+    api = client()
+    product_id = api.post("/v1/intake/barcode", json={"barcode": "036000291452"}).json()["product_id"]
+    body = api.post(
+        f"/v1/products/{product_id}/governed-evaluate",
+        json={
+            "financial_state": "not_affordable",
+            "financial_coverage_state": "full",
+            "safe_amount_today": "50",
+            "as_of": DEMO_NOW.isoformat(),
+        },
+    ).json()
+    assert body["recommendation"] in {"FINANCIALLY_WAIT", "NOT_RECOMMENDED"}
+    assert body["financial_state"] == "not_affordable"
+    assert body["governance"]["release"]["status"] == "RELEASED"
+
+
+def test_governed_end_to_end_journey_returns_governed_result():
+    """The full frontend journey — barcode intake → governed evaluate — returns
+    a governance report the decision screen can render."""
+
+    api = client()
+    product_id = api.post("/v1/intake/barcode", json={"barcode": "036000291452"}).json()["product_id"]
+    body = api.post(
+        f"/v1/products/{product_id}/governed-evaluate",
+        json={
+            "financial_state": "safe_now",
+            "financial_coverage_state": "full",
+            "safe_amount_today": "2000",
+            "as_of": DEMO_NOW.isoformat(),
+        },
+    ).json()
+    for key in {"recommendation", "financial_state", "price_intelligence", "governance", "mode"}:
+        assert key in body, f"missing top-level field required by the mobile screen: {key}"
+    for key in {"envelope", "review", "certification", "committee", "release"}:
+        assert key in body["governance"], f"missing governance stage: {key}"
+    for key in {"current_best_price", "price_signal", "price_history_status", "price_trend", "observation_count"}:
+        assert key in body["price_intelligence"], f"missing price field for decision screen: {key}"
+
+
+def test_governed_confirmed_search_journey_finance_veto_still_wins():
+    """The confirmed-search branch of the mobile flow reaches the same
+    governed decision as barcode, and the finance veto still overrides the
+    price signal even after user confirmation."""
+
+    api = client()
+    ambiguous = api.post("/v1/intake/search", json={"query_text": "Example OLED TV 55-inch"}).json()
+    assert ambiguous["state"] == "needs_confirmation"
+    top_gtin = ambiguous["candidates"][0]["product"]["gtin"]
+    exact = api.post(
+        "/v1/intake/barcode",
+        json={"barcode": top_gtin, "user_confirmed": True},
+    ).json()
+    product_id = exact["product_id"]
+    body = api.post(
+        f"/v1/products/{product_id}/governed-evaluate",
+        json={
+            "financial_state": "not_affordable",
+            "financial_coverage_state": "full",
+            "safe_amount_today": "50",
+            "as_of": DEMO_NOW.isoformat(),
+        },
+    ).json()
+    assert body["recommendation"] in {"FINANCIALLY_WAIT", "NOT_RECOMMENDED"}
+
+
 def body_to_product(body):
     from price_intel.models import ProductIdentity
 

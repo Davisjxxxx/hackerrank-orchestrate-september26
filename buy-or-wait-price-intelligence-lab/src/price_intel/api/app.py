@@ -8,6 +8,7 @@ import json
 from typing import Any
 
 from fastapi import FastAPI, Header, HTTPException, Query
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from ..demo import DEMO_NOW, DEMO_PRODUCT, demo_observations
@@ -128,6 +129,14 @@ def create_app(state: AppState | None = None) -> FastAPI:
         version="0.2.1-rc1",
         description="Provider-independent product intake, price intelligence, financial veto, and decision-aware watches.",
     )
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origin_regex=r"^http://(localhost|127\.0\.0\.1):\d+$",
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
     app.state.domain = state
 
     @app.get("/health")
